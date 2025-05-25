@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - David Henrique</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.85);
+            box-shadow: 0 0 15px rgba(128, 0, 128, 0.5);
+            position: relative;
+            z-index: 1;
+            border-radius: 8px;
+        }
+        header {
+            background: #3a0ca3;
+            color: #ffffff;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 3px solid #7b2cbf;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            color: #c7c7c7;
+        }
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+            background: #2a0061;
+            margin-bottom: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #ffffff;
+            padding: 15px 20px;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background: #5a189a;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(44, 44, 44, 0.9);
+            border-left: 5px solid #7b2cbf;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #9d4edd;
+            border-bottom: 2px solid #5a189a;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h3 {
+            color: #c7c7c7;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .skills-list {
+            list-style: square;
+            padding-left: 20px;
+            color: #b0b0b0;
+        }
+        .skills-list li strong {
+            color: #c7c7c7;
+        }
+        a {
+            color: #9d4edd;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #3a0ca3;
+            color: #ffffff;
+            margin-top: 30px;
+            border-top: 3px solid #7b2cbf;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+        #contato ul {
+            list-style: none;
+            padding: 0;
+        }
+        #contato ul li {
+            margin-bottom: 10px;
+            color: #b0b0b0;
+        }
+        #contato ul li strong {
+            color: #c7c7c7;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>David Henrique</h1>
+        <p>Estudante de Engenharia de Software | Desenvolvedor Back-end em formação</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#sobre">Sobre Mim</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <p>Sou David Henrique, atualmente cursando Engenharia de Software na UFANA (Universidade Federal do Amazonas).</p>
+            <p>Tenho grande interesse pela área de desenvolvimento back-end</p>
+            <p>Estou sempre em busca de novos aprendizados e desafios para aprimorar minhas habilidades técnicas.</p>
+            <p>Estou atras de ideias para meus projetos e estudo constantemente para me tornar um desenvolvedor mais completo.</p>
+        </section>
+
+        <section id="habilidades">
+            <h2>Habilidades</h2>
+            <h3>Técnicas:</h3>
+            <ul class="skills-list">
+                <li><strong>Python</strong></li>
+                <li><strong>Golang</strong></li>
+            </ul>
+            <h3>Interpessoais (Soft Skills):</h3>
+            <ul class="skills-list">
+                <li><strong>Aprendizado rápido</strong></li>
+                <li><strong>Resolução de problemas</strong></li>
+                <li><strong>Pensamento analítico</strong></li>
+                <li><strong>Atenção aos detalhes</strong></li>
+                <li><strong>Comunicação</strong></li>
+                <li><strong>Proatividade</strong></li>
+            </ul>
+        </section>
+
+        <section id="projetos">
+            <h2>Projetos</h2>
+            <p>🚧 Projetos em breve!</p>
+        </section>
+
+        <section id="contato">
+            <h2>Contato</h2>
+            <p>Você pode entrar em contato comigo através dos seguintes canais:</p>
+            <ul>
+                <li><strong>E-mail:</strong> <a href="mailto:davidhenriquesms18@gmail.com">davidhenriquesms18@gmail.com</a></li>
+                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/david.devloli?igsh=NHJqaXprc243Ym40" target="_blank">@david.devloli</a></li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> David Henrique. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const currentYearSpan = document.getElementById('currentYear');
+
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            if (body) {
+                let lastClientX = 0;
+                let lastClientY = 0;
+                let isMouseInside = false;
+
+                const drawGradient = () => {
+                    if (!isMouseInside) {
+                        body.style.backgroundImage = 'none';
+                        return;
+                    }
+
+                    const mouseX = lastClientX + window.scrollX;
+                    const mouseY = lastClientY + window.scrollY;
+
+                    const colorCenter = 'rgba(157, 78, 221, 0.5)';
+                    const colorMid = 'rgba(90, 24, 154, 0.25)';
+                    const colorEdge = 'rgba(0, 0, 0, 0)';
+                    const lightRadius = 300;
+
+                    body.style.backgroundImage = `radial-gradient(circle ${lightRadius}px at ${mouseX}px ${mouseY}px, ${colorCenter} 0%, ${colorMid} 50%, ${colorEdge} 70%)`;
+                };
+
+                document.addEventListener('mousemove', (e) => {
+                    isMouseInside = true;
+                    lastClientX = e.clientX;
+                    lastClientY = e.clientY;
+                    requestAnimationFrame(drawGradient);
+                });
+
+                document.addEventListener('scroll', () => {
+                    if (isMouseInside) {
+                        requestAnimationFrame(drawGradient);
+                    }
+                }, { passive: true }); // Use passive listener for scroll for performance
+
+                document.addEventListener('mouseenter', () => {
+                    isMouseInside = true;
+                });
+
+                document.addEventListener('mouseleave', () => {
+                    isMouseInside = false;
+                    requestAnimationFrame(drawGradient); // Draw one last time to remove gradient
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
