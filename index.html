@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - David Henrique</title>
+    <!-- Bibliotecas externas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -121,45 +126,88 @@
         }
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-            transition-delay: 0.1s;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         .reveal-on-scroll.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: none;
+        }
+        /* Barras de linguagens */
+        .lang-bar {
+            margin-bottom: 15px;
+        }
+        .lang-label {
+            display: block;
+            margin-bottom: 4px;
+            color: #c7c7c7;
+        }
+        .lang-bar-bg {
+            background: #2a0061;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .lang-bar-fill {
+            background: #9d4edd;
+            width: 0;
+            height: 10px;
+        }
+        .tempo {
+            margin-top: 15px;
+            color: #b0b0b0;
+        }
+        pre {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            color: #e0e0e0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 10px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            nav ul li {
+                display: block;
+            }
+            nav ul li a {
+                display: block;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="reveal-on-scroll">
+    <header>
         <h1>David Henrique</h1>
-        <p>Estudante de Engenharia de Software | Desenvolvedor Back-end em formação</p>
+        <p>Desenvolvedor apaixonado por tecnologia</p>
     </header>
-
-    <nav class="reveal-on-scroll">
+    <nav>
         <ul>
-            <li><a href="#sobre">Sobre Mim</a></li>
+            <li><a href="#sobre">Sobre</a></li>
             <li><a href="#habilidades">Habilidades</a></li>
             <li><a href="#projetos">Projetos</a></li>
+            <li><a href="#stats">Estatísticas</a></li>
+            <li><a href="#apis">APIs</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
-
     <div class="container">
         <section id="sobre" class="reveal-on-scroll">
-            <h2>Sobre Mim</h2>
-            <p>Olá! Sou David Henrique, atualmente cursando Engenharia de Software na UFAM (Universidade Federal do Amazonas).</p>
-            <p>Tenho grande interesse pela área de desenvolvimento back-end e possuo conhecimentos no setor bancário.</p>
-            <p>Estou sempre em busca de novos aprendizados e desafios para aprimorar minhas habilidades técnicas e interpessoais.</p>
+            <h2>Sobre mim</h2>
+            <p>Olá! Sou David Henrique, um entusiasta de tecnologia em busca de novas oportunidades para crescer como desenvolvedor.</p>
         </section>
-
         <section id="habilidades" class="reveal-on-scroll">
             <h2>Habilidades</h2>
             <h3>Técnicas:</h3>
             <ul class="skills-list">
                 <li><strong>Python</strong></li>
                 <li><strong>Golang</strong></li>
+                <li><strong>JavaScript</strong></li>
+                <li><strong>Java</strong></li>
             </ul>
             <h3>Interpessoais (Soft Skills):</h3>
             <ul class="skills-list">
@@ -171,12 +219,29 @@
                 <li><strong>Proatividade</strong></li>
             </ul>
         </section>
-
         <section id="projetos" class="reveal-on-scroll">
             <h2>Projetos</h2>
             <p>🚧 Projetos em breve!</p>
         </section>
-
+        <section id="stats" class="reveal-on-scroll">
+            <h2>Estatísticas do Portfólio</h2>
+            <div id="stats-root"></div>
+        </section>
+        <section id="apis" class="reveal-on-scroll">
+            <h2>Exemplos de API</h2>
+            <p>A seguir alguns exemplos de consumo de APIs em JavaScript e Java.</p>
+            <h3>JavaScript</h3>
+            <pre><code>fetch('https://api.github.com/users/octocat')
+  .then(r =&gt; r.json())
+  .then(data =&gt; console.log(data.login));
+</code></pre>
+            <h3>Java</h3>
+            <pre><code>var url = new java.net.URL("https://api.github.com/users/octocat");
+var conn = (java.net.HttpURLConnection) url.openConnection();
+conn.setRequestMethod("GET");
+// Ler a resposta...
+</code></pre>
+        </section>
         <section id="contato" class="reveal-on-scroll">
             <h2>Contato</h2>
             <p>Você pode entrar em contato comigo através dos seguintes canais:</p>
@@ -186,7 +251,6 @@
             </ul>
         </section>
     </div>
-
     <footer class="reveal-on-scroll">
         <p>&copy; <span id="currentYear"></span> David Henrique. Todos os direitos reservados.</p>
     </footer>
@@ -195,16 +259,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
             const currentYearSpan = document.getElementById('currentYear');
-
             if (currentYearSpan) {
                 currentYearSpan.textContent = new Date().getFullYear();
             }
-
             if (body) {
                 let lastClientX = 0;
                 let lastClientY = 0;
                 let isMouseInside = false;
-
                 const drawGradient = () => {
                     if (!isMouseInside) {
                         body.style.backgroundImage = 'none';
@@ -218,30 +279,25 @@
                     const lightRadius = 300;
                     body.style.backgroundImage = `radial-gradient(circle ${lightRadius}px at ${mouseX}px ${mouseY}px, ${colorCenter} 0%, ${colorMid} 50%, ${colorEdge} 70%)`;
                 };
-
                 document.addEventListener('mousemove', (e) => {
                     isMouseInside = true;
                     lastClientX = e.clientX;
                     lastClientY = e.clientY;
                     requestAnimationFrame(drawGradient);
                 });
-
                 document.addEventListener('scroll', () => {
                     if (isMouseInside) {
                         requestAnimationFrame(drawGradient);
                     }
                 }, { passive: true });
-
                 document.addEventListener('mouseenter', () => {
                     isMouseInside = true;
                 });
-
                 document.addEventListener('mouseleave', () => {
                     isMouseInside = false;
                     requestAnimationFrame(drawGradient);
                 });
             }
-
             const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -255,7 +311,6 @@
                     }
                 });
             });
-
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             const revealObserverOptions = {
                 root: null,
@@ -275,6 +330,37 @@
             });
         });
     </script>
-
+    <script type="text/babel">
+        const statsData = [
+            { linguagem: 'JavaScript', porcentagem: 50 },
+            { linguagem: 'Java', porcentagem: 25 },
+            { linguagem: 'HTML/CSS', porcentagem: 15 },
+            { linguagem: 'Outros', porcentagem: 10 }
+        ];
+        function Stats() {
+            React.useEffect(() => {
+                anime({
+                    targets: '.lang-bar-fill',
+                    width: el => el.getAttribute('data-percentage') + '%',
+                    easing: 'easeInOutQuad',
+                    duration: 2000
+                });
+            }, []);
+            return (
+                <div>
+                    {statsData.map(item => (
+                        <div key={item.linguagem} className="lang-bar">
+                            <span className="lang-label">{item.linguagem} - {item.porcentagem}%</span>
+                            <div className="lang-bar-bg">
+                                <div className="lang-bar-fill" data-percentage={item.porcentagem}></div>
+                            </div>
+                        </div>
+                    ))}
+                    <p className="tempo">Tempo de desenvolvimento: 36h 30min</p>
+                </div>
+            );
+        }
+        ReactDOM.createRoot(document.getElementById('stats-root')).render(<Stats />);
+    </script>
 </body>
 </html>
