@@ -9,7 +9,7 @@ function Sobre() {
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
-    fetch("https://api.github.com/users/octocat")
+    fetch("https://api.github.com/users/Pexe")
       .then((res) => res.json())
       .then((data) => setAvatar(data.avatar_url));
   }, []);
@@ -37,10 +37,12 @@ function Sobre() {
       </h1>
       <div className="flex flex-col md:flex-row items-center gap-8">
         {avatar && (
-          <img src={avatar} alt="Perfil" className="w-40 h-40 rounded-full" />
+          <img src={avatar} alt="Foto de Pexe" className="w-40 h-40 rounded-full" />
         )}
         <p ref={textRef} className="max-w-md text-center md:text-left">
-          Olá! Sou um entusiasta de tecnologia apaixonado por desenvolvimento web.
+          Olá! Sou David, estudante de Engenharia de Software e desenvolvedor backend. Cursando
+          Engenharia de Software na Universidade Federal do Amazonas (UFAM) desde 2025 e em
+          busca da primeira oportunidade de trabalho.
         </p>
       </div>
     </section>

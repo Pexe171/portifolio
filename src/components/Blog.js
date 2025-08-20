@@ -20,7 +20,7 @@ function Blog() {
         {contents.map((content, idx) => (
           <motion.article
             key={posts[idx].slug}
-            className="p-4 rounded bg-gray-100 dark:bg-gray-800"
+            className="p-4 rounded bg-gray-800"
             whileHover={{ scale: 1.02 }}
           >
             <h2 className="text-2xl font-semibold mb-2">{posts[idx].title}</h2>

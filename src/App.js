@@ -11,7 +11,7 @@ import Blog from "./components/Blog";
 
 function App() {
   return (
-    <div className="font-sans relative bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="font-sans relative bg-gray-900 text-gray-100">
       <ParticleBackground />
       <Navbar />
       <main className="pt-16 space-y-24">

@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import React from "react";
 import { motion } from "framer-motion";
 
 const secoes = [
@@ -13,19 +12,8 @@ const secoes = [
 ];
 
 function Navbar() {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (dark) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-  }, [dark]);
-
   return (
-    <nav className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow z-10">
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 text-gray-100 shadow z-10">
       <ul className="flex gap-4 p-4 justify-center items-center">
         {secoes.map((secao) => (
           <motion.li key={secao.id} whileHover={{ scale: 1.1 }}>
@@ -37,15 +25,6 @@ function Navbar() {
             </a>
           </motion.li>
         ))}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setDark(!dark)}
-          className="ml-4"
-          aria-label="Alternar tema"
-        >
-          {dark ? <Sun /> : <Moon />}
-        </motion.button>
       </ul>
     </nav>
   );
