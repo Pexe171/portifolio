@@ -25,9 +25,13 @@ O site ficará disponível em `http://localhost:3000`.
 
 ```javascript
 export const projetos = [
-  { nome: "Projeto A", link: "#" },
-  { nome: "Projeto B", link: "#" },
-  { nome: "Meu Novo Projeto", link: "https://github.com/usuario/meu-novo-projeto" }
+  { nome: "Projeto A", link: "#", sobre: "Breve descrição" },
+  { nome: "Projeto B", link: "#", sobre: "Breve descrição" },
+  {
+    nome: "Meu Novo Projeto",
+    link: "https://github.com/usuario/meu-novo-projeto",
+    sobre: "O que ele faz"
+  }
 ];
 ```
 

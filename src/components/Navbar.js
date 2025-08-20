@@ -7,7 +7,6 @@ const secoes = [
   { id: "projetos", rotulo: "Projetos" },
   { id: "habilidades", rotulo: "Habilidades" },
   { id: "experiencia", rotulo: "Experiência/Formação" },
-  { id: "blog", rotulo: "Blog" },
   { id: "contato", rotulo: "Contato" },
 ];
 
