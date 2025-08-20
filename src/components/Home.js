@@ -69,14 +69,6 @@ function Home() {
           >
             Instagram
           </motion.a>
-          <motion.a
-            href="#sobre"
-            className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Saiba Mais
-          </motion.a>
         </div>
       </div>
       <span
