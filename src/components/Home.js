@@ -11,7 +11,7 @@ function Home() {
   const shape2 = useRef(null);
 
   useEffect(() => {
-    const texto = "David - Estudante de Engenharia de Software | Desenvolvedor Backend";
+    const texto = "David Henrique | Desenvolvedor Backend";
     const obj = { val: 0 };
     anime({
       targets: obj,

@@ -48,7 +48,7 @@ function Contato() {
     <section
       id="contato"
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center gap-6"
+      className="py-20 flex flex-col items-center justify-center gap-6"
     >
       <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <Mail /> Contato
