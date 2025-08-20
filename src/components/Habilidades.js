@@ -7,6 +7,7 @@ import { linguagens, tecnologias } from "../data/habilidades";
 function Habilidades() {
   const ref = useFadeIn();
   const barrasRef = useRef([]);
+  const percentRef = useRef([]);
 
   useEffect(() => {
     anime({
@@ -16,12 +17,21 @@ function Habilidades() {
       delay: anime.stagger(100),
       duration: 500,
     });
-    anime({
-      targets: barrasRef.current,
-      width: (el, i) => `${linguagens[i].porcentagem}%`,
-      easing: "easeOutQuad",
-      duration: 1500,
-      delay: anime.stagger(100),
+    linguagens.forEach((lang, i) => {
+      const p = { val: 0 };
+      anime({
+        targets: p,
+        val: lang.porcentagem,
+        duration: 1500,
+        delay: i * 100,
+        easing: "easeInOutQuad",
+        update: () => {
+          if (barrasRef.current[i])
+            barrasRef.current[i].style.width = `${p.val}%`;
+          if (percentRef.current[i])
+            percentRef.current[i].textContent = `${Math.round(p.val)}%`;
+        },
+      });
     });
   }, []);
 
@@ -42,7 +52,7 @@ function Habilidades() {
           <div key={lang.nome} className="w-full">
             <div className="flex justify-between mb-1">
               <span>{lang.nome}</span>
-              <span>{lang.porcentagem}%</span>
+              <span ref={(el) => (percentRef.current[i] = el)}>0%</span>
             </div>
             <div className="w-full bg-gray-700 h-4 rounded">
               <div

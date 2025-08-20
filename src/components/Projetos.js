@@ -28,13 +28,34 @@ function Projetos() {
         duration: 1000,
       });
     } else {
+      const cards = document.querySelectorAll(".projeto-card");
       anime({
-        targets: ".projeto-card",
+        targets: cards,
         opacity: [0, 1],
         translateY: [50, 0],
-        delay: anime.stagger(100),
+        delay: anime.stagger(150),
         duration: 1000,
-        easing: "easeOutElastic",
+        easing: "easeOutExpo",
+      });
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", () => {
+          anime({
+            targets: card,
+            scale: 1.05,
+            rotateZ: 3,
+            duration: 300,
+            easing: "easeOutSine",
+          });
+        });
+        card.addEventListener("mouseleave", () => {
+          anime({
+            targets: card,
+            scale: 1,
+            rotateZ: 0,
+            duration: 300,
+            easing: "easeOutSine",
+          });
+        });
       });
     }
   }, []);
@@ -53,7 +74,7 @@ function Projetos() {
             {projetos.map((proj) => (
               <div
                 key={proj.nome}
-                className="projeto-card bg-gray-800 p-4 rounded shadow transform transition hover:scale-105 hover:shadow-xl"
+                className="projeto-card bg-gray-800 p-4 rounded shadow"
               >
                 <h2 className="text-xl mb-2">{proj.nome}</h2>
                 <p className="mb-4 text-sm">{proj.sobre}</p>

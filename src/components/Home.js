@@ -7,38 +7,33 @@ import { motion } from "framer-motion";
 function Home() {
   const ref = useFadeIn();
   const textRef = useRef(null);
-  const shape1 = useRef(null);
-  const shape2 = useRef(null);
 
   useEffect(() => {
     const texto = "David Henrique | Desenvolvedor Backend";
-    const obj = { val: 0 };
+    if (textRef.current) {
+      textRef.current.innerHTML = texto.replace(/\S/g, "<span class='letter'>$&</span>");
+    }
+    anime
+      .timeline({ loop: false })
+      .add({
+        targets: ".letter",
+        opacity: [0, 1],
+        translateY: [50, 0],
+        rotateZ: [15, 0],
+        easing: "easeOutExpo",
+        duration: 750,
+        delay: anime.stagger(50),
+      });
+
     anime({
-      targets: obj,
-      val: texto.length,
-      duration: 3000,
-      round: 1,
-      easing: "linear",
-      update: () => {
-        if (textRef.current)
-          textRef.current.textContent = texto.slice(0, obj.val);
-      },
-    });
-    anime({
-      targets: shape1.current,
-      translateY: [-20, 20],
+      targets: ".shape",
+      rotate: "1turn",
+      scale: [1, 1.2],
+      borderRadius: ["20%", "50%"],
       direction: "alternate",
-      loop: true,
-      duration: 4000,
       easing: "easeInOutSine",
-    });
-    anime({
-      targets: shape2.current,
-      translateY: [20, -20],
-      direction: "alternate",
-      loop: true,
       duration: 4000,
-      easing: "easeInOutSine",
+      loop: true,
     });
   }, []);
 
@@ -85,12 +80,12 @@ function Home() {
         </div>
       </div>
       <span
-        ref={shape1}
-        className="absolute w-24 h-24 bg-red-600 opacity-20 rounded-full left-10 top-10"
+        className="shape absolute w-24 h-24 bg-red-600 opacity-20 left-10 top-10"
+        style={{ borderRadius: "20%" }}
       ></span>
       <span
-        ref={shape2}
-        className="absolute w-32 h-32 bg-red-600 opacity-20 right-10 bottom-10"
+        className="shape absolute w-32 h-32 bg-red-600 opacity-20 right-10 bottom-10"
+        style={{ borderRadius: "20%" }}
       ></span>
     </section>
   );
