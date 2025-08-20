@@ -2,14 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { BarChart2 } from "lucide-react";
 import anime from "animejs";
 import useFadeIn from "../hooks/useFadeIn";
-
-const linguagens = [
-  { nome: "JavaScript", porcentagem: 70 },
-  { nome: "Python", porcentagem: 20 },
-  { nome: "Outras", porcentagem: 10 },
-];
-
-const tecnologias = ["React", "Node.js", "Tailwind", "Git"];
+import { linguagens, tecnologias } from "../data/habilidades";
 
 function Habilidades() {
   const ref = useFadeIn();
