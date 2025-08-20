@@ -11,7 +11,7 @@ function Home() {
   const shape2 = useRef(null);
 
   useEffect(() => {
-    const texto = "Seu Nome - Desenvolvedor";
+    const texto = "David - Estudante de Engenharia de Software | Desenvolvedor Backend";
     const obj = { val: 0 };
     anime({
       targets: obj,
@@ -55,7 +55,7 @@ function Home() {
         </h1>
         <div className="flex justify-center gap-4">
           <motion.a
-            href="https://github.com/octocat"
+            href="https://github.com/Pexe"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
@@ -65,14 +65,14 @@ function Home() {
             GitHub
           </motion.a>
           <motion.a
-            href="https://linkedin.com/in/octocat"
+            href="https://instagram.com/David.devloli"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            LinkedIn
+            Instagram
           </motion.a>
           <motion.a
             href="#sobre"

@@ -30,7 +30,7 @@ function Experiencia() {
           <div className="relative pl-6">
             <div className="absolute left-0 top-0 h-full border-l-2 border-red-600"></div>
             <div className="timeline-item mb-6">
-              <h3>Buscando primeira oportunidade</h3>
+              <h3>Em busca da primeira oportunidade de trabalho</h3>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ function Experiencia() {
           <div className="relative pl-6">
             <div className="absolute left-0 top-0 h-full border-l-2 border-red-600"></div>
             <div className="timeline-item mb-6">
-              <h3>UFAM</h3>
+              <h3>Engenharia de Software - UFAM (2025 - Presente)</h3>
             </div>
           </div>
         </div>

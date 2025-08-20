@@ -61,7 +61,7 @@ function Contato() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           required
-          className="p-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="p-2 rounded bg-gray-800 text-gray-100"
         />
         <input
           type="email"
@@ -70,7 +70,7 @@ function Contato() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           required
-          className="p-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+          className="p-2 rounded bg-gray-800 text-gray-100"
         />
         <textarea
           name="message"
@@ -78,7 +78,7 @@ function Contato() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           required
-          className="p-2 rounded bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 h-32"
+          className="p-2 rounded bg-gray-800 text-gray-100 h-32"
         ></textarea>
         <motion.button
           ref={btnRef}
