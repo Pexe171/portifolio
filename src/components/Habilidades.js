@@ -26,7 +26,7 @@ function Habilidades() {
   }, []);
 
   return (
-    <section id="habilidades" ref={ref} className="min-h-screen flex flex-col items-center justify-center gap-8">
+    <section id="habilidades" ref={ref} className="py-20 flex flex-col items-center justify-center gap-8">
       <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <BarChart2 /> Habilidades
       </h1>
