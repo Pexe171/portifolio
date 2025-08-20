@@ -1,46 +1,23 @@
 import React from "react";
-import { Home as HomeIcon } from "lucide-react";
-
-const sections = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "experience", label: "Experience/Education" },
-  { id: "contact", label: "Contact" },
-];
+import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Sobre from "./components/Sobre";
+import Projetos from "./components/Projetos";
+import Habilidades from "./components/Habilidades";
+import Experiencia from "./components/Experiencia";
+import Contato from "./components/Contato";
 
 function App() {
   return (
     <div className="font-sans">
-      <nav className="fixed top-0 left-0 w-full bg-gray-800 text-gray-100 shadow z-10">
-        <ul className="flex gap-4 p-4 justify-center">
-          {sections.map((s) => (
-            <li key={s.id}>
-              <a href={`#${s.id}`} className="hover:text-white">
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <Navbar />
       <main className="pt-16">
-        {sections.map((s) => (
-          <section
-            id={s.id}
-            key={s.id}
-            className="min-h-screen flex items-center justify-center"
-          >
-            {s.id === "home" ? (
-              <h1 className="flex items-center text-4xl font-bold">
-                <HomeIcon className="w-8 h-8 mr-2" />
-                {s.label}
-              </h1>
-            ) : (
-              <h1 className="text-4xl font-bold">{s.label}</h1>
-            )}
-          </section>
-        ))}
+        <Home />
+        <Sobre />
+        <Projetos />
+        <Habilidades />
+        <Experiencia />
+        <Contato />
       </main>
     </div>
   );
