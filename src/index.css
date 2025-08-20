@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Rolagem suave para a navegação da SPA */
 html {
   scroll-behavior: smooth;
 }
