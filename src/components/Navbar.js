@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const secoes = [
   { id: "inicio", rotulo: "Início" },
@@ -12,16 +13,16 @@ const secoes = [
 function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-gray-900 text-gray-100 shadow z-10">
-      <ul className="flex gap-4 p-4 justify-center">
+      <ul className="flex gap-4 p-4 justify-center items-center">
         {secoes.map((secao) => (
-          <li key={secao.id}>
+          <motion.li key={secao.id} whileHover={{ scale: 1.1 }}>
             <a
               href={`#${secao.id}`}
               className="hover:text-red-500 transition-colors"
             >
               {secao.rotulo}
             </a>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </nav>

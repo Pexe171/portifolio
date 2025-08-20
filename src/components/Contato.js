@@ -1,11 +1,13 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Mail } from "lucide-react";
 import anime from "animejs";
 import useFadeIn from "../hooks/useFadeIn";
+import { motion } from "framer-motion";
 
 function Contato() {
   const ref = useFadeIn();
   const btnRef = useRef(null);
+  const [status, setStatus] = useState(null);
 
   const handleFocus = (e) => {
     anime({ targets: e.target, scale: 1.05, duration: 200 });
@@ -15,7 +17,7 @@ function Contato() {
     anime({ targets: e.target, scale: 1, duration: 200 });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     anime({
       targets: btnRef.current,
@@ -23,13 +25,30 @@ function Contato() {
       duration: 600,
       easing: "easeOutElastic(1, .5)",
     });
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch("https://formspree.io/f/seuID", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setStatus("Mensagem enviada!");
+        form.reset();
+      } else {
+        setStatus("Erro ao enviar.");
+      }
+    } catch (err) {
+      setStatus("Erro ao enviar.");
+    }
   };
 
   return (
     <section
       id="contato"
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center gap-6"
+      className="py-20 flex flex-col items-center justify-center gap-6"
     >
       <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <Mail /> Contato
@@ -37,31 +56,40 @@ function Contato() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md">
         <input
           type="text"
+          name="name"
           placeholder="Nome"
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="p-2 rounded bg-gray-800"
+          required
+          className="p-2 rounded bg-gray-800 text-gray-100"
         />
         <input
           type="email"
+          name="email"
           placeholder="Email"
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="p-2 rounded bg-gray-800"
+          required
+          className="p-2 rounded bg-gray-800 text-gray-100"
         />
         <textarea
+          name="message"
           placeholder="Mensagem"
           onFocus={handleFocus}
           onBlur={handleBlur}
-          className="p-2 rounded bg-gray-800 h-32"
+          required
+          className="p-2 rounded bg-gray-800 text-gray-100 h-32"
         ></textarea>
-        <button
+        <motion.button
           ref={btnRef}
           type="submit"
           className="self-center px-6 py-3 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           Enviar
-        </button>
+        </motion.button>
+        {status && <p className="text-center">{status}</p>}
       </form>
     </section>
   );

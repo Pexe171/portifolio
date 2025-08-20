@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Home as HomeIcon } from "lucide-react";
 import anime from "animejs";
 import useFadeIn from "../hooks/useFadeIn";
+import { motion } from "framer-motion";
 
 function Home() {
   const ref = useFadeIn();
@@ -10,7 +11,7 @@ function Home() {
   const shape2 = useRef(null);
 
   useEffect(() => {
-    const texto = "Seu Nome - Desenvolvedor";
+    const texto = "David Henrique | Desenvolvedor Backend";
     const obj = { val: 0 };
     anime({
       targets: obj,
@@ -53,28 +54,34 @@ function Home() {
           <span ref={textRef}></span>
         </h1>
         <div className="flex justify-center gap-4">
-          <a
-            href="https://github.com/octocat"
+          <motion.a
+            href="https://github.com/Pexe"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             GitHub
-          </a>
-          <a
-            href="https://linkedin.com/in/octocat"
+          </motion.a>
+          <motion.a
+            href="https://instagram.com/David.devloli"
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            LinkedIn
-          </a>
-          <a
+            Instagram
+          </motion.a>
+          <motion.a
             href="#sobre"
             className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             Saiba Mais
-          </a>
+          </motion.a>
         </div>
       </div>
       <span

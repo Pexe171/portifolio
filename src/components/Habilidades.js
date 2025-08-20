@@ -2,14 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { BarChart2 } from "lucide-react";
 import anime from "animejs";
 import useFadeIn from "../hooks/useFadeIn";
-
-const linguagens = [
-  { nome: "JavaScript", porcentagem: 70 },
-  { nome: "Python", porcentagem: 20 },
-  { nome: "Outras", porcentagem: 10 },
-];
-
-const tecnologias = ["React", "Node.js", "Tailwind", "Git"];
+import { linguagens, tecnologias } from "../data/habilidades";
 
 function Habilidades() {
   const ref = useFadeIn();
@@ -33,7 +26,7 @@ function Habilidades() {
   }, []);
 
   return (
-    <section id="habilidades" ref={ref} className="min-h-screen flex flex-col items-center justify-center gap-8">
+    <section id="habilidades" ref={ref} className="py-20 flex flex-col items-center justify-center gap-8">
       <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <BarChart2 /> Habilidades
       </h1>

@@ -1,12 +1,14 @@
-# Portifólio
+# Portfólio React
 
-Este repositório contém o código-fonte do meu portifólio pessoal construído com React e Tailwind CSS.
+Este repositório contém o código-fonte do meu portfólio pessoal construído com React e Tailwind CSS.
 
-## Funcionalidades Futuras
+## Requisitos
 
-- Integração do formulário com EmailJS ou Formspree.
-- Botão de alternância modo claro/escuro.
-- Seção de artigos/blog com markdown renderizado.
-- Favicon com iniciais (D).
-- Mais microinterações com Framer Motion (hover, cliques, transições de rotas).
+- Node.js 18+
+- npm
 
+## Como rodar
+
+```bash
+npm install
+npm start
