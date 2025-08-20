@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { BarChart2 } from "lucide-react";
 import anime from "animejs";
 import useFadeIn from "../hooks/useFadeIn";
-import { linguagens, tecnologias } from "../data/habilidades";
+import habilidades from "../data/habilidades.json";
 
 function Habilidades() {
+  const { linguagens, tecnologias } = habilidades;
   const ref = useFadeIn();
   const barrasRef = useRef([]);
 

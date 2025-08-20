@@ -28,19 +28,22 @@ function Contato() {
     const form = e.target;
     const data = new FormData(form);
     try {
-      const res = await fetch("https://formspree.io/f/seuID", {
-        method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
-      });
+      const res = await fetch(
+        `https://formspree.io/f/${process.env.REACT_APP_FORMSPREE_ID}`,
+        {
+          method: "POST",
+          body: data,
+          headers: { Accept: "application/json" },
+        }
+      );
       if (res.ok) {
         setStatus("Mensagem enviada!");
         form.reset();
       } else {
-        setStatus("Erro ao enviar.");
+        setStatus("Erro no servidor, tente novamente mais tarde.");
       }
     } catch (err) {
-      setStatus("Erro ao enviar.");
+      setStatus("Verifique sua conexão com a internet.");
     }
   };
 
@@ -53,7 +56,12 @@ function Contato() {
       <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <Mail /> Contato
       </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md">
+      <form
+        onSubmit={handleSubmit}
+        action={`https://formspree.io/f/${process.env.REACT_APP_FORMSPREE_ID}`}
+        method="POST"
+        className="flex flex-col gap-4 w-full max-w-md"
+      >
         <input
           type="text"
           name="name"

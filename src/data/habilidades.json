@@ -1,0 +1,8 @@
+{
+  "linguagens": [
+    { "nome": "JavaScript", "porcentagem": 70 },
+    { "nome": "Python", "porcentagem": 20 },
+    { "nome": "Outras", "porcentagem": 10 }
+  ],
+  "tecnologias": ["React", "Node.js", "Tailwind", "Git"]
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Folder, ExternalLink } from "lucide-react";
 import anime from "animejs";
 import useFadeIn from "../hooks/useFadeIn";
-import { projetos } from "../data/projetos";
+import projetos from "../data/projetos.json";
 
 function Projetos() {
   const ref = useFadeIn();

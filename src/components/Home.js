@@ -55,7 +55,7 @@ function Home() {
         </h1>
         <div className="flex justify-center gap-4">
           <motion.a
-            href="https://github.com/Pexe"
+            href={`https://github.com/${process.env.REACT_APP_GITHUB_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
             className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"

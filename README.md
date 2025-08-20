@@ -20,31 +20,41 @@ O site ficará disponível em `http://localhost:3000`.
 
 ### Adicionando projetos
 
-1. Abra o arquivo `src/data/projetos.js`.
+1. Abra o arquivo `src/data/projetos.json`.
 2. Adicione um novo objeto ao array:
 
 ```javascript
-export const projetos = [
-  { nome: "Projeto A", link: "#" },
-  { nome: "Projeto B", link: "#" },
-  { nome: "Meu Novo Projeto", link: "https://github.com/usuario/meu-novo-projeto" }
-];
+[
+  { "nome": "Projeto A", "link": "#" },
+  { "nome": "Projeto B", "link": "#" },
+  { "nome": "Meu Novo Projeto", "link": "https://github.com/usuario/meu-novo-projeto" }
+]
 ```
 
 ### Adicionando habilidades
 
-1. Abra o arquivo `src/data/habilidades.js`.
+1. Abra o arquivo `src/data/habilidades.json`.
 2. Inclua novas tecnologias ou linguagens:
 
 ```javascript
-export const tecnologias = ["React", "Node.js", "Tailwind", "Git", "TypeScript"];
+{
+  "tecnologias": ["React", "Node.js", "Tailwind", "Git", "TypeScript"],
+  "linguagens": [
+    { "nome": "JavaScript", "porcentagem": 70 },
+    { "nome": "Python", "porcentagem": 20 },
+    { "nome": "Outras", "porcentagem": 10 },
+    { "nome": "Go", "porcentagem": 5 }
+  ]
+}
 
-export const linguagens = [
-  { nome: "JavaScript", porcentagem: 70 },
-  { nome: "Python", porcentagem: 20 },
-  { nome: "Outras", porcentagem: 10 },
-  { nome: "Go", porcentagem: 5 }
-];
+### Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz do projeto com os seguintes valores:
+
+```bash
+REACT_APP_FORMSPREE_ID=mjkoqroz
+REACT_APP_GITHUB_USERNAME=Pexe
+```
 ```
 
 Após salvar as alterações, o site exibirá automaticamente os novos itens.

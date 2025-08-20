@@ -1,4 +1,0 @@
-export const posts = [
-  { title: 'Meu Primeiro Post', slug: 'primeiro', file: '/posts/primeiro.md' },
-  { title: 'Segundo Post', slug: 'segundo', file: '/posts/segundo.md' }
-];
