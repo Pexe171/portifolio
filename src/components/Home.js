@@ -41,14 +41,14 @@ function Home() {
     <section
       id="inicio"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
     >
       <div className="text-center z-10 space-y-6">
-        <h1 className="text-4xl font-bold flex items-center justify-center gap-2 text-red-500">
+        <h1 className="text-3xl md:text-4xl font-bold flex items-center justify-center gap-2 text-red-500">
           <HomeIcon />
           <span ref={textRef}></span>
         </h1>
-        <div className="flex justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
           <motion.a
             href="https://github.com/Pexe"
             target="_blank"
@@ -69,14 +69,22 @@ function Home() {
           >
             Instagram
           </motion.a>
+          <motion.a
+            href="#sobre"
+            className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Saiba Mais
+          </motion.a>
         </div>
       </div>
       <span
-        className="shape absolute w-24 h-24 bg-red-600 opacity-20 left-10 top-10"
+        className="shape absolute w-16 h-16 md:w-24 md:h-24 bg-red-600 opacity-20 left-10 top-10"
         style={{ borderRadius: "20%" }}
       ></span>
       <span
-        className="shape absolute w-32 h-32 bg-red-600 opacity-20 right-10 bottom-10"
+        className="shape absolute w-20 h-20 md:w-32 md:h-32 bg-red-600 opacity-20 right-10 bottom-10"
         style={{ borderRadius: "20%" }}
       ></span>
     </section>
