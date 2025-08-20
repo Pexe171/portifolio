@@ -6,12 +6,14 @@ import Projetos from "./components/Projetos";
 import Habilidades from "./components/Habilidades";
 import Experiencia from "./components/Experiencia";
 import Contato from "./components/Contato";
+import ParticleBackground from "./components/ParticleBackground";
 
 function App() {
   return (
-    <div className="font-sans">
+    <div className="font-sans relative">
+      <ParticleBackground />
       <Navbar />
-      <main className="pt-16">
+      <main className="pt-16 space-y-24">
         <Home />
         <Sobre />
         <Projetos />
