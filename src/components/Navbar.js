@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-gray-900 z-50 text-gray-100 shadow">
-      <div className="max-w-5xl mx-auto flex items-center justify-end p-4">
+      <div className="max-w-5xl mx-auto flex items-center justify-end md:justify-center p-4">
         <button
           className="md:hidden"
           onClick={() => setAberto(true)}
