@@ -36,13 +36,13 @@ function Habilidades() {
   }, []);
 
   return (
-    <section id="habilidades" ref={ref} className="py-20 flex flex-col items-center justify-center gap-8 border-b-4 border-red-700">
-      <h1 className="text-4xl font-extrabold flex items-center gap-2 text-red-600">
+    <section id="habilidades" ref={ref} className="py-20 flex flex-col items-center justify-center gap-8">
+      <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <BarChart2 /> Habilidades
       </h1>
       <div className="flex flex-wrap gap-2 justify-center w-2/3">
         {tecnologias.map((tec) => (
-          <span key={tec} className="tag px-3 py-1 bg-black border border-red-700 rounded text-sm">
+          <span key={tec} className="tag px-3 py-1 bg-gray-800 rounded text-sm">
             {tec}
           </span>
         ))}
@@ -54,10 +54,10 @@ function Habilidades() {
               <span>{lang.nome}</span>
               <span ref={(el) => (percentRef.current[i] = el)}>0%</span>
             </div>
-            <div className="w-full bg-black border border-red-700 h-4 rounded">
+            <div className="w-full bg-gray-700 h-4 rounded">
               <div
                 ref={(el) => (barrasRef.current[i] = el)}
-                className="h-4 bg-red-700"
+                className="h-4 bg-red-600 rounded"
                 style={{ width: 0 }}
               ></div>
             </div>

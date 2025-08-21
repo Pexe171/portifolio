@@ -15,10 +15,10 @@ function Navbar() {
   const [aberto, setAberto] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-black z-50 text-white border-b-4 border-red-700 shadow-[0_0_10px_#ff0000]">
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 z-50 text-gray-100 shadow">
       <div className="max-w-5xl mx-auto flex items-center justify-end p-4">
         <button
-          className="md:hidden text-red-600"
+          className="md:hidden"
           onClick={() => setAberto(true)}
           aria-label="Abrir menu"
         >
@@ -29,7 +29,7 @@ function Navbar() {
             <motion.li key={secao.id} whileHover={{ scale: 1.1 }}>
               <a
                 href={`#${secao.id}`}
-                className="px-3 py-1 rounded hover:bg-red-700 hover:text-black transition-colors"
+                className="hover:text-red-500 transition-colors"
               >
                 {secao.rotulo}
               </a>
@@ -48,13 +48,13 @@ function Navbar() {
               onClick={() => setAberto(false)}
             />
             <motion.div
-              className="fixed top-0 left-0 h-full w-64 bg-black border-r-4 border-red-700 shadow z-50 p-6"
+              className="fixed top-0 left-0 h-full w-64 bg-gray-900 shadow z-50 p-6"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
             >
               <button
-                className="mb-8 text-red-600"
+                className="mb-8"
                 onClick={() => setAberto(false)}
                 aria-label="Fechar menu"
               >
@@ -69,7 +69,7 @@ function Navbar() {
                   >
                     <a
                       href={`#${secao.id}`}
-                      className="px-2 py-1 rounded hover:bg-red-700 hover:text-black transition-colors"
+                      className="hover:text-red-500 transition-colors"
                     >
                       {secao.rotulo}
                     </a>

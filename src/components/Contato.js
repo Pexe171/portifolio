@@ -48,9 +48,9 @@ function Contato() {
     <section
       id="contato"
       ref={ref}
-      className="py-20 flex flex-col items-center justify-center gap-6 border-b-4 border-red-700"
+      className="py-20 flex flex-col items-center justify-center gap-6"
     >
-      <h1 className="text-4xl font-extrabold flex items-center gap-2 text-red-600">
+      <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <Mail /> Contato
       </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-md">
@@ -61,7 +61,7 @@ function Contato() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           required
-          className="p-2 rounded bg-black border-2 border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-red-700"
+          className="p-2 rounded bg-gray-800 text-gray-100"
         />
         <input
           type="email"
@@ -70,7 +70,7 @@ function Contato() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           required
-          className="p-2 rounded bg-black border-2 border-red-700 text-white focus:outline-none focus:ring-2 focus:ring-red-700"
+          className="p-2 rounded bg-gray-800 text-gray-100"
         />
         <textarea
           name="message"
@@ -78,12 +78,12 @@ function Contato() {
           onFocus={handleFocus}
           onBlur={handleBlur}
           required
-          className="p-2 rounded bg-black border-2 border-red-700 text-white h-32 focus:outline-none focus:ring-2 focus:ring-red-700"
+          className="p-2 rounded bg-gray-800 text-gray-100 h-32"
         ></textarea>
         <motion.button
           ref={btnRef}
           type="submit"
-          className="self-center px-6 py-3 font-bold text-black rounded bg-red-700 border-2 border-red-700 hover:bg-white hover:text-red-700"
+          className="self-center px-6 py-3 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
