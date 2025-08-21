@@ -41,7 +41,7 @@ function Home() {
     <section
       id="inicio"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-16"
     >
       <div className="text-center z-10 space-y-4 sm:space-y-6">
         <h1 className="text-3xl md:text-5xl font-bold flex items-center justify-center gap-2 text-red-500">
@@ -72,7 +72,7 @@ function Home() {
         </div>
       </div>
       <span
-        className="shape absolute w-16 h-16 md:w-24 md:h-24 bg-red-600 opacity-10 md:opacity-20 left-10 top-10"
+        className="shape absolute w-16 h-16 md:w-24 md:h-24 bg-red-600 opacity-10 md:opacity-20 left-10 top-32"
         style={{ borderRadius: "20%" }}
       ></span>
       <span
