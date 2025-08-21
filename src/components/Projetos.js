@@ -61,8 +61,8 @@ function Projetos() {
   }, []);
 
   return (
-    <section id="projetos" ref={ref} className="py-20 flex flex-col items-center justify-center gap-8">
-      <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
+    <section id="projetos" ref={ref} className="py-20 flex flex-col items-center justify-center gap-8 border-b-4 border-red-700">
+      <h1 className="text-4xl font-extrabold flex items-center gap-2 text-red-600">
         <Folder /> Projetos (<span ref={countRef}></span>)
       </h1>
       {projetos.length === 0 ? (
@@ -74,13 +74,13 @@ function Projetos() {
             {projetos.map((proj) => (
               <div
                 key={proj.nome}
-                className="projeto-card bg-gray-800 p-4 rounded shadow"
+                className="projeto-card bg-black border-2 border-red-700 p-4 rounded shadow"
               >
-                <h2 className="text-xl mb-2">{proj.nome}</h2>
+                <h2 className="text-xl mb-2 text-red-600">{proj.nome}</h2>
                 <p className="mb-4 text-sm">{proj.sobre}</p>
                 <a
                   href={proj.link}
-                  className="inline-flex items-center gap-2 text-white px-4 py-2 rounded bg-gradient-to-r from-red-600 to-orange-500"
+                  className="inline-flex items-center gap-2 px-4 py-2 font-bold text-black rounded bg-red-700 border-2 border-red-700 hover:bg-white hover:text-red-700"
                 >
                   <ExternalLink size={16} /> Ver
                 </a>
