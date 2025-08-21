@@ -19,25 +19,25 @@ function Experiencia() {
     <section
       id="experiencia"
       ref={ref}
-      className="py-20 flex flex-col items-center justify-center gap-8 border-b-4 border-red-700"
+      className="py-20 flex flex-col items-center justify-center gap-8"
     >
-      <h1 className="text-4xl font-extrabold flex items-center gap-2 text-red-600">
+      <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <Briefcase /> Trajetória
       </h1>
       <div className="flex flex-col md:flex-row gap-10">
         <div>
-          <h2 className="text-xl font-semibold mb-4 text-red-600">Experiência</h2>
+          <h2 className="text-xl font-semibold mb-4">Experiência</h2>
           <div className="relative pl-6">
-            <div className="absolute left-0 top-0 h-full border-l-2 border-red-700"></div>
+            <div className="absolute left-0 top-0 h-full border-l-2 border-red-600"></div>
             <div className="timeline-item mb-6">
               <h3>Em busca da primeira oportunidade de trabalho</h3>
             </div>
           </div>
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-4 text-red-600">Formação</h2>
+          <h2 className="text-xl font-semibold mb-4">Formação</h2>
           <div className="relative pl-6">
-            <div className="absolute left-0 top-0 h-full border-l-2 border-red-700"></div>
+            <div className="absolute left-0 top-0 h-full border-l-2 border-red-600"></div>
             <div className="timeline-item mb-6">
               <h3>Engenharia de Software - UFAM (2025 - Presente)</h3>
             </div>

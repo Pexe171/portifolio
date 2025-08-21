@@ -30,16 +30,16 @@ function Sobre() {
     <section
       id="sobre"
       ref={ref}
-      className="py-20 flex flex-col items-center justify-center gap-8 border-b-4 border-red-700"
+      className="py-20 flex flex-col items-center justify-center gap-8"
     >
-      <h1 className="text-4xl font-extrabold flex items-center gap-2 text-red-600">
+      <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
         <User /> Sobre Mim
       </h1>
       <div className="flex flex-col md:flex-row items-center gap-8">
         {avatar && (
-          <img src={avatar} alt="Foto de Pexe" className="w-40 h-40 rounded-full border-4 border-red-700" />
+          <img src={avatar} alt="Foto de Pexe" className="w-40 h-40 rounded-full" />
         )}
-        <p ref={textRef} className="max-w-md text-center md:text-left leading-relaxed">
+        <p ref={textRef} className="max-w-md text-center md:text-left">
           Olá! Sou David Henrique, estudante de Engenharia de Software e desenvolvedor backend.
           Cursando Engenharia de Software na Universidade Federal do Amazonas (UFAM) desde 2025
           e em busca da primeira oportunidade de trabalho.

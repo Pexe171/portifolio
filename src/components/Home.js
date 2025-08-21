@@ -41,10 +41,10 @@ function Home() {
     <section
       id="inicio"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 border-b-4 border-red-700"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden px-4"
     >
       <div className="text-center z-10 space-y-4 sm:space-y-6">
-        <h1 className="text-3xl md:text-5xl font-extrabold flex items-center justify-center gap-2 text-red-600">
+        <h1 className="text-3xl md:text-5xl font-bold flex items-center justify-center gap-2 text-red-500">
           <HomeIcon />
           <span ref={textRef}></span>
         </h1>
@@ -53,7 +53,7 @@ function Home() {
             href="https://github.com/Pexe"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 font-bold text-black rounded bg-red-700 border-2 border-red-700 hover:bg-white hover:text-red-700"
+            className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -63,7 +63,7 @@ function Home() {
             href="https://instagram.com/David.devloli"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 font-bold text-black rounded bg-red-700 border-2 border-red-700 hover:bg-white hover:text-red-700"
+            className="px-4 py-2 text-white rounded bg-gradient-to-r from-red-600 to-orange-500"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

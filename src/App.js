@@ -10,7 +10,7 @@ import ParticleBackground from "./components/ParticleBackground";
 
 function App() {
   return (
-    <div className="font-sans relative bg-black text-white">
+    <div className="font-sans relative bg-gray-900 text-gray-100">
       <ParticleBackground />
       <Navbar />
       <main className="pt-16 space-y-12">
