@@ -55,7 +55,7 @@ export default function Habilidades() {
                 <span></span>
               </div>
               <div className="code-terminal-body">
-                <CodeTyper code={lang.snippet} />
+                <CodeTyper codes={lang.snippets} />
               </div>
             </div>
           </div>
