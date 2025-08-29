@@ -29,7 +29,7 @@ function Navbar() {
             <motion.li key={secao.id} whileHover={{ scale: 1.1 }}>
               <a
                 href={`#${secao.id}`}
-                className="hover:text-red-500 transition-colors"
+                className="hover:text-secondary transition-colors"
               >
                 {secao.rotulo}
               </a>
@@ -69,7 +69,7 @@ function Navbar() {
                   >
                     <a
                       href={`#${secao.id}`}
-                      className="hover:text-red-500 transition-colors"
+                      className="hover:text-secondary transition-colors"
                     >
                       {secao.rotulo}
                     </a>
