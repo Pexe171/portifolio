@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { User } from "lucide-react";
-import anime from "animejs";
-import useFadeIn from "../hooks/useFadeIn";
+import { motion } from "framer-motion";
 
-function Sobre() {
-  const ref = useFadeIn();
-  const textRef = useRef(null);
+export default function Sobre() {
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
@@ -14,39 +11,42 @@ function Sobre() {
       .then((data) => setAvatar(data.avatar_url));
   }, []);
 
-  useEffect(() => {
-    if (textRef.current) {
-      anime({
-        targets: textRef.current,
-        translateX: [-50, 0],
-        opacity: [0, 1],
-        duration: 1000,
-        easing: "easeOutQuad",
-      });
-    }
-  }, [textRef]);
-
   return (
-    <section
+    <motion.section
       id="sobre"
-      ref={ref}
-      className="py-20 flex flex-col items-center justify-center gap-8"
+      className="py-20 flex flex-col items-center gap-8"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
     >
-      <h1 className="text-4xl font-bold flex items-center gap-2 text-red-500">
+      <h1 className="text-4xl font-bold flex items-center gap-2 text-primary">
         <User /> Sobre Mim
       </h1>
       <div className="flex flex-col md:flex-row items-center gap-8">
         {avatar && (
-          <img src={avatar} alt="Foto de Pexe" className="w-40 h-40 rounded-full" />
+          <motion.img
+            src={avatar}
+            alt="Foto de Pexe"
+            className="w-40 h-40 rounded-full"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          />
         )}
-        <p ref={textRef} className="max-w-md text-center md:text-left">
-          Olá! Sou David Henrique, estudante de Engenharia de Software e desenvolvedor backend.
-          Cursando Engenharia de Software na Universidade Federal do Amazonas (UFAM) desde 2025
-          e em busca da primeira oportunidade de trabalho.
-        </p>
+        <motion.p
+          className="max-w-md text-center md:text-left"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          Olá! Sou David Henrique, estudante de Engenharia de Software e desenvolvedor
+          backend. Cursando Engenharia de Software na Universidade Federal do Amazonas
+          (UFAM) desde 2025 e em busca da primeira oportunidade de trabalho.
+        </motion.p>
       </div>
-    </section>
+    </motion.section>
   );
 }
-
-export default Sobre;
