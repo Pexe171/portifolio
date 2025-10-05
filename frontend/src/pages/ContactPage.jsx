@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
 import api from '../api/client.js';
 import SectionTitle from '../components/SectionTitle.jsx';
+import { fallbackProfile } from '../utils/fallbackData.js';
 
 function ContactPage() {
   const [profile, setProfile] = useState(null);
+  const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
     async function loadProfile() {
       try {
         const { data } = await api.get('/api/public/profile');
-        setProfile(data);
+        setProfile(data ?? null);
       } catch (error) {
         console.error('Erro ao carregar perfil', error);
+        setProfile(fallbackProfile);
+        setLoadError(true);
       }
     }
     loadProfile();
@@ -27,6 +31,11 @@ function ContactPage() {
       <p className="text-slate-300">
         Estou sempre aberto a novas oportunidades, desafios interessantes e bate-papos sobre tecnologia.
       </p>
+      {loadError && (
+        <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
+          Mostrando dados de contato de demonstração.
+        </p>
+      )}
       <div className="space-y-4">
         {profile.email && (
           <a
