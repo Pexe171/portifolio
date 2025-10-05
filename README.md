@@ -65,6 +65,15 @@ mvn clean package
 java -jar target/portifolio-*.jar
 ```
 
+#### Backend com relatório automático de requisições
+Para iniciar o backend já capturando um log detalhado de todas as requisições (método, rota, status, tempo de resposta e payloads), execute o script na raiz do projeto:
+
+```bash
+./scripts/run_with_logging.py
+```
+
+O script cria um arquivo de log completo e, ao finalizar (inclusive com `Ctrl+C`), gera automaticamente um relatório `.txt` em `logs/` com os totais por método, códigos de status, endpoints mais acessados, requisições mais lentas e últimos erros registrados.
+
 ### Frontend
 ```bash
 cd frontend
