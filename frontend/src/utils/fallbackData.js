@@ -1,12 +1,12 @@
 export const fallbackProfile = {
-  fullName: 'Seu nome incrível',
-  initials: 'SN',
-  role: 'Desenvolvedor(a) Full Stack',
-  bio: 'Conecte sua API para apresentar seu portfólio completo. Enquanto isso, mostramos um exemplo de como suas informações aparecerão.',
+  fullName: 'David Henrique Miranda da Silva',
+  initials: 'DH',
+  role: 'Desenvolvedor Full Stack',
+  bio: 'Conecte sua API para apresentar seu portfólio completo. Enquanto isso, mostramos um exemplo inspirado no estilo de David Henrique.',
   skills: ['React', 'Node.js', 'TypeScript', 'Tailwind CSS'],
-  githubUrl: 'https://github.com',
-  linkedinUrl: 'https://www.linkedin.com',
-  email: 'voce@exemplo.com'
+  githubUrl: 'https://github.com/davidhenriquems',
+  linkedinUrl: 'https://www.linkedin.com/in/davidhenriquems',
+  email: 'davidhenrique@example.com'
 };
 
 export const fallbackProjects = [
