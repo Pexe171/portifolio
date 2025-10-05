@@ -10,7 +10,49 @@ function HomePage() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
 
-  const displayProfile = useMemo(() => profile ?? fallbackProfile, [profile]);
+  const displayProfile = useMemo(() => {
+    if (!profile) {
+      return fallbackProfile;
+    }
+
+    const mergedProfile = {
+      ...fallbackProfile,
+      ...profile
+    };
+
+    const stringFields = [
+      'fullName',
+      'role',
+      'bio',
+      'githubUrl',
+      'linkedinUrl',
+      'email',
+      'photoUrl'
+    ];
+
+    const sanitizedProfile = { ...mergedProfile };
+
+    stringFields.forEach((field) => {
+      const value = profile[field];
+
+      if (typeof value !== 'string') {
+        sanitizedProfile[field] = mergedProfile[field];
+        return;
+      }
+
+      const trimmedValue = value.trim();
+      sanitizedProfile[field] = trimmedValue.length > 0 ? trimmedValue : fallbackProfile[field];
+    });
+
+    if (!Array.isArray(profile.skills) || profile.skills.length === 0) {
+      sanitizedProfile.skills = fallbackProfile.skills;
+    }
+
+    const initialsValue = typeof profile.initials === 'string' ? profile.initials.trim() : '';
+    sanitizedProfile.initials = initialsValue;
+
+    return sanitizedProfile;
+  }, [profile]);
   const hasProjects = projects.length > 0;
   const profileInitials = useMemo(() => {
     if (displayProfile.photoUrl) {
