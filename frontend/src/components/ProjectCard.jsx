@@ -20,9 +20,11 @@ function ProjectCard({ project }) {
               Repositório
             </a>
           )}
-          <Link to={`/projects/${project.id}`} className="ml-auto text-slate-300 hover:text-white">
-            Detalhes
-          </Link>
+          {project.id && (
+            <Link to={`/projects/${project.id}`} className="ml-auto text-slate-300 hover:text-white">
+              Detalhes
+            </Link>
+          )}
         </div>
       </div>
     </article>

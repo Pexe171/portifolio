@@ -2,13 +2,14 @@ import { useEffect, useMemo, useState } from 'react';
 import api from '../api/client.js';
 import SectionTitle from '../components/SectionTitle.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
-import { fallbackProfile } from '../utils/fallbackData.js';
+import { fallbackProfile, fallbackProjects } from '../utils/fallbackData.js';
 
 function HomePage() {
   const [profile, setProfile] = useState(null);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
+  const [usingFallbackProjects, setUsingFallbackProjects] = useState(false);
 
   const displayProfile = useMemo(() => {
     if (!profile) {
@@ -77,9 +78,13 @@ function HomePage() {
         ]);
         setProfile(profileResponse.data ?? null);
         setProjects(Array.isArray(projectsResponse.data) ? projectsResponse.data.slice(0, 3) : []);
+        setLoadError(false);
+        setUsingFallbackProjects(false);
       } catch (error) {
         console.error('Erro ao carregar dados', error);
         setLoadError(true);
+        setProjects(fallbackProjects.slice(0, 3));
+        setUsingFallbackProjects(true);
       } finally {
         setLoading(false);
       }
@@ -144,6 +149,11 @@ function HomePage() {
 
       <section className="space-y-6">
         <SectionTitle title="Projetos em destaque" subtitle="Projetos" />
+        {usingFallbackProjects && (
+          <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
+            Mostrando projetos de demonstração. Conecte o backend para ver seus projetos reais.
+          </p>
+        )}
         {hasProjects ? (
           <div className="grid md:grid-cols-3 gap-6">
             {projects.map((project) => (
