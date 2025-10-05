@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  backend:
+    build: ./backend
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_USER: portfolio
+      POSTGRES_PASSWORD: portfolio
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      JWT_SECRET: cG9ydGZvbGlvLWNtcy1zZWNyZXQtand0LXNpZw==
+      JWT_EXPIRATION: 3600000
+    depends_on:
+      - db
+    ports:
+      - '8080:8080'
+    volumes:
+      - uploads_data:/app/uploads
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    environment:
+      VITE_API_URL: http://localhost:8080
+    ports:
+      - '5173:4173'
+
+volumes:
+  postgres_data:
+  uploads_data:

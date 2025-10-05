@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:5432}/${POSTGRES_DB:portfolio}
+    username: ${POSTGRES_USER:portfolio}
+    password: ${POSTGRES_PASSWORD:portfolio}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+
+server:
+  port: ${PORT:8080}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-me-super-secret-key}
+    expiration: ${JWT_EXPIRATION:3600000}
+  file:
+    upload-dir: ${FILE_UPLOAD_DIR:uploads}
+
+logging:
+  level:
+    org.springframework.security: INFO
