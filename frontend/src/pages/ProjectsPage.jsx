@@ -1,8 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import api from '../api/client.js';
 import SectionTitle from '../components/SectionTitle.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
-import { fallbackProjects } from '../utils/fallbackData.js';
 
 function ProjectsPage() {
   const [projects, setProjects] = useState([]);
@@ -10,8 +9,6 @@ function ProjectsPage() {
   const [loadError, setLoadError] = useState(false);
 
   const hasProjects = projects.length > 0;
-  const displayProjects = useMemo(() => (hasProjects ? projects : fallbackProjects), [hasProjects, projects]);
-  const shouldShowGrid = hasProjects || loadError;
 
   useEffect(() => {
     async function loadProjects() {
@@ -35,21 +32,16 @@ function ProjectsPage() {
   return (
     <div className="space-y-6">
       <SectionTitle title="Projetos" subtitle="Portfólio" />
-      {shouldShowGrid ? (
-        <div className="space-y-4">
-          {loadError && (
-            <p className="text-xs uppercase tracking-[0.35em] text-slate-500">
-              Mostrando projetos de demonstração.
-            </p>
-          )}
-          <div className="grid md:grid-cols-3 gap-6">
-            {displayProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </div>
+      {hasProjects ? (
+        <div className="grid md:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
       ) : (
-        <p className="text-slate-400">Nenhum projeto publicado até o momento.</p>
+        <p className="text-slate-400">
+          {loadError ? 'Não foi possível carregar os projetos agora.' : 'Nenhum projeto publicado até o momento.'}
+        </p>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import api from '../api/client.js';
 import SectionTitle from '../components/SectionTitle.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
-import { fallbackProfile, fallbackProjects } from '../utils/fallbackData.js';
+import { fallbackProfile } from '../utils/fallbackData.js';
 
 function HomePage() {
   const [profile, setProfile] = useState(null);
@@ -11,7 +11,7 @@ function HomePage() {
   const [loadError, setLoadError] = useState(false);
 
   const displayProfile = useMemo(() => profile ?? fallbackProfile, [profile]);
-  const displayProjects = useMemo(() => (projects.length > 0 ? projects : fallbackProjects), [projects]);
+  const hasProjects = projects.length > 0;
   const profileInitials = useMemo(() => {
     if (displayProfile.photoUrl) {
       return '';
@@ -102,11 +102,17 @@ function HomePage() {
 
       <section className="space-y-6">
         <SectionTitle title="Projetos em destaque" subtitle="Projetos" />
-        <div className="grid md:grid-cols-3 gap-6">
-          {displayProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
+        {hasProjects ? (
+          <div className="grid md:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        ) : (
+          <p className="text-slate-400">
+            {loadError ? 'Não foi possível carregar os projetos agora.' : 'Nenhum projeto disponível no momento.'}
+          </p>
+        )}
       </section>
     </div>
   );
