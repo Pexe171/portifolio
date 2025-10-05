@@ -1,6 +1,6 @@
 # Portfólio CMS
 
-Aplicação completa (Spring Boot + React) para gerenciar o portfólio pessoal de David Henrique Miranda da Silva. O sistema possui uma área pública com informações sobre o profissional, lista de projetos, habilidades e contato, além de um painel administrativo protegido por JWT para cadastro e edição de conteúdo.
+Criei esta aplicação completa (Spring Boot + React) para gerenciar meu portfólio profissional. Organizei uma área pública com minhas informações, projetos, habilidades e contatos, além de um painel administrativo protegido por JWT onde controlo todo o conteúdo.
 
 ## ✨ Tecnologias
 
@@ -32,16 +32,16 @@ Aplicação completa (Spring Boot + React) para gerenciar o portfólio pessoal d
 - Java 17+
 - Maven 3.9+
 - Node.js 18+
-- PostgreSQL 15 (ou usar Docker)
+- PostgreSQL 15 (ou Docker)
 
 ### Backend
 ```bash
 cd backend
 mvn spring-boot:run
 ```
-A API estará disponível em `http://localhost:8080`.
+Eu disponibilizo a API em `http://localhost:8080`.
 
-Credenciais padrão do administrador (configuradas via Flyway):
+Credenciais padrão do administrador (definidas via Flyway):
 - **Usuário:** `admin`
 - **Senha:** `admin123`
 
@@ -51,19 +51,19 @@ cd frontend
 npm install
 npm run dev
 ```
-A aplicação web ficará disponível em `http://localhost:5173`.
+Eu acesso a aplicação web em `http://localhost:5173`.
 
 ## 🐳 Executando com Docker Compose
 ```bash
 docker compose up --build
 ```
-Serviços expostos:
+Os serviços sobem da seguinte forma:
 - Frontend: http://localhost:5173
 - Backend: http://localhost:8080
 - PostgreSQL: localhost:5432 (user/database/password: `portfolio`)
 
 ## 📚 Documentação da API
-Acesse `http://localhost:8080/swagger-ui/index.html` para visualizar e testar os endpoints. Utilize o botão `Authorize` e informe `Bearer {token}` após realizar login.
+Disponibilizei o Swagger em `http://localhost:8080/swagger-ui/index.html`. Após fazer login, basta clicar em `Authorize` e informar `Bearer {token}` para testar os endpoints.
 
 ## 📂 Uploads de imagem
-As imagens enviadas pelo painel administrativo são salvas no diretório `uploads/` (mapeado em volume Docker) e servidas pela API através do caminho `/uploads/{arquivo}`.
+Guardo as imagens enviadas pelo painel no diretório `uploads/` (mapeado como volume Docker) e sirvo cada arquivo pela API no caminho `/uploads/{arquivo}`.
