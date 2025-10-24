@@ -33,9 +33,69 @@ Bem-vinda(o) à floresta de código onde cada decisão nasce primeiro em forma d
 - **Backend**: Node.js com Express, Axios para integrações externas (GitHub, possíveis serviços educacionais) e camada preparada para chamadas ao OpenAI API quando necessário.
 - **Camada de conteúdo**: arquivos markdown ou CMS headless leve para armazenar textos dos guias (Raposa, Urso, Coruja), permitindo atualização sem deploy completo.
 
+## 🚀 Estrutura implementada
+
+A primeira versão de código já dá vida ao blueprint e serve como base evolutiva. A organização geral está assim:
+
+```
+code-forest-portfolio/
+├── backend/           # API Express que conversa com o GitHub
+│   ├── controllers/   # Regras de orquestração de dados
+│   ├── routes/        # Rotas públicas da floresta
+│   ├── services/      # Integrações externas (GitHub, IA, etc.)
+│   └── server.js      # Configuração do servidor e middlewares
+└── frontend/          # Interface React/Vite com narrativa animada
+    ├── src/components # Biomas, guias e cartões de projetos
+    ├── src/hooks      # Hooks reutilizáveis (ex.: integração GitHub)
+    ├── src/styles     # Estilos globais e atmosfera da floresta
+    └── vite.config.js # Ajustes de build e proxy local
+```
+
+### Backend
+- Endpoint principal: `GET /api/github/repos/:username`
+- Resposta contém metadados essenciais (`nome`, `descrição`, `linguagem`, `estrelas`, `url`) prontos para serem exibidos nos cartões animados.
+- Suporte opcional a `GITHUB_TOKEN` via variáveis de ambiente para aumentar a taxa de requisições e habilitar futuras expansões.
+
+### Frontend
+- SPA criada com Vite + React, animada por Framer Motion.
+- Componentes `AnimalGuide`, `ForestScene` e `CodeCard` traduzem a metáfora da floresta.
+- Hook `useGithubRepos` encapsula a comunicação com o backend, garantindo estados claros (`loading`, `success`, `error`).
+
+## 🧪 Como executar localmente
+
+> Pré-requisitos: Node.js 18+ instalado.
+
+1. **Instale as dependências**
+   ```bash
+   cd backend && npm install
+   cd ../frontend && npm install
+   ```
+
+2. **Configure variáveis de ambiente (opcional)**
+   - Crie um arquivo `backend/.env` com `GITHUB_TOKEN="seu-token"` se quiser evitar limites da API pública.
+   - Defina `CLIENT_ORIGIN` caso o frontend rode em origem diferente durante o desenvolvimento.
+
+3. **Execute o backend**
+   ```bash
+   cd backend
+   npm run dev
+   ```
+
+4. **Execute o frontend**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
+
+5. **Acesse a aplicação**
+   - Frontend: http://localhost:5173
+   - Backend: http://localhost:4000/api/github/repos/seu-usuario
+
+Com ambos os serviços ativos, os cartões dos projetos serão atualizados em tempo real conforme você interage com a floresta.
+
 ### Fluxos de dados entre módulos
 1. **Exploração de bioma**: Usuário interage com o frontend → estado global atualiza bioma ativo → componentes animados carregam conteúdo local → dados adicionais solicitados ao backend conforme necessário.
-2. **Consulta de projetos GitHub**: Frontend chama endpoint `/api/github/projects` → backend usa Axios para consultar GitHub → dados são enriquecidos com metadados educativos → resposta retorna ao frontend para exibição guiada pelo Urso.
+2. **Consulta de projetos GitHub**: Frontend chama endpoint `/api/github/repos/:username` → backend usa Axios para consultar GitHub → dados são enriquecidos com metadados educativos → resposta retorna ao frontend para exibição guiada pelo Urso.
 3. **Guides inteligentes**: Usuário aciona a Coruja → frontend chama `/api/guides` → backend agrega conteúdo do CMS e, opcionalmente, aciona OpenAI para gerar insights personalizados → frontend apresenta dicas animadas com acessibilidade.
 4. **Coleta de feedback** (futuro): formulário no frontend → backend armazena em serviço externo ou banco de dados leve → analytics alimenta decisões pedagógicas.
 
