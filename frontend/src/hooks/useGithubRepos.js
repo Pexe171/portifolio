@@ -8,13 +8,22 @@ const STATUS = {
   error: 'error',
 };
 
+const estadoInicialDados = {
+  total: 0,
+  repositorios: [],
+  guardiao: '',
+};
+
 export function useGithubRepos(username) {
   const [status, setStatus] = useState(STATUS.idle);
-  const [dados, setDados] = useState({ total: 0, repositorios: [] });
+  const [dados, setDados] = useState(() => ({ ...estadoInicialDados }));
   const [erro, setErro] = useState(null);
 
   useEffect(() => {
     if (!username) {
+      setDados({ ...estadoInicialDados });
+      setStatus(STATUS.idle);
+      setErro(null);
       return;
     }
 
@@ -22,6 +31,7 @@ export function useGithubRepos(username) {
     const buscarRepositorios = async () => {
       setStatus(STATUS.loading);
       setErro(null);
+      setDados({ ...estadoInicialDados });
 
       try {
         const resposta = await axios.get(`/api/github/repos/${username}`);
@@ -30,6 +40,7 @@ export function useGithubRepos(username) {
         setStatus(STATUS.success);
       } catch (error) {
         if (!ativo) return;
+        setDados({ ...estadoInicialDados });
         setErro(
           error.response?.data?.mensagem ||
             'Não conseguimos conversar com a coruja do GitHub agora.',
