@@ -1,0 +1,12 @@
+/* TODO: Criar a paleta de cores e estilos que transmitam a atmosfera da floresta encantada. */
+
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f2f7f2;
+  color: #1f2d1f;
+}
