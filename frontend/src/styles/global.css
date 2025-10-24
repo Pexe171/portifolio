@@ -61,14 +61,30 @@ main {
   color: #e2e8f0;
 }
 
+.hero__form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+}
+
 .hero__label {
   display: block;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
   font-size: 0.9rem;
   color: #38bdf8;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.hero__control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.hero__control-group:focus-within {
+  outline: none;
 }
 
 .hero__input {
@@ -86,6 +102,70 @@ main {
   outline: none;
   border-color: #5eead4;
   box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.25);
+}
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #22d3ee, #8b5cf6);
+  color: #0f172a;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.hero__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 35px rgba(59, 130, 246, 0.25);
+}
+
+.hero__button:focus-visible {
+  outline: 3px solid rgba(94, 234, 212, 0.6);
+  outline-offset: 3px;
+}
+
+.hero__button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+.hero__button-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero__spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(15, 23, 42, 0.2);
+  border-top-color: rgba(15, 23, 42, 0.8);
+  animation: hero-spinner 0.75s linear infinite;
+}
+
+@keyframes hero-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (min-width: 640px) {
+  .hero__control-group {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .hero__input {
+    flex: 1;
+  }
 }
 
 .biome-section {

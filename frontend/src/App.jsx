@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import AnimalGuide from './components/AnimalGuide.jsx';
 import ForestScene from './components/ForestScene.jsx';
@@ -29,8 +29,24 @@ function SecaoBioma({ id, titulo, descricao, children }) {
 
 export default function App() {
   const [username, setUsername] = useState(usuarioPadrao);
+  const [usuarioBusca, setUsuarioBusca] = useState(usuarioPadrao);
   const [projetoDestaque, setProjetoDestaque] = useState(null);
   const { status, dados, erro } = useGithubRepos(username);
+
+  useEffect(() => {
+    setUsuarioBusca(username);
+  }, [username]);
+
+  function tratarEnvioFormulario(evento) {
+    evento.preventDefault();
+
+    const valorNormalizado = usuarioBusca.trim();
+    if (!valorNormalizado || valorNormalizado === username) {
+      return;
+    }
+
+    setUsername(valorNormalizado);
+  }
 
   return (
     <div className="app">
@@ -49,17 +65,36 @@ export default function App() {
               Seja bem-vinda e bem-vindo à floresta onde código, design e narrativa vivem em harmonia.
               Cada bioma revela um capítulo da minha trajetória como guardião dos produtos digitais.
             </p>
-            <label className="hero__label" htmlFor="usuario">
-              Quer explorar outro guardião? Digite um usuário do GitHub e pressione Enter.
-            </label>
-            <input
-              id="usuario"
-              type="text"
-              className="hero__input"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              placeholder="fabio"
-            />
+            <form className="hero__form" onSubmit={tratarEnvioFormulario} noValidate>
+              <label className="hero__label" htmlFor="usuario">
+                Quer explorar outro guardião? Digite um usuário do GitHub e acione o botão de busca.
+              </label>
+              <div className="hero__control-group">
+                <input
+                  id="usuario"
+                  type="text"
+                  className="hero__input"
+                  value={usuarioBusca}
+                  onChange={(event) => setUsuarioBusca(event.target.value)}
+                  placeholder="fabio"
+                  autoComplete="off"
+                />
+                <button
+                  type="submit"
+                  className="hero__button"
+                  disabled={status === statusConsulta.loading}
+                >
+                  {status === statusConsulta.loading ? (
+                    <span className="hero__button-content">
+                      <span className="hero__spinner" aria-hidden="true" />
+                      <span>Buscando...</span>
+                    </span>
+                  ) : (
+                    'Explorar guardião'
+                  )}
+                </button>
+              </div>
+            </form>
           </motion.div>
         </section>
 
@@ -105,7 +140,11 @@ export default function App() {
         <section className="projects" id="projetos">
           <header className="projects__header">
             <h2>Projetos em destaque do guardião {dados.guardiao || username}</h2>
-            {status === statusConsulta.loading && <p className="projects__status">Carregando galhos...</p>}
+            {status === statusConsulta.loading && (
+              <p className="projects__status" role="status" aria-live="polite">
+                Carregando galhos fresquinhos...
+              </p>
+            )}
             {status === statusConsulta.error && <p className="projects__status projects__status--erro">{erro}</p>}
             {status === statusConsulta.success && dados.total === 0 && (
               <p className="projects__status">Nada brotou por aqui ainda, mas a terra está preparada.</p>
