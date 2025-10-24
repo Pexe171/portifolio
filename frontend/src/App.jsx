@@ -32,10 +32,27 @@ export default function App() {
   const [usuarioBusca, setUsuarioBusca] = useState(usuarioPadrao);
   const [projetoDestaque, setProjetoDestaque] = useState(null);
   const { status, dados, erro } = useGithubRepos(username);
+  const haProjetos = status === statusConsulta.success && dados.repositorios.length > 0;
 
   useEffect(() => {
     setUsuarioBusca(username);
   }, [username]);
+
+  useEffect(() => {
+    if (!haProjetos) {
+      setProjetoDestaque(null);
+      return;
+    }
+
+    setProjetoDestaque((projetoAtual) => {
+      if (!projetoAtual) {
+        return null;
+      }
+
+      const aindaExiste = dados.repositorios.some((repo) => repo.id === projetoAtual.id);
+      return aindaExiste ? projetoAtual : null;
+    });
+  }, [haProjetos, dados.repositorios]);
 
   function tratarEnvioFormulario(evento) {
     evento.preventDefault();
@@ -50,7 +67,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <ForestScene destaque={projetoDestaque} />
+      <ForestScene destaque={haProjetos ? projetoDestaque : null} />
 
       <main>
         <section className="hero">
@@ -152,9 +169,10 @@ export default function App() {
           </header>
 
           <div className="projects__grid">
-            {dados.repositorios.map((repo) => (
-              <CodeCard key={repo.id} projeto={repo} onHover={setProjetoDestaque} />
-            ))}
+            {haProjetos &&
+              dados.repositorios.map((repo) => (
+                <CodeCard key={repo.id} projeto={repo} onHover={setProjetoDestaque} />
+              ))}
           </div>
         </section>
       </main>
