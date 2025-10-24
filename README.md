@@ -93,6 +93,25 @@ code-forest-portfolio/
 
 Com ambos os serviços ativos, os cartões dos projetos serão atualizados em tempo real conforme você interage com a floresta.
 
+### 🐳 Orquestração com Docker (execução simultânea)
+
+Se preferir que frontend e backend brotem juntos em um único comando, utilize o `docker-compose` incluído no repositório.
+
+1. **Monte o arquivo de variáveis (opcional, mas recomendado)**
+   - Copie `backend/.env.example` para `backend/.env` e preencha `GITHUB_TOKEN="seu-token"` se quiser ampliar os limites da API do GitHub.
+   - Ajuste `CLIENT_ORIGIN` caso vá acessar o frontend por outra origem além de `http://localhost:5173`.
+
+2. **Construa e levante a floresta inteira**
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Acesse os portais mágicos**
+   - Frontend: http://localhost:5173
+   - Backend: http://localhost:4000/api/github/repos/seu-usuario
+
+As imagens Node ficam responsáveis por instalar dependências e habilitar recarregamento automático (nodemon no backend e Vite no frontend). Os volumes garantem que alterações locais reflitam dentro dos containers sem fricção.
+
 ### Fluxos de dados entre módulos
 1. **Exploração de bioma**: Usuário interage com o frontend → estado global atualiza bioma ativo → componentes animados carregam conteúdo local → dados adicionais solicitados ao backend conforme necessário.
 2. **Consulta de projetos GitHub**: Frontend chama endpoint `/api/github/repos/:username` → backend usa Axios para consultar GitHub → dados são enriquecidos com metadados educativos → resposta retorna ao frontend para exibição guiada pelo Urso.
