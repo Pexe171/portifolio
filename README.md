@@ -32,6 +32,10 @@ aplicação web, API e pacotes compartilhados, com foco em reutilização, consi
    ```bash
    pnpm install
    ```
+3. **Variáveis de ambiente**
+   - Copie o arquivo `.env.example` para `.env` na raiz do repositório.
+   - Ajuste as credenciais de banco de dados, Redis, motor de busca e token do GitHub conforme o ambiente.
+   - Nunca commit suas credenciais reais: utilize cofres de segredos nos ambientes compartilhados.
 3. **Scripts disponíveis** (rodam a partir da raiz)
    ```bash
    pnpm dev    # modo desenvolvimento (delegue para a app dentro de apps/)
@@ -60,6 +64,11 @@ aplicação web, API e pacotes compartilhados, com foco em reutilização, consi
 - **Commitlint**: mensagens de commit fora do padrão convencional falham automaticamente.
 
 > Dica: após clonar o repositório, rode `pnpm install` (ou `pnpm prepare`) para garantir que os ganchos do Husky estejam ativos.
+
+### Segurança desde o início
+
+- Consulte o arquivo `SECURITY.md` para conhecer as políticas de cabeçalhos (CSP, HSTS), rate limiting e gestão de segredos.
+- Toda nova aplicação deve validar se as variáveis do `.env` estão preenchidas antes de iniciar, evitando subir serviços sem configurações críticas.
 
 ## Base de qualidade configurada
 
