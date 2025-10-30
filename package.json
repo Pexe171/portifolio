@@ -1,0 +1,22 @@
+{
+  "name": "safari-do-codigo-portfolio",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Monorepo do portfólio Safari do Código, com apps e pacotes compartilhados.",
+  "author": "Safari do Código",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "echo \"Defina scripts de desenvolvimento específicos em cada workspace.\"",
+    "build": "echo \"Prepare os builds de cada workspace antes de rodar em CI/CD.\"",
+    "lint": "echo \"Configure ferramentas de lint em cada workspace e atualize este script.\"",
+    "test": "echo \"Adicione a suíte de testes ao primeiro workspace e ajuste este script.\""
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
