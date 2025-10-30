@@ -33,7 +33,10 @@ aplicação web, API e pacotes compartilhados, com foco em reutilização, consi
    ```bash
    pnpm dev    # modo desenvolvimento (delegue para a app dentro de apps/)
    pnpm build  # build de produção (pensado para rodar em CI/CD)
-   pnpm lint   # checagens de lint e formatação
+   pnpm lint         # eslint com regras compartilhadas e integração com Prettier
+   pnpm typecheck    # verificação de tipos com TypeScript estrito
+   pnpm format       # validação de formatação com Prettier
+   pnpm format:fix   # aplica a formatação automaticamente
    pnpm test   # suíte de testes automatizados
    ```
 
@@ -46,9 +49,15 @@ aplicação web, API e pacotes compartilhados, com foco em reutilização, consi
 4. Garanta que `pnpm lint` e `pnpm test` passem antes de abrir o PR.
 5. Descreva no PR o que foi feito, o motivo e como testar.
 
+## Base de qualidade configurada
+- **TypeScript** centralizado em `tsconfig.base.json` com `strict` ativo, `baseUrl` definido e aliases prontos (`@ui/*`, `@anim/*`, `@utils/*`).
+- **ESLint** e **Prettier** já preparados para projetos em TypeScript, com regras de importação e integração com o formatter.
+- **EditorConfig** garantindo consistência de indentação, fim de linha e codificação.
+- Scripts `pnpm lint`, `pnpm typecheck` e `pnpm format` prontos para rodar em pipelines de CI/CD.
+
 ## Próximos passos sugeridos
 - Inicializar o primeiro app em `apps/` e conectar com os pacotes compartilhados.
-- Configurar ferramentas de lint, formatação e testes.
+- Expandir os pacotes em `packages/` aproveitando os aliases configurados.
 - Automatizar pipelines de CI/CD para garantir qualidade contínua.
 
 Boas criações! 🧭
