@@ -12,8 +12,22 @@
   "scripts": {
     "dev": "echo \"Defina scripts de desenvolvimento específicos em cada workspace.\"",
     "build": "echo \"Prepare os builds de cada workspace antes de rodar em CI/CD.\"",
-    "lint": "echo \"Configure ferramentas de lint em cada workspace e atualize este script.\"",
+    "lint": "pnpm exec eslint . --ext .ts,.tsx,.js,.jsx --max-warnings 0 --no-error-on-unmatched-pattern",
+    "typecheck": "pnpm exec tsc --project tsconfig.base.json --noEmit",
+    "format": "pnpm exec prettier . --check",
+    "format:fix": "pnpm exec prettier . --write",
     "test": "echo \"Adicione a suíte de testes ao primeiro workspace e ajuste este script.\""
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "@typescript-eslint/eslint-plugin": "^7.7.1",
+    "@typescript-eslint/parser": "^7.7.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.2.5",
+    "typescript": "5.5.4"
   },
   "workspaces": [
     "apps/*",
