@@ -1,26 +1,10 @@
 import Link from 'next/link';
-import ProjectCard, { type ProjetoEmDestaque } from '@/components/(ui)/ProjectCard';
+import ProjectCard from '@/components/(ui)/ProjectCard';
+import { listarProjetosParaHome } from '@/lib/projetos';
 
-const projetos: ProjetoEmDestaque[] = [
-  {
-    slug: 'cobrador-whatsapp',
-    titulo: 'Cobrador WhatsApp',
-    descricao: 'Automação amigável para lembrar clientes de pagamentos com mensagens humanas.',
-    video: '/videos/cobrador-whatsapp.mp4',
-    imagem: '/images/cobrador-whatsapp.png',
-    tags: ['Automação', 'Node.js', 'UX Writing']
-  },
-  {
-    slug: 'outro-projeto',
-    titulo: 'Outro Projeto Criativo',
-    descricao: 'Experiência interativa focada em acessibilidade e storytelling digital.',
-    video: '/videos/outro-projeto.mp4',
-    imagem: '/images/outro-projeto.png',
-    tags: ['Acessibilidade', 'Design System', 'Next.js']
-  }
-];
+export default async function FeaturedProjects() {
+  const projetos = await listarProjetosParaHome();
 
-export default function FeaturedProjects() {
   return (
     <section id="projetos" className="space-y-2xl py-section">
       <header className="space-y-sm">
@@ -32,11 +16,18 @@ export default function FeaturedProjects() {
         </p>
       </header>
 
-      <div className="grid gap-lg md:grid-cols-2">
-        {projetos.map((projeto) => (
-          <ProjectCard key={projeto.slug} projeto={projeto} />
-        ))}
-      </div>
+      {projetos.length > 0 ? (
+        <div className="grid gap-lg md:grid-cols-2">
+          {projetos.map((projeto) => (
+            <ProjectCard key={projeto.slug} projeto={projeto} />
+          ))}
+        </div>
+      ) : (
+        <div className="rounded-3xl border border-midnight-stroke bg-midnight-surface/60 p-xl text-center text-midnight-muted">
+          Ainda estou preparando os estudos de caso. Volte em breve para ver como transformo desafios complexos em resultados
+          concretos.
+        </div>
+      )}
 
       <div className="text-center">
         <Link href="/" className="text-sm text-midnight-muted transition hover:text-midnight-accent">

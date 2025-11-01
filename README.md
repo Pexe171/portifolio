@@ -33,7 +33,7 @@ meu-portfolio/
 ├── components/
 │   ├── (core)/Navbar.tsx, Footer.tsx, ThemeToggle.tsx
 │   ├── (sections)/Hero.tsx, FeaturedProjects.tsx, About.tsx, Skills.tsx, Experience.tsx, Contact.tsx
-│   └── (ui)/ProjectCard.tsx, Timeline.tsx
+│   └── (ui)/ProjectCard.tsx, Timeline.tsx, TypewriterText.tsx, ScrollReveal.tsx
 ├── content/projetos/*.mdx
 ├── public/images
 ├── public/videos

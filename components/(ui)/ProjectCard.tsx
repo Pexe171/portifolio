@@ -3,25 +3,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useState } from 'react';
-
-export interface ProjetoEmDestaque {
-  slug: string;
-  titulo: string;
-  descricao: string;
-  video: string;
-  imagem: string;
-  tags: string[];
-}
+import { useMemo, useState } from 'react';
+import type { ProjetoParaCard } from '@/lib/projetos';
 
 interface ProjectCardProps {
-  projeto: ProjetoEmDestaque;
+  projeto: ProjetoParaCard;
 }
 
 export default function ProjectCard({ projeto }: ProjectCardProps) {
   const [hover, setHover] = useState(false);
   const progresso = useMotionValue(0);
   const largura = useTransform(progresso, (valor) => `${Math.min(valor, 1) * 100}%`);
+  const podeMostrarVideo = useMemo(() => {
+    if (!projeto.video) {
+      return false;
+    }
+
+    return /\.mp4($|\?)/.test(projeto.video) || projeto.video.startsWith('/');
+  }, [projeto.video]);
 
   return (
     <Link
@@ -34,8 +33,9 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
       }}
     >
       <div className="relative aspect-video w-full overflow-hidden bg-midnight-surface">
-        {hover ? (
+        {hover && podeMostrarVideo ? (
           <motion.video
+            key={`${projeto.slug}-video`}
             autoPlay
             loop
             muted
@@ -49,7 +49,14 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
             <source src={projeto.video} type="video/mp4" />
           </motion.video>
         ) : (
-          <Image src={projeto.imagem} alt={projeto.titulo} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+          <Image
+            src={projeto.imagem}
+            alt={projeto.titulo}
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 50vw, 100vw"
+            priority={projeto.ordem === 1}
+          />
         )}
         <motion.div
           className="absolute inset-0 bg-midnight-bg/80"

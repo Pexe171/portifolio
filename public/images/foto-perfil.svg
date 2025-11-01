@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Retrato ilustrado</title>
+  <desc id="desc">Avatar minimalista representando um desenvolvedor sorrindo</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#bg)" />
+  <circle cx="256" cy="204" r="96" fill="#f2f2f2" />
+  <path d="M256 428c-70 0-152-24-152-72 0-52 70-76 152-76s152 24 152 76c0 48-82 72-152 72z" fill="#1e293b" opacity="0.85" />
+  <path d="M208 220c0 22 22 40 48 40s48-18 48-40" stroke="#1e293b" stroke-width="8" stroke-linecap="round" fill="none" />
+  <path d="M216 196c0-18 16-32 40-32s40 14 40 32" stroke="#1e293b" stroke-width="12" stroke-linecap="round" fill="none" />
+  <g fill="#1e293b">
+    <circle cx="224" cy="188" r="12" />
+    <circle cx="288" cy="188" r="12" />
+  </g>
+  <path d="M208 268c12 20 32 32 48 32s36-12 48-32" stroke="#1e293b" stroke-width="10" stroke-linecap="round" fill="none" />
+</svg>
