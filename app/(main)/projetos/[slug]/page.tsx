@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { carregarProjeto, listarSlugsDeProjetos } from '@/lib/projetos';
+import { siteMetadata } from '@/lib/siteMetadata';
 
 interface ProjetoPageProps {
   params: { slug: string };
@@ -12,13 +13,55 @@ export async function generateMetadata({ params }: ProjetoPageProps): Promise<Me
 
   if (!projeto?.dados?.titulo) {
     return {
-      title: 'Projeto não encontrado | Meu Portfólio'
+      title: 'Projeto não encontrado | Meu Portfólio',
+      description: 'O estudo de caso solicitado não está disponível ou foi removido.',
+      alternates: {
+        canonical: `${siteMetadata.url}/projetos/${slug}`
+      },
+      robots: {
+        index: false,
+        follow: false
+      }
     };
   }
 
+  const descricao = projeto.dados.resumo ?? 'Estudo de caso detalhado com aprendizados e resultados.';
+  const imagemCompartilhamento = projeto.dados.imagem ?? siteMetadata.ogImage;
+  const urlAbsoluta = `${siteMetadata.url}/projetos/${slug}`;
+  const openGraphImages = imagemCompartilhamento
+    ? [
+        {
+          url: imagemCompartilhamento,
+          width: 1200,
+          height: 630,
+          alt: `Imagem de destaque do projeto ${projeto.dados.titulo}`
+        }
+      ]
+    : undefined;
+  const twitterImages = imagemCompartilhamento ? [imagemCompartilhamento] : undefined;
+
   return {
     title: `${projeto.dados.titulo} | Meu Portfólio`,
-    description: projeto.dados.resumo ?? 'Estudo de caso detalhado.'
+    description: descricao,
+    alternates: {
+      canonical: urlAbsoluta
+    },
+    openGraph: {
+      type: 'article',
+      locale: siteMetadata.locale,
+      url: urlAbsoluta,
+      siteName: siteMetadata.name,
+      title: `${projeto.dados.titulo} | Meu Portfólio`,
+      description: descricao,
+      ...(openGraphImages ? { images: openGraphImages } : {}),
+      authors: [siteMetadata.author]
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${projeto.dados.titulo} | Meu Portfólio`,
+      description: descricao,
+      ...(twitterImages ? { images: twitterImages } : {})
+    }
   };
 }
 

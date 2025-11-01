@@ -35,6 +35,7 @@ meu-portfolio/
 │   ├── (sections)/Hero.tsx, FeaturedProjects.tsx, About.tsx, Skills.tsx, Experience.tsx, Contact.tsx
 │   └── (ui)/ProjectCard.tsx, Timeline.tsx, TypewriterText.tsx, ScrollReveal.tsx
 ├── content/projetos/*.mdx
+├── lib/siteMetadata.ts
 ├── public/images
 ├── public/videos
 ├── tailwind.config.ts
@@ -61,6 +62,13 @@ video: "https://link-do-video"
 ```
 
 Logo após o frontmatter, estruturamos o estudo de caso com três blocos: **O Problema**, **A Solução** e **O Impacto**. Essa narrativa ajuda a contextualizar a necessidade, detalhar a arquitetura construída e deixar claros os resultados alcançados.
+
+## 🔍 SEO, Open Graph e compartilhamento
+
+- Centralizamos as principais informações de SEO em `lib/siteMetadata.ts`. Ajuste título, descrição, URL pública e redes sociais conforme o domínio oficial.
+- O arquivo `app/layout.tsx` utiliza esses dados para preencher metatags globais (Open Graph, Twitter Cards, ícones e robots), garantindo cards consistentes ao compartilhar qualquer página.
+- Cada rota em `app/(main)` pode definir metadados específicos. A home (`app/(main)/page.tsx`) e os projetos (`app/(main)/projetos/[slug]/page.tsx`) já possuem título, descrição e imagem pensados para LinkedIn e WhatsApp.
+- Caso queira uma imagem padrão para os compartilhamentos, adicione o arquivo desejado em `public/` e informe o caminho em `lib/siteMetadata.ts` na propriedade `ogImage`.
 
 ## 🧩 Componentes estruturais
 
