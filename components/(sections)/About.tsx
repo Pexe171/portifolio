@@ -6,34 +6,34 @@ export default function About() {
     <section id="sobre" className="space-y-2xl py-section">
       <ScrollReveal className="space-y-sm">
         <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Sobre mim</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text">Histórias, processos e valores</h2>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text">Construindo soluções com propósito</h2>
       </ScrollReveal>
 
       <div className="grid gap-2xl lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-lg text-lg text-midnight-muted">
           <ScrollReveal delay={0.1}>
             <p>
-              Sou movido por criar produtos digitais que sejam inclusivos e que respeitem o tempo das pessoas. Pesquiso, desenho
-              e programo experiências que combinam storytelling, dados e tecnologia para entregar resultados palpáveis.
+              Estudante de Engenharia de Software com foco em desenvolvimento web e back-end. Possuo experiência prática na
+              criação de aplicações a partir de projetos acadêmicos e pessoais, incluindo o desenvolvimento de um sistema de
+              cobrança automatizado com Node.js e integração de API.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
             <p>
-              Nos últimos anos liderei squads multidisciplinares, facilitei descobertas com usuários reais e construí design
-              systems que escalam com segurança. A cada projeto aprendo algo novo sobre como equilibrar ambição e empatia.
+              Busco minha primeira oportunidade profissional para aplicar conhecimentos, desenvolver novas habilidades e
+              contribuir com soluções de software inovadoras. Tenho atenção especial à qualidade do código, testes e boas
+              práticas que mantêm as entregas sustentáveis.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <ul className="grid gap-sm text-base">
               <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/60 p-md">
                 <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
-                <span>
-                  Acredito em processos colaborativos, com rituais leves e foco no aprendizado contínuo.
-                </span>
+                <span>Experiência com Node.js, TypeScript e integrações REST para automatizar rotinas de negócio.</span>
               </li>
               <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/60 p-md">
                 <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
-                <span>Busco acessibilidade desde o primeiro rascunho para garantir experiências realmente inclusivas.</span>
+                <span>Prática em organizar projetos com testes, documentação e foco na colaboração entre times.</span>
               </li>
             </ul>
           </ScrollReveal>

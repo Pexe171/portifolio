@@ -1,33 +1,25 @@
 ---
-title: "Cobrador WhatsApp"
-summary: "Automatização humanizada das cobranças com dados em tempo real para reduzir a inadimplência."
+title: "Sistema de cobrança automatizado com Node.js"
+summary: "Automatização humanizada de cobranças via API para reduzir inadimplência e dar escala ao time financeiro."
 tags:
-  - WhatsApp API
   - Node.js
-  - Next.js
-  - Tailwind CSS
+  - API
 cover: "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80"
 video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ---
 
-## O Problema
+## Contexto
 
-Uma fintech de crédito recorrente precisava cobrar parcelas atrasadas sem comprometer o relacionamento construído com clientes fiéis.
-Os lembretes enviados manualmente consumiam horas do time financeiro e não tinham o tom empático da marca.
-O objetivo era combinar eficiência operacional com mensagens personalizadas por jornada.
+Projeto desenvolvido como estudo prático para automatizar cobranças de mensalidades. O processo manual dependia de mensagens
+copiadas e coladas e não havia visibilidade sobre quem tinha sido avisado.
 
-## A Solução
+## Implementação
 
-Desenhei a arquitetura do fluxo completo de notificações e a interface de configuração para o time interno:
+- API de envio: integração com o provedor oficial do WhatsApp para disparar mensagens personalizadas.
+- Orquestração em Node.js: agendamento das cobranças por status da fatura, registro das interações e reenvio automático quando necessário.
+- Painel web em Next.js e Tailwind CSS: interface para acompanhar respostas, pausar campanhas e acionar atendentes humanos em casos sensíveis.
 
-- Modelei personas de devedores e estados da assinatura para personalizar argumentos persuasivos.
-- Criei um orquestrador em Node.js que integra ERP, CRM e a API oficial do WhatsApp.
-- Desenvolvi em Next.js + Tailwind CSS o painel que permite montar campanhas com textos parametrizados e anexos contextuais.
-- Configurei automações para escalonar conversas para agentes humanos quando a resposta indicava negociação sensível.
+## Resultados
 
-## O Impacto
-
-Sessenta dias após o lançamento, a inadimplência caiu 32% e o time financeiro economizou cerca de 18 horas semanais.
-A nota de satisfação dos clientes abordados subiu de 6,1 para 8,4, provando que a abordagem empática
-transformou um momento delicado em oportunidade de relacionamento.
-Também deixei o produto pronto para análises contínuas, com métricas de abertura, resposta e reconciliação direto no dashboard.
+O fluxo automatizado reduziu o tempo gasto em cobranças repetitivas, garantiu tom humanizado nas mensagens e abriu espaço para que o time
+focasse em negociações estratégicas. A arquitetura foi documentada para facilitar novas integrações e monitoramentos futuros.

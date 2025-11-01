@@ -14,27 +14,27 @@ export interface SiteMetadata {
 }
 
 export const siteMetadata: SiteMetadata = {
-  name: 'Meu Portfólio',
-  shortName: 'Portfólio',
-  title: 'Meu Portfólio | Construindo experiências memoráveis',
+  name: 'David Henrique Miranda da Silva',
+  shortName: 'David Henrique',
+  title: 'David Henrique Miranda da Silva | Engenharia de Software e back-end',
   description:
-    'Portfólio moderno desenvolvido com Next.js, Tailwind CSS e animações suaves para apresentar projetos com carinho.',
+    'Portfólio de David Henrique Miranda da Silva, estudante de Engenharia de Software com foco em desenvolvimento web e back-end, integrações de APIs e automação de rotinas.',
   url: 'https://meu-portfolio.dev',
   locale: 'pt_BR',
-  author: 'Desenvolvedor Front-end',
+  author: 'David Henrique Miranda da Silva',
   keywords: [
     'portfólio',
-    'desenvolvedor front-end',
+    'engenharia de software',
+    'desenvolvimento web',
+    'back-end',
+    'node.js',
+    'typescript',
+    'apis',
+    'automação',
     'next.js',
-    'react',
-    'tailwind css',
-    'ux',
-    'ui',
-    'design system',
-    'acessibilidade',
-    'case de produto'
+    'tailwind css'
   ],
   twitterHandle: '@meu_portfolio',
-  linkedIn: 'https://www.linkedin.com/in/seu-usuario',
+  linkedIn: 'https://br.linkedin.com/in/david-henrique-miranda-da-silva-758666388',
   github: 'https://github.com/seu-usuario'
 };
