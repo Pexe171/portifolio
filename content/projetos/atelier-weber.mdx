@@ -6,27 +6,33 @@ cover: "/images/projetos/luna-web-cover.jpg"
 video: "/videos/projetos/luna-web-demo.mp4"
 ---
 
-## O Problema
+## Contexto e desafio
 
-O projeto nasceu de duas necessidades: uma pessoal e uma de mercado.
+O Luna Web surgiu de duas faíscas complementares: uma necessidade íntima e uma leitura atenta do cenário criativo digital.
 
-1.  **A Pessoal (A Origem):** Minha namorada, Luna, que é artista, precisava de um "atelier digital" para expor seus desenhos. Plataformas sociais comprimem as imagens, destruindo a qualidade do trabalho original, e ela precisava de um espaço profissional para mostrar suas artes.
+### Necessidade pessoal
+- Luna, minha namorada e artista tradicional, precisava de um atelier digital onde suas obras fossem exibidas com fidelidade. Plataformas sociais comprimem os arquivos e distorcem cores e texturas — algo inaceitável para quem trata cada quadro como uma peça única.
 
-2.  **A de Mercado (A Missão):** Com o crescimento de imagens geradas por IA, senti a necessidade de criar um espaço que celebrasse o processo criativo humano. A ideia é crescer o "Luna Web" para que, no futuro, mais artistas possam "mostrar o lugar do ser humano na arte".
+### Oportunidade de mercado
+- Com o aumento de imagens geradas por IA, faltam espaços que valorizem o processo humano. A visão para o Luna Web é criar um hub onde artistas possam documentar a autoria e contar a história por trás de cada obra.
 
-## A Solução
+## Estratégia e arquitetura da solução
 
-Desenvolvi a arquitetura de uma plataforma *full-stack* completa, organizada em um **monorepo** para facilitar a integração e o deploy, permitindo que o projeto cresça.
+Desenhei um monorepo full-stack que privilegia clareza de domínio, isolamento de responsabilidades e facilidade de evolução contínua.
 
-O projeto é dividido em componentes desacoplados, prontos para escalar:
+### Componentes principais
+- **API (Backend)** — Construída em **Node.js** com **Express**, organiza a lógica de negócio por contextos (autenticação, galerias, perfis) e persiste dados em **MongoDB**. Autenticação baseada em **JWT** garante sessões seguras e escaláveis.
+- **Web (Frontend)** — Aplicação **Next.js** com **TypeScript**, focada em renderização incremental para preservar detalhes das imagens. A interface usa **Tailwind CSS** + **shadcn/ui**, mantendo consistência visual e componentes acessíveis.
+- **DevOps e Observabilidade** — Um único **`docker-compose.yml`** orquestra API, Web e banco. Scripts de inicialização cuidam de seeds, migrações e variáveis sensíveis, facilitando onboarding de novas pessoas no time.
+- **Camada de Segurança** — Implementação própria em Java para geração de salt, hash e verificação de senhas. Esse módulo isolado documenta os fluxos criptográficos e torna auditável o ciclo de autenticação.
 
-* **API (Backend):** Construída em **Node.js** com **Express**, responsável por toda a lógica de negócio. Utiliza o **MongoDB** para persistência de dados (usuários, galerias) e **Autenticação JWT** para proteger as rotas.
-* **Web (Frontend):** Uma aplicação moderna em **Next.js** com **TypeScript**, focada na performance de renderização das imagens. A UI/UX foi construída com **Tailwind CSS** e **shadcn/ui** para uma experiência limpa.
-* **DevOps (Orquestração):** Todo o ambiente (API, Web e Banco de Dados) é gerenciado por um arquivo **`docker-compose.yml`**, permitindo que o projeto seja levantado facilmente.
-* **Segurança (Diferencial):** Para garantir a proteção das senhas, foi criado um **utilitário de segurança em Java** (para salt, hash e verificação), demonstrando uma preocupação com a robustez da autenticação.
+### Processos e fluxo de desenvolvimento
+- Pipelines de CI executam lint, testes e análise estática, evitando regressões antes do deploy.
+- Feature toggles permitem liberar experimentos para artistas selecionados sem comprometer a base existente.
+- Documentação viva em MDX descreve endpoints, contratos e padrões de design, reduzindo a curva de aprendizado.
 
-## O Impacto
+## Resultados e próximos passos
 
-O MVP (o "Luna Web" original) está no ar, servindo como uma prova de conceito que valida a premissa técnica: é possível servir imagens em alta qualidade sem sacrificar a performance da página.
+O MVP está publicado e confirma a hipótese principal: é possível entregar imagens em alta resolução com carregamento leve e responsivo. Os feedbacks iniciais mostram que artistas valorizam a narrativa que acompanha cada obra, não apenas a vitrine visual.
 
-O projeto está arquitetado como um produto escalável, não apenas um site. A separação de API e Web e o uso de Docker criam uma fundação sólida para transformar a ideia inicial em uma plataforma completa para artistas no futuro.
+As próximas iterações incluem catálogo multilíngue, trilha de analytics para métricas de engajamento e marketplace de colecionáveis digitais. Com a base técnica consolidada, o Luna Web está preparado para se tornar um ecossistema completo de valorização do processo criativo humano.

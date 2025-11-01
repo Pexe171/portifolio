@@ -61,7 +61,7 @@ video: "https://link-do-video"
 ---
 ```
 
-Logo após o frontmatter, mantenho o estudo de caso dividido em **Contexto**, **Implementação** e **Resultados** para contextualizar o desafio, detalhar a arquitetura construída e destacar o impacto obtido.
+Logo após o frontmatter, mantenho o estudo de caso dividido em **Contexto e desafio**, **Estratégia e arquitetura da solução** e **Resultados e próximos passos** para contextualizar o problema, detalhar as decisões técnicas e evidenciar o impacto obtido.
 
 ## 🔍 SEO, Open Graph e compartilhamento
 
