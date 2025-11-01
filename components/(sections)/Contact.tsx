@@ -1,53 +1,53 @@
 'use client';
 
-import { type ChangeEvent, type FormEvent, useState } from 'react';
-
-interface FormularioContato {
-  nome: string;
-  email: string;
-  mensagem: string;
-}
-
-const estadoInicial: FormularioContato = {
-  nome: '',
-  email: '',
-  mensagem: ''
-};
+import { contatoSchema, type ContatoSchema } from '@/lib/schemas/contact';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export default function Contact() {
-  const [formulario, setFormulario] = useState<FormularioContato>(estadoInicial);
-  const [status, setStatus] = useState<'inicial' | 'enviando' | 'sucesso' | 'erro'>('inicial');
+  const [status, setStatus] = useState<'inicial' | 'sucesso' | 'erro'>('inicial');
   const [mensagem, setMensagem] = useState('');
 
-  const atualizarCampo = (campo: keyof FormularioContato) => (evento: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormulario((prev) => ({ ...prev, [campo]: evento.target.value }));
-  };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting }
+  } = useForm<ContatoSchema>({
+    resolver: zodResolver(contatoSchema),
+    defaultValues: {
+      nome: '',
+      email: '',
+      mensagem: ''
+    }
+  });
 
-  const enviarFormulario = async (evento: FormEvent<HTMLFormElement>) => {
-    evento.preventDefault();
-    setStatus('enviando');
+  const enviarFormulario = handleSubmit(async (dados) => {
+    setStatus('inicial');
+    setMensagem('');
 
     try {
       const resposta = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formulario)
+        body: JSON.stringify(dados)
       });
 
-      const dados = await resposta.json();
+      const retorno = await resposta.json();
 
       if (!resposta.ok) {
-        throw new Error(dados.mensagem ?? 'Erro ao enviar mensagem.');
+        throw new Error(retorno.mensagem ?? 'Erro ao enviar mensagem.');
       }
 
       setStatus('sucesso');
-      setMensagem(dados.mensagem);
-      setFormulario(estadoInicial);
+      setMensagem(retorno.mensagem);
+      reset();
     } catch (erro) {
       setStatus('erro');
       setMensagem(erro instanceof Error ? erro.message : 'Erro inesperado.');
     }
-  };
+  });
 
   return (
     <section id="contato" className="space-y-lg py-section">
@@ -60,49 +60,76 @@ export default function Contact() {
         </p>
       </header>
 
-      <form onSubmit={enviarFormulario} className="space-y-lg">
+      <form onSubmit={enviarFormulario} className="space-y-lg" noValidate>
         <div className="grid gap-lg md:grid-cols-2">
           <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
             Nome
             <input
               type="text"
-              value={formulario.nome}
-              onChange={atualizarCampo('nome')}
-              className="rounded-lg border border-midnight-stroke bg-midnight-surface px-md py-sm text-base text-midnight-text focus:border-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/30"
+              {...register('nome')}
+              aria-invalid={errors.nome ? 'true' : 'false'}
+              aria-describedby={errors.nome ? 'erro-nome' : undefined}
+              className={`rounded-lg border bg-midnight-surface px-md py-sm text-base text-midnight-text focus:outline-none focus:ring-2 ${
+                errors.nome
+                  ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30'
+                  : 'border-midnight-stroke focus:border-midnight-accent focus:ring-midnight-accent/30'
+              }`}
               placeholder="Como posso te chamar?"
-              required
             />
+            {errors.nome && (
+              <span id="erro-nome" className="text-xs font-normal text-rose-400">
+                {errors.nome.message}
+              </span>
+            )}
           </label>
           <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
             E-mail
             <input
               type="email"
-              value={formulario.email}
-              onChange={atualizarCampo('email')}
-              className="rounded-lg border border-midnight-stroke bg-midnight-surface px-md py-sm text-base text-midnight-text focus:border-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/30"
+              {...register('email')}
+              aria-invalid={errors.email ? 'true' : 'false'}
+              aria-describedby={errors.email ? 'erro-email' : undefined}
+              className={`rounded-lg border bg-midnight-surface px-md py-sm text-base text-midnight-text focus:outline-none focus:ring-2 ${
+                errors.email
+                  ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30'
+                  : 'border-midnight-stroke focus:border-midnight-accent focus:ring-midnight-accent/30'
+              }`}
               placeholder="Qual o melhor e-mail?"
-              required
             />
+            {errors.email && (
+              <span id="erro-email" className="text-xs font-normal text-rose-400">
+                {errors.email.message}
+              </span>
+            )}
           </label>
         </div>
         <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
           Mensagem
           <textarea
-            value={formulario.mensagem}
-            onChange={atualizarCampo('mensagem')}
+            {...register('mensagem')}
+            aria-invalid={errors.mensagem ? 'true' : 'false'}
+            aria-describedby={errors.mensagem ? 'erro-mensagem' : undefined}
             rows={5}
-            className="rounded-lg border border-midnight-stroke bg-midnight-surface px-md py-sm text-base text-midnight-text focus:border-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/30"
+            className={`rounded-lg border bg-midnight-surface px-md py-sm text-base text-midnight-text focus:outline-none focus:ring-2 ${
+              errors.mensagem
+                ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30'
+                : 'border-midnight-stroke focus:border-midnight-accent focus:ring-midnight-accent/30'
+            }`}
             placeholder="Conte mais sobre o contexto, objetivos e prazos."
-            required
           />
+          {errors.mensagem && (
+            <span id="erro-mensagem" className="text-xs font-normal text-rose-400">
+              {errors.mensagem.message}
+            </span>
+          )}
         </label>
 
         <button
           type="submit"
-          disabled={status === 'enviando'}
+          disabled={isSubmitting}
           className="rounded-full bg-midnight-accent px-lg py-sm text-sm font-semibold text-midnight-bg shadow transition hover:bg-midnight-accent-strong disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {status === 'enviando' ? 'Enviando...' : 'Enviar mensagem'}
+          {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
         </button>
       </form>
 
