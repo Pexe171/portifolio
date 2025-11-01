@@ -44,6 +44,12 @@ meu-portfolio/
 
 Cada rota de projeto consome um arquivo MDX localizado em `content/projetos`. A API de contato (`app/api/contact/route.ts`) está preparada para receber dados e integrar com qualquer serviço de envio de e-mails.
 
+## 🎨 Identidade visual Midnight Neon
+
+- **Paleta personalizada** configurada no `tailwind.config.ts`, com tokens semânticos (`midnight.bg`, `midnight.surface`, `midnight.accent` e variações) que seguem o tema "Midnight Neon".
+- **Tipografia otimizada** com carregamento via `next/font`: Inter para textos e Fira Code para elementos monoespaçados, exposta por meio de variáveis CSS.
+- **Escala de espaçamento modular** baseada em múltiplos de 4px (`xs` a `section`), garantindo ritmo consistente em margens, paddings e larguras máximas (`max-w-layout`).
+
 ## ✨ Próximos passos
 
 - Integrar o formulário de contato com um serviço real (Resend, Formspree, etc.).

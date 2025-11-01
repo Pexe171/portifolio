@@ -22,24 +22,24 @@ const projetos: ProjetoEmDestaque[] = [
 
 export default function FeaturedProjects() {
   return (
-    <section id="projetos" className="space-y-10 py-16">
-      <header className="space-y-3">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Projetos</p>
-        <h2 className="font-titulo text-3xl font-semibold">Estudos de caso que mostram minha forma de pensar</h2>
-        <p className="max-w-2xl text-slate-600 dark:text-slate-300">
+    <section id="projetos" className="space-y-2xl py-section">
+      <header className="space-y-sm">
+        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Projetos</p>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text">Estudos de caso que mostram minha forma de pensar</h2>
+        <p className="max-w-2xl text-midnight-muted">
           Cada card abaixo é alimentado por um arquivo MDX com o estudo de caso completo. Clique para mergulhar nos detalhes de
           pesquisa, design e código.
         </p>
       </header>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid gap-lg md:grid-cols-2">
         {projetos.map((projeto) => (
           <ProjectCard key={projeto.slug} projeto={projeto} />
         ))}
       </div>
 
       <div className="text-center">
-        <Link href="/" className="text-sm text-slate-500 hover:text-destaque dark:text-slate-400">
+        <Link href="/" className="text-sm text-midnight-muted transition hover:text-midnight-accent">
           Em breve adicionarei mais cases por aqui ✨
         </Link>
       </div>

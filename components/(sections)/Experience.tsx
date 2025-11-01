@@ -20,10 +20,10 @@ const experiencias: EventoTimeline[] = [
 
 export default function Experience() {
   return (
-    <section id="experiencias" className="space-y-8 py-16">
-      <header className="space-y-2">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Experiências</p>
-        <h2 className="font-titulo text-3xl font-semibold">Uma jornada guiada por colaboração</h2>
+    <section id="experiencias" className="space-y-lg py-section">
+      <header className="space-y-sm">
+        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Experiências</p>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text">Uma jornada guiada por colaboração</h2>
       </header>
 
       <Timeline eventos={experiencias} />

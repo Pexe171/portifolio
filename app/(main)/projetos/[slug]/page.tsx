@@ -59,13 +59,13 @@ export default async function ProjetoPage({ params }: ProjetoPageProps) {
   }
 
   return (
-    <article className="prose prose-slate max-w-none dark:prose-invert">
-      <header className="mb-10 space-y-2">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Estudo de Caso</p>
-        <h1 className="font-titulo text-4xl font-semibold">{projeto?.dados?.titulo}</h1>
-        {projeto?.dados?.resumo && <p className="text-lg text-slate-600 dark:text-slate-300">{projeto.dados.resumo}</p>}
+    <article className="prose max-w-none text-midnight-text prose-headings:font-display prose-a:text-midnight-accent">
+      <header className="mb-2xl space-y-sm">
+        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Estudo de Caso</p>
+        <h1 className="font-display text-4xl font-semibold">{projeto?.dados?.titulo}</h1>
+        {projeto?.dados?.resumo && <p className="text-lg text-midnight-muted">{projeto.dados.resumo}</p>}
       </header>
-      <div className="prose-headings:font-titulo prose-p:text-justify prose-a:text-destaque">
+      <div className="prose-p:text-justify">
         {projeto?.conteudo}
       </div>
     </article>

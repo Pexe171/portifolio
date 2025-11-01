@@ -3,19 +3,36 @@
 @tailwind utilities;
 
 :root {
-  --fonte-titulo: 'Inter';
-  --fonte-texto: 'Inter';
+  color-scheme: light;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, SFMono, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-display: var(--font-sans);
+  --color-bg: 248 250 252;
+  --color-surface: 255 255 255;
+  --color-surface-elevated: 226 232 240;
+  --color-stroke: 203 213 225;
+  --color-text: 15 23 42;
+  --color-muted: 71 85 105;
+  --color-accent: 14 165 233;
+  --color-accent-strong: 6 182 212;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-bg: 3 7 18;
+  --color-surface: 11 17 32;
+  --color-surface-elevated: 17 24 54;
+  --color-stroke: 30 41 59;
+  --color-text: 226 232 240;
+  --color-muted: 148 163 184;
+  --color-accent: 0 229 255;
+  --color-accent-strong: 103 232 249;
 }
 
 body {
-  @apply bg-fundo-claro text-slate-900 antialiased transition-colors duration-300 ease-in-out;
-}
-
-.dark body,
-body.dark {
-  @apply bg-fundo-escuro text-slate-100;
+  @apply bg-midnight-bg text-midnight-text antialiased transition-colors duration-300 ease-in-out;
 }
 
 a {
-  @apply text-destaque underline-offset-4 transition hover:underline;
+  @apply text-midnight-accent underline-offset-4 transition hover:text-midnight-accent-strong;
 }

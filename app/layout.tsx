@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Fira_Code, Inter } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
 import Navbar from '@/components/(core)/Navbar';
 import Footer from '@/components/(core)/Footer';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--fonte-texto' });
+const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-sans' });
+const firaCode = Fira_Code({ subsets: ['latin'], weight: ['400', '500', '600', '700'], display: 'swap', variable: '--font-mono' });
 
 export const metadata: Metadata = {
   title: 'Meu Portfólio | Construindo experiências memoráveis',
@@ -19,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${inter.variable} font-texto min-h-screen bg-fundo-claro text-slate-900 transition-colors duration-300 dark:bg-fundo-escuro dark:text-slate-100`}>
+      <body className={`${inter.variable} ${firaCode.variable} font-sans min-h-screen bg-midnight-bg text-midnight-text transition-colors duration-300`}>
         <Providers>
           <Navbar />
-          <main className="mx-auto w-full max-w-5xl px-6 py-10 lg:px-0">{children}</main>
+          <main className="mx-auto w-full max-w-layout px-xl py-2xl lg:px-0">{children}</main>
           <Footer />
         </Providers>
       </body>

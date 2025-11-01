@@ -50,48 +50,48 @@ export default function Contact() {
   };
 
   return (
-    <section id="contato" className="space-y-8 py-16">
-      <header className="space-y-2">
-        <p className="text-sm uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">Contato</p>
-        <h2 className="font-titulo text-3xl font-semibold">Vamos conversar sobre o próximo projeto?</h2>
-        <p className="max-w-2xl text-slate-600 dark:text-slate-300">
+    <section id="contato" className="space-y-lg py-section">
+      <header className="space-y-sm">
+        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Contato</p>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text">Vamos conversar sobre o próximo projeto?</h2>
+        <p className="max-w-2xl text-midnight-muted">
           Compartilhe um pouco sobre o desafio que você tem em mente. Respondo em até 24 horas, sempre com atenção humana e
           direcionada às suas necessidades.
         </p>
       </header>
 
-      <form onSubmit={enviarFormulario} className="space-y-6">
-        <div className="grid gap-6 md:grid-cols-2">
-          <label className="flex flex-col gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+      <form onSubmit={enviarFormulario} className="space-y-lg">
+        <div className="grid gap-lg md:grid-cols-2">
+          <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
             Nome
             <input
               type="text"
               value={formulario.nome}
               onChange={atualizarCampo('nome')}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-700 focus:border-destaque focus:outline-none focus:ring-2 focus:ring-destaque/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+              className="rounded-lg border border-midnight-stroke bg-midnight-surface px-md py-sm text-base text-midnight-text focus:border-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/30"
               placeholder="Como posso te chamar?"
               required
             />
           </label>
-          <label className="flex flex-col gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+          <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
             E-mail
             <input
               type="email"
               value={formulario.email}
               onChange={atualizarCampo('email')}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-700 focus:border-destaque focus:outline-none focus:ring-2 focus:ring-destaque/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+              className="rounded-lg border border-midnight-stroke bg-midnight-surface px-md py-sm text-base text-midnight-text focus:border-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/30"
               placeholder="Qual o melhor e-mail?"
               required
             />
           </label>
         </div>
-        <label className="flex flex-col gap-2 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
           Mensagem
           <textarea
             value={formulario.mensagem}
             onChange={atualizarCampo('mensagem')}
             rows={5}
-            className="rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-700 focus:border-destaque focus:outline-none focus:ring-2 focus:ring-destaque/30 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+            className="rounded-lg border border-midnight-stroke bg-midnight-surface px-md py-sm text-base text-midnight-text focus:border-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/30"
             placeholder="Conte mais sobre o contexto, objetivos e prazos."
             required
           />
@@ -100,7 +100,7 @@ export default function Contact() {
         <button
           type="submit"
           disabled={status === 'enviando'}
-          className="rounded-full bg-destaque px-6 py-3 text-sm font-semibold text-white shadow transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
+          className="rounded-full bg-midnight-accent px-lg py-sm text-sm font-semibold text-midnight-bg shadow transition hover:bg-midnight-accent-strong disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === 'enviando' ? 'Enviando...' : 'Enviar mensagem'}
         </button>
