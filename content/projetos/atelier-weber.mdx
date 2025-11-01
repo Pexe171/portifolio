@@ -1,0 +1,32 @@
+---
+title: "Luna Web (Atelier de Arte)"
+summary: "Plataforma monorepo (Node/Next.js) para artistas, focada em preservar a alta qualidade da obra e valorizar o processo criativo humano."
+tags: ["Next.js", "Node.js", "MongoDB", "Docker", "JWT", "shadcn/ui"]
+cover: "/images/projetos/luna-web-cover.jpg"
+video: "/videos/projetos/luna-web-demo.mp4"
+---
+
+## O Problema
+
+O projeto nasceu de duas necessidades: uma pessoal e uma de mercado.
+
+1.  **A Pessoal (A Origem):** Minha namorada, Luna, que é artista, precisava de um "atelier digital" para expor seus desenhos. Plataformas sociais comprimem as imagens, destruindo a qualidade do trabalho original, e ela precisava de um espaço profissional para mostrar suas artes.
+
+2.  **A de Mercado (A Missão):** Com o crescimento de imagens geradas por IA, senti a necessidade de criar um espaço que celebrasse o processo criativo humano. A ideia é crescer o "Luna Web" para que, no futuro, mais artistas possam "mostrar o lugar do ser humano na arte".
+
+## A Solução
+
+Desenvolvi a arquitetura de uma plataforma *full-stack* completa, organizada em um **monorepo** para facilitar a integração e o deploy, permitindo que o projeto cresça.
+
+O projeto é dividido em componentes desacoplados, prontos para escalar:
+
+* **API (Backend):** Construída em **Node.js** com **Express**, responsável por toda a lógica de negócio. Utiliza o **MongoDB** para persistência de dados (usuários, galerias) e **Autenticação JWT** para proteger as rotas.
+* **Web (Frontend):** Uma aplicação moderna em **Next.js** com **TypeScript**, focada na performance de renderização das imagens. A UI/UX foi construída com **Tailwind CSS** e **shadcn/ui** para uma experiência limpa.
+* **DevOps (Orquestração):** Todo o ambiente (API, Web e Banco de Dados) é gerenciado por um arquivo **`docker-compose.yml`**, permitindo que o projeto seja levantado facilmente.
+* **Segurança (Diferencial):** Para garantir a proteção das senhas, foi criado um **utilitário de segurança em Java** (para salt, hash e verificação), demonstrando uma preocupação com a robustez da autenticação.
+
+## O Impacto
+
+O MVP (o "Luna Web" original) está no ar, servindo como uma prova de conceito que valida a premissa técnica: é possível servir imagens em alta qualidade sem sacrificar a performance da página.
+
+O projeto está arquitetado como um produto escalável, não apenas um site. A separação de API e Web e o uso de Docker criam uma fundação sólida para transformar a ideia inicial em uma plataforma completa para artistas no futuro.
