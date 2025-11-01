@@ -8,6 +8,14 @@ const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
   experimental: {
     mdxRs: true
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com'
+      }
+    ]
   }
 };
 

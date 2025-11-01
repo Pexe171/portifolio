@@ -1,0 +1,18 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Imagem ilustrativa de projeto</title>
+  <desc id="desc">Gradiente nas cores midnight com ícones de código</desc>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2a48" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grad)" rx="32" />
+  <g fill="none" stroke="#38bdf8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M272 270 L220 300 L272 330" opacity="0.6" />
+    <path d="M528 270 L580 300 L528 330" opacity="0.6" />
+    <path d="M360 222 H440 V378 H360 Z" opacity="0.4" />
+    <path d="M360 300 H440" opacity="0.4" />
+    <circle cx="400" cy="300" r="120" opacity="0.2" />
+  </g>
+</svg>

@@ -1,28 +1,9 @@
 import { notFound } from 'next/navigation';
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import type { Metadata } from 'next';
-import { compileMDX } from 'next-mdx-remote/rsc';
+import { carregarProjeto, listarSlugsDeProjetos } from '@/lib/projetos';
 
 interface ProjetoPageProps {
   params: { slug: string };
-}
-
-async function carregarProjeto(slug: string) {
-  const arquivo = path.join(process.cwd(), 'content', 'projetos', `${slug}.mdx`);
-
-  try {
-    const conteudo = await fs.readFile(arquivo, 'utf-8');
-    const { content, frontmatter } = await compileMDX<{ titulo: string; resumo: string }>({
-      source: conteudo,
-      options: { parseFrontmatter: true }
-    });
-
-    return { conteudo: content, dados: frontmatter };
-  } catch (erro) {
-    console.error(`Erro ao carregar o projeto "${slug}":`, erro);
-    return null;
-  }
 }
 
 export async function generateMetadata({ params }: ProjetoPageProps): Promise<Metadata> {
@@ -42,12 +23,9 @@ export async function generateMetadata({ params }: ProjetoPageProps): Promise<Me
 }
 
 export async function generateStaticParams() {
-  const pastaProjetos = path.join(process.cwd(), 'content', 'projetos');
-  const arquivos = await fs.readdir(pastaProjetos);
+  const slugs = await listarSlugsDeProjetos();
 
-  return arquivos
-    .filter((arquivo) => arquivo.endsWith('.mdx'))
-    .map((arquivo) => ({ slug: arquivo.replace(/\.mdx$/, '') }));
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function ProjetoPage({ params }: ProjetoPageProps) {
@@ -65,9 +43,7 @@ export default async function ProjetoPage({ params }: ProjetoPageProps) {
         <h1 className="font-display text-4xl font-semibold">{projeto?.dados?.titulo}</h1>
         {projeto?.dados?.resumo && <p className="text-lg text-midnight-muted">{projeto.dados.resumo}</p>}
       </header>
-      <div className="prose-p:text-justify">
-        {projeto?.conteudo}
-      </div>
+      <div className="prose-p:text-justify">{projeto?.conteudo}</div>
     </article>
   );
 }

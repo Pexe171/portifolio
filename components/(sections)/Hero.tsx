@@ -1,16 +1,30 @@
 import Link from 'next/link';
+import TypewriterText from '@/components/(ui)/TypewriterText';
+
+const FRASES_TYPEWRITER = [
+  'Interfaces que respeitam o tempo das pessoas.',
+  'Código com propósito e narrativa.',
+  'Produtos digitais que equilibram dados e empatia.'
+];
 
 export default function Hero() {
   return (
     <section id="inicio" className="flex flex-col gap-lg py-section">
-      <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Olá, eu sou</p>
-      <h1 className="font-display text-4xl font-bold leading-tight text-midnight-text md:text-6xl">
-        Um desenvolvedor front-end apaixonado por experiências humanas
-      </h1>
+      <div className="space-y-sm">
+        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Olá, eu sou</p>
+        <h1 className="font-display text-4xl font-bold leading-tight text-midnight-text md:text-6xl">
+          Desenvolvedor front-end focado em experiências memoráveis
+        </h1>
+        <p className="text-xl font-medium text-midnight-accent md:text-2xl">
+          <TypewriterText frases={FRASES_TYPEWRITER} className="after:bg-midnight-accent" />
+        </p>
+      </div>
+
       <p className="max-w-2xl text-lg text-midnight-muted">
-        Crio interfaces responsivas, acessíveis e cheias de emoção. Aqui você encontra os projetos que traduzem minha forma de pensar
-        produtos digitais: cada detalhe conta uma história.
+        Conecto estratégia, design e engenharia para criar jornadas que acolhem pessoas reais. Cada projeto que compartilho
+        aqui é fruto de pesquisa, experimentação e muito cuidado com detalhes, acessibilidade e performance.
       </p>
+
       <div className="flex flex-wrap gap-md">
         <Link
           href="#projetos"
