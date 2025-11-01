@@ -42,7 +42,7 @@ meu-portfolio/
 └── package.json
 ```
 
-Cada rota de projeto consome um arquivo MDX localizado em `content/projetos`. A API de contato (`app/api/contact/route.ts`) está preparada para receber dados e integrar com qualquer serviço de envio de e-mails.
+Cada rota de projeto consome um arquivo MDX localizado em `content/projetos`. A API de contato (`app/api/contact/route.ts`) valida os dados com Zod e envia o e-mail via [Resend](https://resend.com/), garantindo que toda mensagem do formulário chegue de forma segura e autenticada.
 
 ## 🧾 Padrão de conteúdo dos projetos
 
@@ -75,9 +75,24 @@ Logo após o frontmatter, estruturamos o estudo de caso com três blocos: **O Pr
 - **Tipografia otimizada** com carregamento via `next/font`: Inter para textos e Fira Code para elementos monoespaçados, exposta por meio de variáveis CSS.
 - **Escala de espaçamento modular** baseada em múltiplos de 4px (`xs` a `section`), garantindo ritmo consistente em margens, paddings e larguras máximas (`max-w-layout`).
 
+## ✉️ Configurando o formulário de contato
+
+1. Crie uma conta na [Resend](https://resend.com/) e gere uma API Key.
+2. Cadastre um domínio/remetente autorizado (ex.: `Portfolio <contato@seudominio.com>`).
+3. Adicione um arquivo `.env.local` na raiz do projeto com as variáveis abaixo:
+
+   ```env
+   RESEND_API_KEY="sua-chave-aqui"
+   RESEND_FROM_EMAIL="Portfolio <contato@seudominio.com>"
+   RESEND_TO_EMAIL="voce@seudestino.com"
+   ```
+
+4. Reinicie o servidor (`npm run dev`) para carregar as variáveis.
+
+Pronto! Sempre que alguém preencher o formulário, o backend valida os dados com Zod e dispara um e-mail usando o Resend. As respostas chegam diretamente na caixa de entrada definida em `RESEND_TO_EMAIL`.
+
 ## ✨ Próximos passos
 
-- Integrar o formulário de contato com um serviço real (Resend, Formspree, etc.).
 - Criar animações personalizadas para cada seção usando Framer Motion.
 - Alimentar a pasta `public/` com imagens e vídeos reais dos projetos.
 - Publicar na Vercel e acompanhar métricas de uso.
