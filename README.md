@@ -44,6 +44,13 @@ meu-portfolio/
 
 Cada rota de projeto consome um arquivo MDX localizado em `content/projetos`. A API de contato (`app/api/contact/route.ts`) está preparada para receber dados e integrar com qualquer serviço de envio de e-mails.
 
+## 🧩 Componentes estruturais
+
+- **Navbar fixa** com links para todas as seções, realce do item ativo conforme a âncora e suporte ao tema escuro/claro.
+- **Footer** com links diretos para LinkedIn e GitHub, pensados para abrir em nova aba com acessibilidade.
+- **ThemeToggle** controlando a classe `dark` no `<html>` via `next-themes`, mantendo transições suaves.
+- **Providers** globais configurados em `app/providers.tsx`, encapsulando o `ThemeProvider` em todas as páginas.
+
 ## 🎨 Identidade visual Midnight Neon
 
 - **Paleta personalizada** configurada no `tailwind.config.ts`, com tokens semânticos (`midnight.bg`, `midnight.surface`, `midnight.accent` e variações) que seguem o tema "Midnight Neon".
