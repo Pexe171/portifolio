@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { Resend } from 'resend';
 
 const remetente = process.env.RESEND_FROM_EMAIL;
-const destinatario = process.env.RESEND_TO_EMAIL;
+const destinatario = process.env.RESEND_TO_EMAIL ?? 'david.silva@icomp.ufam.edu.br';
 const chaveResend = process.env.RESEND_API_KEY;
 
 const resend = chaveResend ? new Resend(chaveResend) : null;

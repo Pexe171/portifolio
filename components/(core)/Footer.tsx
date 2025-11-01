@@ -1,6 +1,6 @@
 const redes = [
   {
-    href: 'https://www.linkedin.com/in/seu-usuario',
+    href: 'https://br.linkedin.com/in/david-henrique-miranda-da-silva-758666388',
     rotulo: 'LinkedIn',
     Icone: () => (
       <svg

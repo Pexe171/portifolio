@@ -1,6 +1,6 @@
-# 🧭 Meu Portfólio com Next.js 14
+# 🧭 Portfólio de David Henrique Miranda da Silva
 
-Este projeto nasce com foco em contar histórias de forma humana, usando o App Router do Next.js 14, Tailwind CSS e conteúdo em MDX. A ideia é ter uma base organizada desde o primeiro commit para evoluir com tranquilidade.
+Projeto construído para apresentar minha jornada como estudante de Engenharia de Software com foco em desenvolvimento web e back-end. A base utiliza App Router do Next.js 14, Tailwind CSS e conteúdo em MDX para manter tudo organizado e fácil de evoluir.
 
 ## 🚀 Como rodar o projeto
 
@@ -61,7 +61,7 @@ video: "https://link-do-video"
 ---
 ```
 
-Logo após o frontmatter, estruturamos o estudo de caso com três blocos: **O Problema**, **A Solução** e **O Impacto**. Essa narrativa ajuda a contextualizar a necessidade, detalhar a arquitetura construída e deixar claros os resultados alcançados.
+Logo após o frontmatter, mantenho o estudo de caso dividido em **Contexto**, **Implementação** e **Resultados** para contextualizar o desafio, detalhar a arquitetura construída e destacar o impacto obtido.
 
 ## 🔍 SEO, Open Graph e compartilhamento
 
@@ -92,12 +92,12 @@ Logo após o frontmatter, estruturamos o estudo de caso com três blocos: **O Pr
    ```env
    RESEND_API_KEY="sua-chave-aqui"
    RESEND_FROM_EMAIL="Portfolio <contato@seudominio.com>"
-   RESEND_TO_EMAIL="voce@seudestino.com"
+   RESEND_TO_EMAIL="david.silva@icomp.ufam.edu.br"
    ```
 
 4. Reinicie o servidor (`npm run dev`) para carregar as variáveis.
 
-Pronto! Sempre que alguém preencher o formulário, o backend valida os dados com Zod e dispara um e-mail usando o Resend. As respostas chegam diretamente na caixa de entrada definida em `RESEND_TO_EMAIL`.
+Pronto! Sempre que alguém preencher o formulário, o backend valida os dados com Zod e dispara um e-mail usando o Resend. As respostas chegam diretamente na caixa de entrada `david.silva@icomp.ufam.edu.br` (ou o endereço configurado na variável, caso alterado).
 
 ## ✨ Próximos passos
 

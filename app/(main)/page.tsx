@@ -21,21 +21,21 @@ const homeOpenGraphImages = siteMetadata.ogImage
 const homeTwitterImages = siteMetadata.ogImage ? [siteMetadata.ogImage] : undefined;
 
 export const metadata: Metadata = {
-  title: 'Início',
+  title: 'Início | David Henrique Miranda da Silva',
   description:
-    'Portfólio que combina estratégia, design e desenvolvimento front-end para entregar experiências memoráveis em produtos digitais.',
+    'Estudante de Engenharia de Software focado em desenvolvimento web e back-end. Conheça integrações com APIs, automações e projetos construídos com cuidado.',
   openGraph: {
-    title: 'Início | Meu Portfólio',
+    title: 'Início | David Henrique Miranda da Silva',
     description:
-      'Conheça projetos, processos e resultados que conectam tecnologia, design e empatia para gerar impacto real.',
+      'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
     url: '/',
     ...(homeOpenGraphImages ? { images: homeOpenGraphImages } : {})
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Início | Meu Portfólio',
+    title: 'Início | David Henrique Miranda da Silva',
     description:
-      'Conheça projetos, processos e resultados que conectam tecnologia, design e empatia para gerar impacto real.',
+      'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
     ...(homeTwitterImages ? { images: homeTwitterImages } : {})
   }
 };
