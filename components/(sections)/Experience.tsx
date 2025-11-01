@@ -3,18 +3,9 @@ import Timeline, { type EventoTimeline } from '@/components/(ui)/Timeline';
 const experiencias: EventoTimeline[] = [
   {
     ano: '2024',
-    titulo: 'Líder Front-end em Produto SaaS',
-    descricao: 'Conduzi a evolução do design system, mediando conversas entre design, engenharia e negócio para escalar o produto.'
-  },
-  {
-    ano: '2022',
-    titulo: 'Product Designer & Developer',
-    descricao: 'Combinei pesquisa com prototipação em alta fidelidade e entregas front-end para validar hipóteses com clientes reais.'
-  },
-  {
-    ano: '2020',
-    titulo: 'Freelancer focado em marcas humanas',
-    descricao: 'Desenvolvi sites performáticos com storytelling envolvente para pequenas empresas e profissionais independentes.'
+    titulo: 'Início da vida acadêmica',
+    descricao:
+      'Entrei na Universidade Federal do Amazonas (UFAM) para cursar Engenharia de Software, dando início à minha jornada universitária.'
   }
 ];
 
