@@ -44,6 +44,24 @@ meu-portfolio/
 
 Cada rota de projeto consome um arquivo MDX localizado em `content/projetos`. A API de contato (`app/api/contact/route.ts`) está preparada para receber dados e integrar com qualquer serviço de envio de e-mails.
 
+## 🧾 Padrão de conteúdo dos projetos
+
+Todo arquivo em `content/projetos/*.mdx` segue o mesmo frontmatter e narrativa para garantir consistência:
+
+```mdx
+---
+title: "Nome do projeto"
+summary: "Resumo em uma frase do resultado entregue."
+tags:
+  - Tecnologia 1
+  - Tecnologia 2
+cover: "https://link-da-imagem.jpg"
+video: "https://link-do-video"
+---
+```
+
+Logo após o frontmatter, estruturamos o estudo de caso com três blocos: **O Problema**, **A Solução** e **O Impacto**. Essa narrativa ajuda a contextualizar a necessidade, detalhar a arquitetura construída e deixar claros os resultados alcançados.
+
 ## 🧩 Componentes estruturais
 
 - **Navbar fixa** com links para todas as seções, realce do item ativo conforme a âncora e suporte ao tema escuro/claro.
