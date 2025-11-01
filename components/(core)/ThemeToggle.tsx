@@ -26,7 +26,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={alternarTema}
-      className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-destaque hover:text-destaque dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+      className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-midnight-stroke bg-midnight-surface text-midnight-muted transition hover:border-midnight-accent hover:text-midnight-accent"
       aria-label="Alternar tema entre claro e escuro"
     >
       <motion.span key={temaAtual} initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.2 }}>

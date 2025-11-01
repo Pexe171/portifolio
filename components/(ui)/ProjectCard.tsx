@@ -26,14 +26,14 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
   return (
     <Link
       href={`/projetos/${projeto.slug}`}
-      className="group block overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-2 hover:border-destaque hover:shadow-xl dark:border-slate-800 dark:bg-slate-900"
+      className="group block overflow-hidden rounded-3xl border border-midnight-stroke bg-midnight-surface shadow-sm transition hover:-translate-y-2 hover:border-midnight-accent hover:shadow-xl"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => {
         setHover(false);
         progresso.set(0);
       }}
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
+      <div className="relative aspect-video w-full overflow-hidden bg-midnight-surface">
         {hover ? (
           <motion.video
             autoPlay
@@ -52,22 +52,22 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
           <Image src={projeto.imagem} alt={projeto.titulo} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
         )}
         <motion.div
-          className="absolute inset-0 bg-slate-950/70"
+          className="absolute inset-0 bg-midnight-bg/80"
           animate={{ opacity: hover ? 0.2 : 0.4 }}
           transition={{ duration: 0.3 }}
         />
-        <motion.div className="absolute bottom-4 left-4 h-1 rounded-full bg-destaque" style={{ width: largura }} />
+        <motion.div className="absolute bottom-4 left-4 h-1 rounded-full bg-midnight-accent" style={{ width: largura }} />
       </div>
 
-      <div className="space-y-4 p-6">
-        <div className="space-y-2">
-          <h3 className="font-titulo text-2xl font-semibold text-slate-900 dark:text-white">{projeto.titulo}</h3>
-          <p className="text-sm text-slate-600 dark:text-slate-300">{projeto.descricao}</p>
+      <div className="space-y-md p-lg">
+        <div className="space-y-sm">
+          <h3 className="font-display text-2xl font-semibold text-midnight-text">{projeto.titulo}</h3>
+          <p className="text-sm text-midnight-muted">{projeto.descricao}</p>
         </div>
 
-        <ul className="flex flex-wrap gap-2 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        <ul className="flex flex-wrap gap-sm text-xs font-medium uppercase tracking-wide text-midnight-muted">
           {projeto.tags.map((tag) => (
-            <li key={tag} className="rounded-full border border-slate-200 px-3 py-1 dark:border-slate-700">
+            <li key={tag} className="rounded-full border border-midnight-stroke/60 px-md py-xs">
               {tag}
             </li>
           ))}
