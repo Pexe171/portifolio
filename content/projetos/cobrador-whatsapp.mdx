@@ -1,24 +1,33 @@
 ---
-titulo: 'Cobrador WhatsApp'
-resumo: 'Automatização com linguagem humana para fortalecer relacionamento com clientes.'
+title: "Cobrador WhatsApp"
+summary: "Automatização humanizada das cobranças com dados em tempo real para reduzir a inadimplência."
+tags:
+  - WhatsApp API
+  - Node.js
+  - Next.js
+  - Tailwind CSS
+cover: "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80"
+video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 ---
 
-import Link from 'next/link';
+## O Problema
 
-## Contexto
+Uma fintech de crédito recorrente precisava cobrar parcelas atrasadas sem comprometer o relacionamento construído com clientes fiéis.
+Os lembretes enviados manualmente consumiam horas do time financeiro e não tinham o tom empático da marca.
+O objetivo era combinar eficiência operacional com mensagens personalizadas por jornada.
 
-Uma fintech precisava reduzir inadimplência sem soar robótica. O desafio era entregar lembretes empáticos via WhatsApp, mantendo o tom da marca e trazendo dados úteis para o time de sucesso do cliente.
+## A Solução
 
-## Papel que desempenhei
+Desenhei a arquitetura do fluxo completo de notificações e a interface de configuração para o time interno:
 
-- Pesquisa com clientes e squad financeira para mapear jornadas.
-- Definição do fluxo conversacional alinhado ao design system.
-- Desenvolvimento front-end das telas de configuração usando Next.js e Tailwind CSS.
+- Modelei personas de devedores e estados da assinatura para personalizar argumentos persuasivos.
+- Criei um orquestrador em Node.js que integra ERP, CRM e a API oficial do WhatsApp.
+- Desenvolvi em Next.js + Tailwind CSS o painel que permite montar campanhas com textos parametrizados e anexos contextuais.
+- Configurei automações para escalonar conversas para agentes humanos quando a resposta indicava negociação sensível.
 
-## Resultado
+## O Impacto
 
-Os lembretes automatizados ajudaram a reduzir em 32% a inadimplência nos primeiros 60 dias. Também criamos um dashboard com métricas de resposta para evoluir a comunicação.
-
-> "Conseguimos ser proativos sem perder nossa voz humana." — Head de Customer Success
-
-Quer entender o fluxo completo? [Vamos conversar](mailto:contato@exemplo.com).
+Sessenta dias após o lançamento, a inadimplência caiu 32% e o time financeiro economizou cerca de 18 horas semanais.
+A nota de satisfação dos clientes abordados subiu de 6,1 para 8,4, provando que a abordagem empática
+transformou um momento delicado em oportunidade de relacionamento.
+Também deixei o produto pronto para análises contínuas, com métricas de abertura, resposta e reconciliação direto no dashboard.
