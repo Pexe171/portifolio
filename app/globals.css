@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --fonte-titulo: 'Inter';
+  --fonte-texto: 'Inter';
+}
+
+body {
+  @apply bg-fundo-claro text-slate-900 antialiased transition-colors duration-300 ease-in-out;
+}
+
+.dark body,
+body.dark {
+  @apply bg-fundo-escuro text-slate-100;
+}
+
+a {
+  @apply text-destaque underline-offset-4 transition hover:underline;
+}
