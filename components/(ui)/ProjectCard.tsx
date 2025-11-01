@@ -68,6 +68,8 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
               loop
               muted
               playsInline
+              aria-hidden
+              tabIndex={-1}
               className="absolute inset-0 h-full w-full object-cover"
               variants={variantesVideo}
               transition={{ duration: 0.5, ease: 'easeOut' }}
