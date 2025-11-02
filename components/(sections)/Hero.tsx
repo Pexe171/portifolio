@@ -29,13 +29,13 @@ export default function Hero() {
 
       <div className="flex flex-wrap gap-md">
         <Link
-          href="#projetos"
+          href="/#projetos"
           className="rounded-full bg-midnight-accent px-lg py-sm text-sm font-semibold text-midnight-bg shadow transition hover:bg-midnight-accent-strong"
         >
           Ver projetos em destaque
         </Link>
         <Link
-          href="#contato"
+          href="/#contato"
           className="rounded-full border border-midnight-stroke px-lg py-sm text-sm font-semibold text-midnight-text transition hover:border-midnight-accent hover:text-midnight-accent"
         >
           Falar comigo
