@@ -12,11 +12,11 @@ type LinkNavegacao = {
 
 const links: LinkNavegacao[] = [
   { href: '/', rotulo: 'Início' },
-  { href: '#projetos', rotulo: 'Projetos' },
-  { href: '#sobre', rotulo: 'Sobre' },
-  { href: '#habilidades', rotulo: 'Skills' },
-  { href: '#experiencias', rotulo: 'Experiências' },
-  { href: '#contato', rotulo: 'Contato' }
+  { href: '/#projetos', rotulo: 'Projetos' },
+  { href: '/#sobre', rotulo: 'Sobre' },
+  { href: '/#habilidades', rotulo: 'Skills' },
+  { href: '/#experiencias', rotulo: 'Experiências' },
+  { href: '/#contato', rotulo: 'Contato' }
 ];
 
 export default function Navbar() {
@@ -42,8 +42,9 @@ export default function Navbar() {
       return true;
     }
 
-    if (href.startsWith('#')) {
-      return hashAtivo === href;
+    if (href.includes('#')) {
+      const hashDoLink = href.slice(href.indexOf('#'));
+      return pathname === '/' && hashAtivo === hashDoLink;
     }
 
     return pathname === href;
