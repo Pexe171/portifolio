@@ -4,28 +4,44 @@ import { motion } from 'framer-motion';
 
 const habilidades = [
   {
-    icone: '🧩',
-    descricao: 'Design Systems e documentação viva'
-  },
-  {
-    icone: '♿',
-    descricao: 'Acessibilidade web (WCAG) e testes automatizados'
-  },
-  {
-    icone: '🤝',
-    descricao: 'Integração entre produto, design e engenharia'
-  },
-  {
-    icone: '🎙️',
-    descricao: 'Storytelling e facilitação de workshops'
-  },
-  {
     icone: '⚛️',
-    descricao: 'Next.js, React, TypeScript e Tailwind CSS'
+    titulo: 'Frontend moderno',
+    descricao: 'Next.js 14, React Server Components, TypeScript e Tailwind CSS em interfaces de alta performance.'
   },
   {
-    icone: '🔗',
-    descricao: 'Integração com APIs, CMS e automações'
+    icone: '🧠',
+    titulo: 'Arquitetura Node.js',
+    descricao: 'APIs em Express, padrões BFF/Proxy e serviços desacoplados com autenticação JWT segura.'
+  },
+  {
+    icone: '🖥️',
+    titulo: 'Aplicações desktop',
+    descricao: 'Apps em Electron integrados ao WhatsApp, automações com node-cron e bancos locais SQLite.'
+  },
+  {
+    icone: '🗄️',
+    titulo: 'Persistência de dados',
+    descricao: 'Modelagem em MongoDB, seeds versionadas e orquestração com Docker para ambientes completos.'
+  },
+  {
+    icone: '🔐',
+    titulo: 'Segurança e autenticação',
+    descricao: 'Fluxos com cookies httpOnly, RBAC, criptografia de senhas e observabilidade integrada.'
+  },
+  {
+    icone: '🤖',
+    titulo: 'IA & integrações',
+    descricao: 'Integração com OpenAI, webhooks do WhatsApp, CMS e pipelines automáticos orientados a negócio.'
+  },
+  {
+    icone: '🧩',
+    titulo: 'Design Systems vivos',
+    descricao: 'shadcn/ui customizado, documentação em MDX e guidelines que conectam produto, design e engenharia.'
+  },
+  {
+    icone: '🚀',
+    titulo: 'DevOps & DX',
+    descricao: 'Pipelines CI, docker-compose unificado e onboarding guiado por documentação viva.'
   }
 ];
 
@@ -68,12 +84,15 @@ export default function Skills() {
       >
         {habilidades.map((habilidade) => (
           <motion.li
-            key={habilidade.descricao}
+            key={habilidade.titulo}
             variants={varianteItem}
-            className="flex items-start gap-md rounded-xl border border-midnight-stroke bg-midnight-surface p-lg text-midnight-muted shadow-sm transition hover:-translate-y-1 hover:border-midnight-accent hover:shadow-lg"
+            className="flex flex-col gap-sm rounded-2xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface to-midnight-surface/70 p-lg text-midnight-muted shadow-lg shadow-midnight-shadow/40 transition hover:-translate-y-1.5 hover:border-midnight-accent hover:text-midnight-text"
           >
-            <span aria-hidden className="text-2xl">{habilidade.icone}</span>
-            <span className="text-left">{habilidade.descricao}</span>
+            <span aria-hidden className="text-3xl">{habilidade.icone}</span>
+            <div className="space-y-xs text-left">
+              <h3 className="font-semibold text-midnight-text">{habilidade.titulo}</h3>
+              <p>{habilidade.descricao}</p>
+            </div>
           </motion.li>
         ))}
       </motion.ul>
