@@ -30,8 +30,11 @@ export default async function FeaturedProjects() {
       )}
 
       <div className="text-center">
-        <Link href="/" className="text-sm text-midnight-muted transition hover:text-midnight-accent">
-          Em breve adicionarei mais cases por aqui ✨
+        <Link
+          href="/projetos"
+          className="font-semibold text-midnight-accent transition hover:text-midnight-accent-strong"
+        >
+          Ver o arquivo completo de projetos &rarr;
         </Link>
       </div>
     </section>

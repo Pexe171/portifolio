@@ -26,6 +26,7 @@ meu-portfolio/
 │   ├── (main)/
 │   │   ├── page.tsx
 │   │   └── projetos/
+│   │       ├── page.tsx
 │   │       └── [slug]/page.tsx
 │   ├── api/contact/route.ts
 │   ├── layout.tsx
@@ -58,10 +59,12 @@ tags:
   - Tecnologia 2
 cover: "https://link-da-imagem.jpg"
 video: "https://link-do-video"
+order: 1
+featured: true
 ---
 ```
 
-Logo após o frontmatter, mantenho o estudo de caso dividido em **Contexto e desafio**, **Estratégia e arquitetura da solução** e **Resultados e próximos passos** para contextualizar o problema, detalhar as decisões técnicas e evidenciar o impacto obtido.
+Logo após o frontmatter, mantenho o estudo de caso dividido em **Contexto e desafio**, **Estratégia e arquitetura da solução** e **Resultados e próximos passos** para contextualizar o problema, detalhar as decisões técnicas e evidenciar o impacto obtido. Os campos `order` e `featured` controlam, respectivamente, a ordenação dos cards e quais projetos aparecem em destaque na home.
 
 ## 🔍 SEO, Open Graph e compartilhamento
 
