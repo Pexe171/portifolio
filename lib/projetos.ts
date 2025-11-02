@@ -21,6 +21,7 @@ export interface ProjetoParaCard {
   video?: string;
   tags: string[];
   ordem?: number;
+  destaque: boolean;
 }
 
 export interface ProjetoCompleto {
@@ -64,46 +65,51 @@ async function extrairFrontmatter(slug: string) {
   return frontmatter;
 }
 
-export async function listarProjetosParaHome(): Promise<ProjetoParaCard[]> {
+async function montarProjetoParaCard(slug: string): Promise<ProjetoParaCard | null> {
+  try {
+    const frontmatter = await extrairFrontmatter(slug);
+    if (!frontmatter?.title) {
+      console.warn(`Projeto "${slug}" ignorado por faltar título no frontmatter.`);
+      return null;
+    }
+
+    return {
+      slug,
+      titulo: frontmatter.title,
+      descricao: frontmatter.summary ?? 'Estudo de caso completo disponível no detalhe.',
+      imagem: frontmatter.cover ?? '/images/projeto-placeholder.svg',
+      video: frontmatter.video,
+      tags: frontmatter.tags ?? [],
+      ordem: typeof frontmatter.order === 'number' ? frontmatter.order : undefined,
+      destaque: Boolean(frontmatter.featured)
+    } satisfies ProjetoParaCard;
+  } catch (erro) {
+    console.error(`Falha ao processar o projeto "${slug}":`, erro);
+    return null;
+  }
+}
+
+function ordenarProjetos(a: ProjetoParaCard, b: ProjetoParaCard) {
+  const ordemA = a.ordem ?? Number.POSITIVE_INFINITY;
+  const ordemB = b.ordem ?? Number.POSITIVE_INFINITY;
+
+  if (ordemA !== ordemB) {
+    return ordemA - ordemB;
+  }
+
+  return a.titulo.localeCompare(b.titulo, 'pt-BR');
+}
+
+export async function listarTodosProjetos(): Promise<ProjetoParaCard[]> {
   const slugs = await listarSlugsDeProjetos();
+  const projetos = await Promise.all(slugs.map(montarProjetoParaCard));
 
-  const projetos = await Promise.all(
-    slugs.map(async (slug) => {
-      try {
-        const frontmatter = await extrairFrontmatter(slug);
-        if (!frontmatter?.title) {
-          console.warn(`Projeto "${slug}" ignorado por faltar título no frontmatter.`);
-          return null;
-        }
+  return projetos.filter((projeto): projeto is ProjetoParaCard => projeto !== null).sort(ordenarProjetos);
+}
 
-        return {
-          slug,
-          titulo: frontmatter.title,
-          descricao: frontmatter.summary ?? 'Estudo de caso completo disponível no detalhe.',
-          imagem: frontmatter.cover ?? '/images/projeto-placeholder.svg',
-          video: frontmatter.video,
-          tags: frontmatter.tags ?? [],
-          ordem: typeof frontmatter.order === 'number' ? frontmatter.order : undefined
-        } satisfies ProjetoParaCard;
-      } catch (erro) {
-        console.error(`Falha ao processar o projeto "${slug}":`, erro);
-        return null;
-      }
-    })
-  );
-
-  return projetos
-    .filter((projeto): projeto is ProjetoParaCard => projeto !== null)
-    .sort((a, b) => {
-      const ordemA = a.ordem ?? Number.POSITIVE_INFINITY;
-      const ordemB = b.ordem ?? Number.POSITIVE_INFINITY;
-
-      if (ordemA !== ordemB) {
-        return ordemA - ordemB;
-      }
-
-      return a.titulo.localeCompare(b.titulo, 'pt-BR');
-    });
+export async function listarProjetosParaHome(): Promise<ProjetoParaCard[]> {
+  const projetos = await listarTodosProjetos();
+  return projetos.filter((projeto) => projeto.destaque).slice(0, 3);
 }
 
 export async function carregarProjeto(slug: string): Promise<ProjetoCompleto | null> {
