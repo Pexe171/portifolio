@@ -13,7 +13,7 @@ export default function About() {
         <div className="space-y-lg text-lg text-midnight-muted">
           <ScrollReveal delay={0.1}>
             <p>
-              Estudante de Engenharia de Software com foco em desenvolvimento web e back-end. Possuo experiência prática na
+              Estudante de Engenharia de Software com foco em Back-end. Possuo experiência prática na
               criação de aplicações a partir de projetos acadêmicos e pessoais, incluindo o desenvolvimento de um sistema de
               cobrança automatizado com Node.js e integração de API.
             </p>

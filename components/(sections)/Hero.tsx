@@ -12,10 +12,10 @@ export default function Hero() {
     <section id="inicio" className="flex flex-col gap-lg py-section">
       <div className="space-y-sm">
         <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">
-          Olá, eu sou <span className="font-semibold text-midnight-text">David Henrique Miranda da Silva</span>
+          Opa Meu Patrao, eu sou <span className="font-semibold text-midnight-text">David Henrique Miranda da Silva</span>
         </p>
         <h1 className="font-display text-4xl font-bold leading-tight text-midnight-text md:text-6xl">
-          Estudante de Engenharia de Software com foco em desenvolvimento web e back-end.
+          Estudante de Engenharia de Software com foco Back-end.
         </h1>
         <p className="text-xl font-medium text-midnight-accent md:text-2xl">
           <TypewriterText frases={FRASES_TYPEWRITER} className="after:bg-midnight-accent" />
@@ -23,7 +23,7 @@ export default function Hero() {
       </div>
 
       <p className="max-w-2xl text-lg text-midnight-muted">
-        Estudante de Engenharia de Software com foco em desenvolvimento web e back-end. Transformo ideias em produtos
+        Estudante de Engenharia de Software com foco em Back-end. Transformo ideias em produtos
         funcionais criando integrações sólidas, automatizando rotinas e cuidando da experiência de ponta a ponta.
       </p>
 

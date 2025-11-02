@@ -1,0 +1,33 @@
+---
+title: "Cobrador de Clientes (Desktop App com IA)"
+summary: "Aplicação desktop (Electron + Node.js) que automatiza cobranças via WhatsApp, usando a API da OpenAI para gerar mensagens humanizadas e `node-cron` para agendamentos."
+tags: ["Electron", "Node.js", "OpenAI API", "Whatsapp", "SQLite3", "node-cron"]
+cover: "/images/projetos/cobrador-cover.jpg"
+video: "/videos/projetos/cobrador-demo.mp4"
+---
+
+## O Problema
+
+Pequenos negócios e equipes financeiras perdem horas incontáveis em processos manuais de cobrança. Além do tempo gasto, as mensagens de cobrança tradicionais são impessoais, "robóticas" e podem prejudicar o relacionamento com o cliente.
+
+O desafio era duplo:
+1.  **Como automatizar** o envio de lembretes de pagamento via WhatsApp?
+2.  **Como fazer isso de forma "humanizada"**, mantendo um tom amigável que não parecesse um robô?
+
+## A Solução
+
+Desenvolvi uma **aplicação de desktop (Desktop App)** completa com **Electron**, permitindo que o usuário gerencie todo o processo de cobrança localmente em sua máquina.
+
+A arquitetura do projeto foi desenhada para ser uma solução "tudo-em-um", integrando múltiplos serviços:
+
+* **Plataforma Desktop (Electron):** A aplicação é construída em Electron, que permite ao Node.js rodar em segundo plano. Essa foi uma decisão de arquitetura crucial para manter a sessão do `whatsapp-web.js` (API não-oficial do WhatsApp) ativa e conectada através do QR Code.
+* **Automação (O "Cérebro"):** Um módulo de `node-cron` atua como o agendador de tarefas. Ele verifica o banco de dados local **SQLite3** em intervalos programados, procurando por clientes com pagamentos vencidos.
+* **A Mensagem (O "Diferencial"):** Este é o núcleo da solução. Ao invés de enviar um template fixo, o sistema usa um módulo (`ia.js`) que se conecta à **API da OpenAI (GPT)**. Ele envia um prompt com os dados do cliente (nome, valor) e solicita que a IA gere uma mensagem de cobrança amigável e personalizada.
+* **O Envio (A "Ação"):** O módulo `whatsapp.js` recebe o texto da IA e o dispara para o número do cliente.
+* **Segurança:** A comunicação entre o frontend (interface em HTML/JS) e o backend (Node.js) é feita de forma segura usando o padrão `contextBridge` do Electron (`preload.js`), prevenindo que a interface tenha acesso direto a funções sensíveis do sistema.
+
+## O Impacto
+
+O resultado é uma ferramenta de negócios poderosa que resolve um problema real. Ela não apenas automatiza um processo manual e demorado, mas o faz com um nível de personalização que antes só era possível com um humano.
+
+O projeto demonstra a capacidade de integrar múltiplas tecnologias complexas (Electron, APIs de IA, Web Sockets do WhatsApp, Cron Jobs) em um único produto coeso e funcional, com foco em entregar valor de negócio tangível.

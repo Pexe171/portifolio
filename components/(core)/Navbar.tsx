@@ -56,7 +56,7 @@ export default function Navbar() {
         aria-label="Seções principais do portfólio"
       >
         <Link href="/" className="font-display text-lg font-semibold text-midnight-text">
-          Meu Portfólio
+          David
         </Link>
         <div className="flex items-center gap-lg">
           <ul className="hidden items-center gap-md text-sm font-medium text-midnight-muted md:flex">

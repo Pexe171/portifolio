@@ -1,0 +1,42 @@
+---
+title: "Trama (Portal de Conteúdo Full-Stack)"
+summary: "Arquitetura de plataforma em monorepo (Node/Next.js) com segurança de nível Sênior, implementando JWT em cookies httpOnly e padrão BFF (Proxy)."
+tags: ["Next.js", "Node.js", "Express", "MongoDB", "JWT", "Tailwind CSS"]
+cover: "/images/projetos/trama-cover.jpg"
+video: "/videos/projetos/trama-demo.mp4"
+---
+
+## O Problema
+
+A maioria dos portais de conteúdo sofre com dois grandes desafios: segurança na autenticação e uma arquitetura escalável.
+
+1.  **O Desafio de Segurança:** Como construir um sistema de login entre um frontend (Next.js) e um backend (Node.js) desacoplados sem expor os tokens de autenticação a ataques XSS (Cross-Site Scripting)?
+2.  **O Desafio de Arquitetura:** Como organizar o código de forma que a API de negócios e o site do cliente possam evoluir de forma independente, mas comunicar-se de forma segura e eficiente?
+
+O Trama foi construído para resolver esses problemas, servindo como um *blueprint* para uma plataforma de conteúdo moderna, segura e de nível profissional.
+
+## A Solução
+
+Desenvolvi uma plataforma *full-stack* completa, organizada em um **monorepo manual**, separando claramente o `apibackend` do frontend `web`. A solução é focada em dois pilares: arquitetura de API robusta e um padrão de comunicação seguro.
+
+### 1. API Backend (Node.js & Express)
+
+A API (`apibackend/`) é o cérebro do sistema, apresentando uma arquitetura modular (`controllers`, `services`, `models`, `middleware`):
+
+* **Segurança de Senha:** O modelo `User.js` usa um *hook* `pre('save')` do Mongoose para automaticamente gerar um *hash* da senha com `bcrypt` antes de salvar, garantindo que senhas em texto puro nunca sejam armazenadas.
+* **Autenticação (AuthN):** O `authController.js` implementa o padrão de segurança **JWT em Cookies `httpOnly`**. Após validar a senha, o token JWT não é enviado no JSON da resposta; ele é definido em um cookie seguro (`httpOnly: true`), tornando-o inacessível a scripts do lado do cliente.
+* **Autorização (AuthZ):** O `authMiddleware.js` fornece o middleware `protect` (que valida o token do cookie) e o middleware `authorize` (que implementa **RBAC - Role-Based Access Control**), restringindo rotas críticas (como `adminRoutes.js`) apenas para usuários com o *papel* 'admin'.
+
+### 2. Frontend (Next.js) e o Padrão BFF/Proxy
+
+O frontend (`app/`) é uma aplicação **Next.js 14** que se destaca pelo seu padrão de comunicação:
+
+* **Backend-for-Frontend (BFF):** O cliente (navegador) não fala diretamente com a API Node.js. Em vez disso, todas as requisições são enviadas para a API interna do Next.js, no caminho `/api/proxy/[...path]`/route.js].
+* **Mágica do Proxy:** Este arquivo (`route.js`) atua como um intermediário seguro no servidor Next.js. Ele recebe a chamada do cliente, copia seus cabeçalhos e cookies (incluindo o token JWT `httpOnly`), e repassa a requisição para a API de backend real (ex: `process.env.API_URL`). Ao receber a resposta do backend, ele a reenvia para o cliente.
+* **Por que isso é um padrão Sênior?** Isso resolve problemas de CORS, esconde a URL da API principal do público e permite que o servidor Next.js gerencie com segurança os cookies `httpOnly`, que são a base de todo o sistema de autenticação.
+
+## O Impacto
+
+O resultado é uma plataforma **segura por design**. A arquitetura não apenas funciona, mas demonstra um entendimento profundo de padrões de segurança web modernos (prevenção de XSS) e arquitetura de sistemas desacoplados (BFF/Proxy).
+
+Este projeto serve como um *case* de engenharia de software de nível Pleno-Sênior, mostrando como construir uma aplicação escalável, manutenível e fundamentalmente segura.
