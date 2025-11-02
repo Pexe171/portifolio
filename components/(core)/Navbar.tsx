@@ -62,11 +62,12 @@ export default function Navbar() {
           <ul className="hidden items-center gap-md text-sm font-medium text-midnight-muted md:flex">
             {links.map((link) => {
               const ativo = linkEstaAtivo(link.href);
+              const destino = link.href.startsWith('#') ? `/${link.href}` : link.href;
 
               return (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={destino}
                     className={`rounded-md px-sm py-xs transition hover:text-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-surface ${
                       ativo ? 'text-midnight-accent' : ''
                     }`}
