@@ -1,16 +1,7 @@
 import type { Config } from 'tailwindcss';
 
-const withOpacityValue = (variable: string) => ({
-  opacityValue
-}: {
-  opacityValue?: string;
-}) => {
-  if (opacityValue === undefined) {
-    return `rgb(var(${variable}))`;
-  }
-
-  return `rgb(var(${variable}) / ${opacityValue})`;
-};
+const withOpacityValue = (variable: string) =>
+  `rgb(var(${variable}) / <alpha-value>)`;
 
 const config: Config = {
   darkMode: 'class',
