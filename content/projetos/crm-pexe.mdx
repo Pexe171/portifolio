@@ -1,0 +1,58 @@
+---
+title: "CRM Pexe: Ecossistema SaaS Enterprise"
+summary: "Plataforma de gestão comercial Multi-tenant desenvolvida em Monorepo (TurboRepo). Integra CRM, Atendimento Omnichannel (WhatsApp), Automação de Processos (n8n) e Inteligência Artificial para Scoring de Leads."
+tags: ["NestJS", "Next.js", "TurboRepo", "Docker", "Redis", "PostgreSQL", "Prisma", "OpenAI", "WebSockets"]
+cover: "/images/projetos/crm-pexe-cover.jpg"
+video: ""
+order: 1
+featured: true
+---
+
+## Visão Geral do Produto
+
+O **CRM Pexe** não é apenas uma ferramenta de gestão de contatos; é um **SaaS (Software as a Service) Multi-tenant** projetado para centralizar toda a operação de vendas e atendimento de empresas.
+A plataforma resolve o problema da fragmentação de dados, onde empresas usam uma ferramenta para WhatsApp, outra para Kanban de vendas e planilhas para financeiro. O Pexe unifica tudo isso em um único ecossistema, isolando dados por "Workspaces" e permitindo gestão granular de permissões.
+
+## Arquitetura de Engenharia (Deep Dive)
+
+A decisão de arquitetura focou em **escalabilidade horizontal** e **manutenibilidade** a longo prazo.
+
+### 1. Estrutura Monorepo (TurboRepo)
+Para garantir consistência de tipagem e reutilização de código entre o Frontend e o Backend, adotei uma estratégia de Monorepo:
+* **Apps:** Separação clara entre `apps/web` (Next.js App Router) e `apps/api` (NestJS).
+* **Shared Packages:** Utilitários, configurações de ESLint/Prettier e DTOs compartilhados, garantindo que uma mudança no Backend reflita imediatamente no Frontend (Type Safety end-to-end).
+
+### 2. Backend Robusto (NestJS & Microservices-ready)
+A API foi construída seguindo os princípios de **Clean Architecture** e **SOLID**:
+* **Filas e Jobs (Redis + BullMQ):** Processos pesados, como o disparo de campanhas de mensagens ou o processamento de Webhooks do WhatsApp, são enviados para filas no Redis. Isso impede que a API principal trave sob alta carga.
+* **Banco de Dados (Prisma + PostgreSQL):** Uso de migrations controladas para evolução do esquema de dados, lidando com relacionamentos complexos entre `Workspaces`, `Deals`, `Contacts` e `Activities`.
+* **Autenticação & Segurança:** Implementação de JWT com Refresh Tokens e hash de senhas seguro. O sistema possui **RBAC (Role-Based Access Control)** completo, onde cada rota é protegida por Guards que verificam se o usuário tem permissão para aquela ação específica dentro do Workspace.
+
+### 3. Módulos de Destaque
+
+#### 🤖 Motor de Automação e Integrações (n8n)
+Desenvolvi um módulo `automation-engine` interno. O sistema é capaz de disparar gatilhos baseados em eventos de negócio (ex: "Lead mudou para a fase 'Fechamento'"). Além disso, há uma integração nativa com **n8n**, permitindo que os clientes criem fluxos de trabalho visuais complexos que reagem a eventos do CRM.
+
+#### 💬 Omnichannel e WebSockets
+O módulo de atendimento utiliza **WebSockets (Gateways do NestJS)** para comunicação em tempo real.
+* Quando uma mensagem de WhatsApp chega via integração (WPPConnect/API Oficial), ela é processada via Webhook e enviada instantaneamente para a interface do atendente via socket, sem necessidade de *refresh*.
+* Suporte a filas de atendimento e distribuição de conversas entre agentes.
+
+#### 🧠 Inteligência Artificial (Lead Scoring)
+Implementação de um serviço de IA (`ai.module.ts`) que analisa o histórico de conversas e dados do lead. Utilizando a API da OpenAI, o sistema atribui automaticamente uma "pontuação de temperatura" ao lead, ajudando o vendedor a priorizar quem está mais propenso a comprar.
+
+#### 💰 Módulo Financeiro (Billing)
+Sistema completo de gestão de assinaturas SaaS integrado ao **Mercado Pago**.
+* Controle de planos (Free, Pro, Enterprise).
+* Gestão de consumo de créditos (para uso de IA ou disparo de mensagens em massa).
+* Webhooks de pagamento para liberação automática de funcionalidades.
+
+## Infraestrutura e DevOps
+
+O projeto é "Cloud Native", rodando inteiramente em containers:
+* **Docker Compose:** Orquestração completa do ambiente de desenvolvimento e produção (API, Banco, Redis, Adminer).
+* **CI/CD:** Pipelines configurados (GitHub Actions) para rodar testes (Jest e2e) e linting antes de qualquer deploy, garantindo a qualidade do código.
+
+## O Resultado
+
+O CRM Pexe representa um projeto de nível **Sênior/Arquiteto**, demonstrando domínio não apenas de código, mas de design de sistemas complexos. Ele une performance (Redis/NestJS), experiência de usuário (Next.js/Real-time) e valor de negócio (Automação/IA).
