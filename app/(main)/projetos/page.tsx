@@ -46,8 +46,10 @@ export default async function ProjetosPage() {
   return (
     <section className="space-y-2xl py-section">
       <header className="space-y-sm">
-        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Arquivo</p>
-        <h1 className="font-display text-4xl font-semibold text-midnight-text">Todos os meus projetos em um só lugar</h1>
+        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Arquivo</p>
+        <h1 className="font-display text-4xl font-semibold text-midnight-text md:text-5xl">
+          Todos os meus projetos em um só lugar
+        </h1>
         <p className="max-w-2xl text-midnight-muted">
           Aqui você encontra desde os cases em destaque até experimentos e estudos que consolidaram minhas habilidades em
           arquitetura, automação e experiências web.
@@ -55,7 +57,7 @@ export default async function ProjetosPage() {
       </header>
 
       {projetos.length > 0 ? (
-        <div className="grid gap-lg md:grid-cols-2">
+        <div className="grid gap-lg lg:grid-cols-2">
           {projetos.map((projeto) => (
             <ProjectCard key={projeto.slug} projeto={projeto} />
           ))}

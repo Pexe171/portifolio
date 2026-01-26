@@ -7,8 +7,8 @@ export default function Providers({ children }: PropsWithChildren) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
-      enableSystem
+      defaultTheme="dark"
+      enableSystem={false}
       enableColorScheme
       disableTransitionOnChange
     >

@@ -5,17 +5,17 @@ export default function About() {
   return (
     <section id="sobre" className="space-y-2xl py-section">
       <ScrollReveal className="space-y-sm">
-        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Sobre mim</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text">Construindo soluções com propósito</h2>
+        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Sobre mim</p>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Construindo soluções com propósito</h2>
       </ScrollReveal>
 
       <div className="grid gap-2xl lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-lg text-lg text-midnight-muted">
           <ScrollReveal delay={0.1}>
             <p>
-              Estudante de Engenharia de Software com foco em Back-end. Possuo experiência prática na
-              criação de aplicações a partir de projetos acadêmicos e pessoais, incluindo o desenvolvimento de um sistema de
-              cobrança automatizado com Node.js e integração de API.
+              Estudante de Engenharia de Software com foco em Back-end. Possuo experiência prática na criação de aplicações a
+              partir de projetos acadêmicos e pessoais, incluindo o desenvolvimento de um sistema de cobrança automatizado com
+              Node.js e integração de API.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
@@ -27,12 +27,12 @@ export default function About() {
           </ScrollReveal>
           <ScrollReveal delay={0.3}>
             <ul className="grid gap-sm text-base">
-              <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/60 p-md">
-                <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
+              <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/40 p-md backdrop-blur">
+                <span className="mt-2 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
                 <span>Experiência com Node.js, TypeScript e integrações REST para automatizar rotinas de negócio.</span>
               </li>
-              <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/60 p-md">
-                <span className="mt-1 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
+              <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/40 p-md backdrop-blur">
+                <span className="mt-2 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
                 <span>Prática em organizar projetos com testes, documentação e foco na colaboração entre times.</span>
               </li>
             </ul>
@@ -40,8 +40,9 @@ export default function About() {
         </div>
 
         <ScrollReveal delay={0.2} className="mx-auto w-full max-w-md">
-          <div className="relative overflow-hidden rounded-3xl border border-midnight-stroke bg-midnight-surface shadow-lg">
+          <div className="relative overflow-hidden rounded-3xl border border-midnight-stroke/60 bg-midnight-surface/40 shadow-2xl shadow-black/30">
             <div className="absolute inset-0 bg-gradient-to-tr from-midnight-accent/20 via-transparent to-midnight-accent/30" />
+            <div className="absolute -right-10 top-8 h-24 w-24 rounded-full bg-midnight-accent/30 blur-2xl" />
             <Image
               src="/images/foto-perfil.svg"
               alt="Retrato ilustrado do desenvolvedor sorrindo"

@@ -39,7 +39,7 @@ export default function Timeline({ eventos }: TimelineProps) {
   return (
     <div className="relative">
       <motion.span
-        className="absolute left-[13px] top-0 h-full w-[2px] origin-top rounded-full bg-midnight-stroke/60 md:left-1/2 md:-translate-x-1/2 md:bg-midnight-accent/40"
+        className="absolute left-[13px] top-0 h-full w-[2px] origin-top rounded-full bg-gradient-to-b from-midnight-accent/60 via-midnight-stroke/40 to-transparent md:left-1/2 md:-translate-x-1/2"
         style={{ scaleY: progressoLinha }}
         aria-hidden
       />
@@ -58,14 +58,14 @@ export default function Timeline({ eventos }: TimelineProps) {
             <motion.li
               key={evento.titulo}
               variants={variantesEvento}
-              className={`relative flex max-w-xl flex-col gap-sm rounded-xl border border-midnight-stroke/60 bg-midnight-surface/80 p-lg backdrop-blur-sm transition md:max-w-none ${alinhamento}`}
+              className={`relative flex max-w-xl flex-col gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/50 p-lg backdrop-blur transition md:max-w-none ${alinhamento}`}
             >
               <span
-                className="absolute left-[-29px] top-10 hidden h-4 w-4 rounded-full border-2 border-midnight-accent bg-midnight-surface md:block"
+                className="absolute left-[-29px] top-10 hidden h-4 w-4 rounded-full border-2 border-midnight-accent bg-midnight-bg md:block"
                 aria-hidden
               />
               <span
-                className="absolute -left-[15px] top-6 block h-3 w-3 rounded-full border border-midnight-accent bg-midnight-surface md:hidden"
+                className="absolute -left-[15px] top-6 block h-3 w-3 rounded-full border border-midnight-accent bg-midnight-bg md:hidden"
                 aria-hidden
               />
 

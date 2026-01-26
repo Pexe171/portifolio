@@ -69,7 +69,7 @@ export default function ThemeToggle() {
     <button
       type="button"
       onClick={alternarTema}
-      className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-midnight-stroke bg-midnight-surface text-midnight-muted transition hover:border-midnight-accent hover:text-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-surface"
+      className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-midnight-stroke/70 bg-midnight-surface/70 text-midnight-muted shadow-lg shadow-black/20 transition hover:border-midnight-accent hover:text-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-bg"
       aria-label={`Alternar para o tema ${estaNoTemaEscuro ? 'claro' : 'escuro'}`}
       aria-pressed={estaNoTemaEscuro}
     >

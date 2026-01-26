@@ -51,16 +51,22 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-midnight-stroke/60 bg-midnight-surface/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-midnight-stroke/50 bg-midnight-bg/80 backdrop-blur-xl">
       <nav
         className="mx-auto flex max-w-layout items-center justify-between px-xl py-md lg:px-0"
         aria-label="Seções principais do portfólio"
       >
-        <Link href="/" className="font-display text-lg font-semibold text-midnight-text">
-          David
+        <Link href="/" className="group inline-flex items-center gap-sm font-display text-lg font-semibold text-midnight-text">
+          <span className="relative">
+            David
+            <span className="absolute -bottom-1 left-0 h-[2px] w-full origin-left scale-x-0 bg-midnight-accent transition duration-300 group-hover:scale-x-100" />
+          </span>
+          <span className="rounded-full border border-midnight-stroke/60 bg-midnight-surface/60 px-sm py-xs text-[0.6rem] uppercase tracking-[0.3em] text-midnight-muted">
+            Portfolio
+          </span>
         </Link>
         <div className="flex items-center gap-lg">
-          <ul className="hidden items-center gap-md text-sm font-medium text-midnight-muted md:flex">
+          <ul className="hidden items-center gap-md text-xs font-semibold uppercase tracking-[0.25em] text-midnight-muted md:flex">
             {links.map((link) => {
               const ativo = linkEstaAtivo(link.href);
 
@@ -68,12 +74,17 @@ export default function Navbar() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className={`rounded-md px-sm py-xs transition hover:text-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-surface ${
-                      ativo ? 'text-midnight-accent' : ''
+                    className={`relative rounded-full px-md py-xs transition hover:text-midnight-text focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-bg ${
+                      ativo ? 'text-midnight-text' : ''
                     }`}
                     aria-current={ativo ? 'page' : undefined}
                   >
-                    {link.rotulo}
+                    <span className="relative z-10">{link.rotulo}</span>
+                    <span
+                      className={`absolute inset-0 rounded-full border transition ${
+                        ativo ? 'border-midnight-accent/80 bg-midnight-accent/10' : 'border-transparent'
+                      }`}
+                    />
                   </Link>
                 </li>
               );

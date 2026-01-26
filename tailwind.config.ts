@@ -51,6 +51,25 @@ const config: Config = {
       maxWidth: {
         content: '68rem',
         layout: '80rem'
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-12px)' }
+        },
+        glow: {
+          '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
+          '50%': { opacity: '0.85', transform: 'scale(1.05)' }
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '100%': { backgroundPosition: '100% 50%' }
+        }
+      },
+      animation: {
+        'float-slow': 'float 12s ease-in-out infinite',
+        glow: 'glow 7s ease-in-out infinite',
+        shimmer: 'shimmer 10s ease infinite'
       }
     }
   },
