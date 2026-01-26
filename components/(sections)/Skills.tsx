@@ -71,12 +71,12 @@ export default function Skills() {
   return (
     <section id="habilidades" className="space-y-lg py-section">
       <header className="space-y-sm">
-        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Competências</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text">Habilidades técnicas e humanas</h2>
+        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Competências</p>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Habilidades técnicas e humanas</h2>
       </header>
 
       <motion.ul
-        className="grid gap-md md:grid-cols-2"
+        className="grid gap-md md:grid-cols-2 xl:grid-cols-3"
         variants={variantesLista}
         initial="oculto"
         whileInView="visivel"
@@ -86,8 +86,9 @@ export default function Skills() {
           <motion.li
             key={habilidade.titulo}
             variants={varianteItem}
-            className="flex flex-col gap-sm rounded-2xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface to-midnight-surface/70 p-lg text-midnight-muted shadow-lg shadow-midnight-shadow/40 transition hover:-translate-y-1.5 hover:border-midnight-accent hover:text-midnight-text"
+            className="group relative overflow-hidden rounded-2xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface/80 via-midnight-surface/40 to-midnight-bg p-lg text-midnight-muted shadow-2xl shadow-black/30 transition hover:-translate-y-1.5 hover:border-midnight-accent hover:text-midnight-text"
           >
+            <span className="absolute -right-8 top-6 h-16 w-16 rounded-full bg-midnight-accent/20 blur-2xl opacity-0 transition group-hover:opacity-100" />
             <span aria-hidden className="text-3xl">{habilidade.icone}</span>
             <div className="space-y-xs text-left">
               <h3 className="font-semibold text-midnight-text">{habilidade.titulo}</h3>

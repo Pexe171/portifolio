@@ -33,20 +33,23 @@ const redes = [
 
 export default function Footer() {
   return (
-    <footer className="mt-3xl border-t border-midnight-stroke/60 py-xl text-sm text-midnight-muted">
-      <div className="mx-auto flex max-w-layout flex-col gap-sm px-xl text-center md:flex-row md:items-center md:justify-between md:px-0">
-        <p>
-          Construído com carinho utilizando <strong className="font-semibold text-midnight-text">Next.js</strong> e{' '}
-          <strong className="font-semibold text-midnight-text">Tailwind CSS</strong>.
-        </p>
-        <div className="flex items-center justify-center gap-md">
+    <footer className="mt-3xl border-t border-midnight-stroke/60 bg-midnight-bg/40 py-xl text-sm text-midnight-muted">
+      <div className="mx-auto grid max-w-layout gap-lg px-xl text-center md:grid-cols-[1.2fr_1fr_1fr] md:items-center md:text-left md:px-0">
+        <div className="space-y-sm">
+          <p className="text-base font-semibold text-midnight-text">Obrigado pela visita.</p>
+          <p>
+            Construído com carinho utilizando <strong className="font-semibold text-midnight-text">Next.js</strong> e{' '}
+            <strong className="font-semibold text-midnight-text">Tailwind CSS</strong>, com foco em performance e acessibilidade.
+          </p>
+        </div>
+        <div className="flex items-center justify-center gap-md md:justify-start">
           {redes.map(({ href, rotulo, Icone }) => (
             <a
               key={href}
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-xs rounded-full border border-transparent px-sm py-xs text-midnight-muted transition hover:border-midnight-accent/60 hover:bg-midnight-surface hover:text-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-bg"
+              className="flex items-center gap-xs rounded-full border border-midnight-stroke/60 bg-midnight-surface/40 px-sm py-xs text-midnight-muted transition hover:border-midnight-accent/70 hover:bg-midnight-surface hover:text-midnight-accent focus:outline-none focus:ring-2 focus:ring-midnight-accent/70 focus:ring-offset-2 focus:ring-offset-midnight-bg"
               aria-label={`Abrir ${rotulo} em nova aba`}
             >
               <Icone />
@@ -54,7 +57,11 @@ export default function Footer() {
             </a>
           ))}
         </div>
-        <p>&copy; {new Date().getFullYear()} — Todos os direitos reservados.</p>
+        <div className="space-y-xs text-center md:text-right">
+          <p className="text-xs uppercase tracking-[0.35em] text-midnight-muted">Disponível</p>
+          <p className="text-sm text-midnight-text">Aberto para oportunidades e colaborações.</p>
+          <p>&copy; {new Date().getFullYear()} — Todos os direitos reservados.</p>
+        </div>
       </div>
     </footer>
   );

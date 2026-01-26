@@ -47,7 +47,7 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
           setHover(false);
           progresso.set(0);
         }}
-        className="overflow-hidden rounded-3xl border border-midnight-stroke bg-midnight-surface shadow-sm transition will-change-transform hover:-translate-y-2 hover:border-midnight-accent hover:shadow-xl"
+        className="relative overflow-hidden rounded-3xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface/90 via-midnight-surface/60 to-midnight-bg shadow-xl shadow-black/30 transition will-change-transform hover:-translate-y-2 hover:border-midnight-accent/70 hover:shadow-2xl hover:shadow-cyan-500/20"
       >
         <div className="relative aspect-video w-full overflow-hidden bg-midnight-surface">
           <MotionDiv className="absolute inset-0" variants={variantesMidia} transition={{ duration: 0.4, ease: 'easeInOut' }}>
@@ -82,8 +82,8 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
           )}
 
           <MotionDiv
-            className="absolute inset-0 bg-midnight-bg/80"
-            animate={{ opacity: hover ? 0.2 : 0.45 }}
+            className="absolute inset-0 bg-gradient-to-t from-midnight-bg/90 via-midnight-bg/40 to-transparent"
+            animate={{ opacity: hover ? 0.25 : 0.55 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           />
           <MotionDiv className="absolute bottom-4 left-4 h-1 rounded-full bg-midnight-accent" style={{ width: largura }} />
@@ -97,7 +97,7 @@ export default function ProjectCard({ projeto }: ProjectCardProps) {
 
           <ul className="flex flex-wrap gap-sm text-xs font-medium uppercase tracking-wide text-midnight-muted">
             {projeto.tags.map((tag) => (
-              <li key={tag} className="rounded-full border border-midnight-stroke/60 px-md py-xs">
+              <li key={tag} className="rounded-full border border-midnight-stroke/60 bg-midnight-bg/30 px-md py-xs">
                 {tag}
               </li>
             ))}

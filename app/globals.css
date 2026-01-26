@@ -7,10 +7,10 @@
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, SFMono, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
   --font-display: var(--font-sans);
-  --color-bg: 248 250 252;
+  --color-bg: 245 247 250;
   --color-surface: 255 255 255;
-  --color-surface-elevated: 226 232 240;
-  --color-stroke: 203 213 225;
+  --color-surface-elevated: 231 235 240;
+  --color-stroke: 211 219 229;
   --color-text: 15 23 42;
   --color-muted: 71 85 105;
   --color-accent: 14 165 233;
@@ -19,22 +19,36 @@
 
 .dark {
   color-scheme: dark;
-  --color-bg: 3 7 18;
-  --color-surface: 11 17 32;
-  --color-surface-elevated: 17 24 54;
-  --color-stroke: 30 41 59;
-  --color-text: 226 232 240;
+  --color-bg: 6 6 8;
+  --color-surface: 15 15 18;
+  --color-surface-elevated: 25 25 32;
+  --color-stroke: 45 45 56;
+  --color-text: 242 244 248;
   --color-muted: 148 163 184;
-  --color-accent: 0 229 255;
-  --color-accent-strong: 103 232 249;
+  --color-accent: 56 189 248;
+  --color-accent-strong: 125 211 252;
 }
 
 body {
   @apply bg-midnight-bg text-midnight-text antialiased transition-colors duration-300 ease-in-out;
+  background-image:
+    radial-gradient(circle at 10% 10%, rgb(var(--color-accent) / 0.18), transparent 45%),
+    radial-gradient(circle at 90% 15%, rgb(var(--color-accent-strong) / 0.12), transparent 50%),
+    radial-gradient(circle at 50% 100%, rgb(99 102 241 / 0.12), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgb(var(--color-accent) / 0.3);
+  color: rgb(var(--color-text));
 }
 
 a {
   @apply text-midnight-accent underline-offset-4 transition hover:text-midnight-accent-strong;
+}
+
+main {
+  @apply relative z-10;
 }
 
 .prose :not(pre) > code {

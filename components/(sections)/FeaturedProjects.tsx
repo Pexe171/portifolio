@@ -7,17 +7,25 @@ export default async function FeaturedProjects() {
 
   return (
     <section id="projetos" className="space-y-2xl py-section">
-      <header className="space-y-sm">
-        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Projetos</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text">Estudos de caso que mostram minha forma de pensar</h2>
-        <p className="max-w-2xl text-midnight-muted">
-          Cada card abaixo é alimentado por um arquivo MDX com o estudo de caso completo. Clique para mergulhar nos detalhes de
-          pesquisa, design e código.
-        </p>
+      <header className="flex flex-col gap-md md:flex-row md:items-end md:justify-between">
+        <div className="space-y-sm">
+          <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Projetos</p>
+          <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">
+            Estudos de caso que mostram minha forma de pensar
+          </h2>
+          <p className="max-w-2xl text-midnight-muted">
+            Cada card abaixo é alimentado por um arquivo MDX com o estudo de caso completo. Clique para mergulhar nos detalhes de
+            pesquisa, design e código.
+          </p>
+        </div>
+        <div className="flex items-center gap-sm text-xs uppercase tracking-[0.35em] text-midnight-muted">
+          <span className="h-[1px] w-10 bg-midnight-stroke/70" />
+          Destaques
+        </div>
       </header>
 
       {projetos.length > 0 ? (
-        <div className="grid gap-lg md:grid-cols-2">
+        <div className="grid gap-lg lg:grid-cols-2">
           {projetos.map((projeto) => (
             <ProjectCard key={projeto.slug} projeto={projeto} />
           ))}

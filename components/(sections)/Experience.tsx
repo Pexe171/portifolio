@@ -13,8 +13,11 @@ export default function Experience() {
   return (
     <section id="experiencias" className="space-y-lg py-section">
       <header className="space-y-sm">
-        <p className="text-sm uppercase tracking-[0.3em] text-midnight-muted">Experiências</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text">Uma jornada guiada por colaboração</h2>
+        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Experiências</p>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Uma jornada guiada por colaboração</h2>
+        <p className="max-w-2xl text-midnight-muted">
+          Acompanhe os marcos que consolidaram minha trajetória acadêmica e minha visão sobre construir produtos de qualidade.
+        </p>
       </header>
 
       <Timeline eventos={experiencias} />
