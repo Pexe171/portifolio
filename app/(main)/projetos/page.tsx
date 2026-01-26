@@ -42,10 +42,11 @@ export const metadata: Metadata = {
 
 export default async function ProjetosPage() {
   const projetos = await listarTodosProjetos();
+  const total = projetos.length;
 
   return (
     <section className="space-y-2xl py-section">
-      <header className="space-y-sm">
+      <header className="space-y-md">
         <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Arquivo</p>
         <h1 className="font-display text-4xl font-semibold text-midnight-text md:text-5xl">
           Todos os meus projetos em um só lugar
@@ -54,6 +55,17 @@ export default async function ProjetosPage() {
           Aqui você encontra desde os cases em destaque até experimentos e estudos que consolidaram minhas habilidades em
           arquitetura, automação e experiências web.
         </p>
+        <div className="flex flex-wrap items-center gap-md text-xs uppercase tracking-[0.35em] text-midnight-muted">
+          <span className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/40 px-md py-xs">
+            {total} projetos disponíveis
+          </span>
+          <span className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/40 px-md py-xs">
+            Atualizações frequentes
+          </span>
+          <span className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/40 px-md py-xs">
+            Casos completos + experimentos
+          </span>
+        </div>
       </header>
 
       {projetos.length > 0 ? (
