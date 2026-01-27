@@ -5,6 +5,7 @@ import About from '@/components/(sections)/About';
 import Skills from '@/components/(sections)/Skills';
 import Experience from '@/components/(sections)/Experience';
 import Contact from '@/components/(sections)/Contact';
+import VisitorCounter from '@/components/(sections)/VisitorCounter';
 import { siteMetadata } from '@/lib/siteMetadata';
 
 const homeOpenGraphImages = siteMetadata.ogImage
@@ -48,6 +49,7 @@ export default function HomePage() {
       <About />
       <Skills />
       <Experience />
+      <VisitorCounter />
       <Contact />
     </>
   );
