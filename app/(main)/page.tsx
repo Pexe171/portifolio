@@ -21,11 +21,11 @@ const homeOpenGraphImages = siteMetadata.ogImage
 const homeTwitterImages = siteMetadata.ogImage ? [siteMetadata.ogImage] : undefined;
 
 export const metadata: Metadata = {
-  title: 'Início | David Henrique Miranda da Silva',
+  title: 'Início | David Henrique',
   description:
     'Estudante de Engenharia de Software focado em desenvolvimento web e back-end. Conheça integrações com APIs, automações e projetos construídos com cuidado.',
   openGraph: {
-    title: 'Início | David Henrique Miranda da Silva',
+    title: 'Início | David Henrique',
     description:
       'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
     url: '/',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Início | David Henrique Miranda da Silva',
+    title: 'Início | David Henrique',
     description:
       'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
     ...(homeTwitterImages ? { images: homeTwitterImages } : {})
