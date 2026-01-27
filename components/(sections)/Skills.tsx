@@ -41,7 +41,7 @@ const habilidades = [
   {
     icone: '🚀',
     titulo: 'DevOps & DX',
-    descricao: 'Pipelines CI, docker-compose unificado e onboarding guiado por documentação viva.'
+    descricao: 'Pipelines CI, docker-compose unificado, deploy na AWS Amplify e onboarding guiado por documentação viva.'
   }
 ];
 
