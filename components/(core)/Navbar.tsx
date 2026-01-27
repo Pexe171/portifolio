@@ -16,6 +16,7 @@ const links: LinkNavegacao[] = [
   { href: '/#sobre', rotulo: 'Sobre' },
   { href: '/#habilidades', rotulo: 'Skills' },
   { href: '/#experiencias', rotulo: 'Experiências' },
+  { href: '/#visitantes', rotulo: 'Visitantes' },
   { href: '/#contato', rotulo: 'Contato' }
 ];
 
