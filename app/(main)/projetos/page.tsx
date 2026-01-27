@@ -17,14 +17,14 @@ const openGraphImages = siteMetadata.ogImage
 const twitterImages = siteMetadata.ogImage ? [siteMetadata.ogImage] : undefined;
 
 export const metadata: Metadata = {
-  title: 'Arquivo de projetos | David Henrique Miranda da Silva',
+  title: 'Arquivo de projetos | David Henrique',
   description:
     'Coleção completa dos meus estudos de caso em desenvolvimento web e back-end, com detalhes sobre arquitetura, testes e resultados gerados.',
   alternates: {
     canonical: `${siteMetadata.url}/projetos`
   },
   openGraph: {
-    title: 'Arquivo de projetos | David Henrique Miranda da Silva',
+    title: 'Arquivo de projetos | David Henrique',
     description:
       'Reúna-se com todos os estudos de caso que desenvolvi, com foco em arquitetura bem estruturada, integrações e segurança.',
     url: `${siteMetadata.url}/projetos`,
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arquivo de projetos | David Henrique Miranda da Silva',
+    title: 'Arquivo de projetos | David Henrique',
     description:
       'Veja cada projeto detalhado, as tecnologias usadas e como resolvi problemas reais com software.',
     ...(twitterImages ? { images: twitterImages } : {})

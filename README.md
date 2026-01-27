@@ -1,4 +1,4 @@
-# 🧭 Portfólio de David Henrique Miranda da Silva
+# 🧭 Portfólio de David Henrique
 
 Projeto construído para apresentar minha jornada como estudante de Engenharia de Software com foco em desenvolvimento web e back-end. A base utiliza App Router do Next.js 14, Tailwind CSS e conteúdo em MDX para manter tudo organizado e fácil de evoluir.
 

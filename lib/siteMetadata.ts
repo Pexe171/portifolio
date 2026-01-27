@@ -14,14 +14,14 @@ export interface SiteMetadata {
 }
 
 export const siteMetadata: SiteMetadata = {
-  name: 'David Henrique Miranda da Silva',
+  name: 'David Henrique',
   shortName: 'David Henrique',
-  title: 'David Henrique Miranda da Silva | Engenharia de Software e back-end',
+  title: 'David Henrique | Engenharia de Software e back-end',
   description:
-    'Portfólio de David Henrique Miranda da Silva, estudante de Engenharia de Software com foco em desenvolvimento web e back-end, integrações de APIs e automação de rotinas.',
+    'Portfólio de David Henrique, estudante de Engenharia de Software com foco em desenvolvimento web e back-end, integrações de APIs e automação de rotinas.',
   url: 'https://meu-portfolio.dev',
   locale: 'pt_BR',
-  author: 'David Henrique Miranda da Silva',
+  author: 'David Henrique',
   keywords: [
     'portfólio',
     'engenharia de software',
