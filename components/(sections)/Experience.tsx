@@ -2,10 +2,10 @@ import Timeline, { type EventoTimeline } from '@/components/(ui)/Timeline';
 
 const experiencias: EventoTimeline[] = [
   {
-    ano: '2024',
+    ano: 'Junho de 2025',
     titulo: 'Início da vida acadêmica',
     descricao:
-      'Entrei na Universidade Federal do Amazonas (UFAM) para cursar Engenharia de Software, dando início à minha jornada universitária.'
+      'Entrei na Universidade Federal do Amazonas (UFAM) em junho de 2025 para cursar Engenharia de Software, dando início à minha jornada universitária.'
   }
 ];
 
