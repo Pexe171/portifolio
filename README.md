@@ -28,36 +28,19 @@ RESEND_API_KEY=
 RESEND_FROM_EMAIL=
 RESEND_TO_EMAIL=
 
-# Contador de visitantes (DynamoDB)
-VISITOR_TABLE_NAME=
-AWS_REGION=us-east-1
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_SESSION_TOKEN=
+# Contador de visitantes (arquivo local)
+# Caminho do arquivo JSON usado para persistir o contador (opcional)
+VISITOR_STORAGE_PATH=
 ```
-
-> O `AWS_SESSION_TOKEN` é obrigatório apenas quando você usa credenciais temporárias.
 
 ## Contador de visitantes (IPs únicos)
 
-O contador registra apenas IPs únicos (com hash) e mantém um total agregado. A tabela no DynamoDB precisa ter a seguinte estrutura:
-
-- **Partition key (pk)**: `String`
-- Itens de IP: `pk = ip#<hash>`
-- Item de contador: `pk = counter`
-  - `total` (Number)
-  - `atualizadoEm` (String, ISO)
+O contador registra apenas IPs únicos (com hash) e mantém um total agregado. A persistência é feita em um arquivo JSON (padrão: `data/visitors.json`). Em ambientes serverless, o armazenamento local pode ser efêmero e o contador pode reiniciar entre deploys ou escalas; para uso em produção com persistência garantida, substitua por um banco gerenciado.
 
 A API está disponível em:
 
 - `POST /api/visitors` → registra o IP do visitante e retorna o total
 - `GET /api/visitors` → retorna o total sem registrar novo IP
-
-## Deploy no AWS Amplify
-
-1. Defina as variáveis de ambiente no painel do Amplify.
-2. Garanta que o papel (IAM role) do build tenha permissão para usar o DynamoDB.
-3. A tabela indicada em `VISITOR_TABLE_NAME` precisa existir antes do build.
 
 ## Licença
 
