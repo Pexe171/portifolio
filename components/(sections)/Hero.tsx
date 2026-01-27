@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="space-y-lg">
           <div className="space-y-sm">
             <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">
-              Opa Meu Patrao, eu sou <span className="font-semibold text-midnight-text">David Henrique</span>
+              Olá! Eu sou o <span className="font-semibold text-midnight-text">David Henrique</span>
             </p>
             <h1 className="font-display text-4xl font-bold leading-tight text-midnight-text md:text-6xl">
               Engenharia de software com foco em back-end de alta performance.
