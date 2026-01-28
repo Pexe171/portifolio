@@ -67,6 +67,8 @@ Foi adicionado um módulo de comentários simples para registrar quem passou pel
 Os comentários e contadores são armazenados no MongoDB via Data API (sem dependências nativas) ou diretamente pela URI,
 caso você tenha instalado o pacote `mongodb`.
 
+A resposta da API de comentários normaliza o campo `id` para string, garantindo compatibilidade entre Data API e driver nativo.
+
 ## Licença
 
 Uso pessoal.

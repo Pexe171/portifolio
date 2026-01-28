@@ -4,6 +4,7 @@ import { mongoCount, mongoFind, mongoInsertOne, mongoDisponivel } from '@/lib/mo
 export const runtime = 'nodejs';
 
 type ComentarioDocumento = {
+  _id?: { toString: () => string } | string;
   nome: string;
   mensagem: string | null;
   criadoEm: string;
@@ -52,7 +53,7 @@ export async function GET(request: NextRequest) {
     sucesso: true,
     total,
     comentarios: comentarios.map((comentario) => ({
-      id: comentario._id?.toString(),
+      id: typeof comentario._id === 'string' ? comentario._id : comentario._id?.toString(),
       nome: comentario.nome,
       mensagem: comentario.mensagem,
       criadoEm: comentario.criadoEm
