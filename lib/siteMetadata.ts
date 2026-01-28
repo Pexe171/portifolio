@@ -36,5 +36,5 @@ export const siteMetadata: SiteMetadata = {
   ],
   twitterHandle: '@meu_portfolio',
   linkedIn: 'https://br.linkedin.com/in/david-henrique-miranda-da-silva-758666388',
-  github: 'https://github.com/seu-usuario'
+  github: 'https://github.com/pexe171'
 };
