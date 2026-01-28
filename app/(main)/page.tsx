@@ -4,6 +4,7 @@ import FeaturedProjects from '@/components/(sections)/FeaturedProjects';
 import About from '@/components/(sections)/About';
 import Skills from '@/components/(sections)/Skills';
 import Experience from '@/components/(sections)/Experience';
+import Comments from '@/components/(sections)/Comments';
 import Contact from '@/components/(sections)/Contact';
 import VisitorCounter from '@/components/(sections)/VisitorCounter';
 import { siteMetadata } from '@/lib/siteMetadata';
@@ -50,6 +51,7 @@ export default function HomePage() {
       <Skills />
       <Experience />
       <VisitorCounter />
+      <Comments />
       <Contact />
     </>
   );
