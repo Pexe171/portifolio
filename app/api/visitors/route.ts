@@ -2,10 +2,18 @@ import crypto from 'crypto';
 import { promises as fs } from 'fs';
 import path from 'path';
 import type { NextRequest } from 'next/server';
+import { mongoFindOne, mongoUpdateOne, mongoDisponivel } from '@/lib/mongodb';
 
 export const runtime = 'nodejs';
 
 type ContadorPersistido = {
+  total: number;
+  atualizadoEm: string | null;
+  ips: string[];
+};
+
+type ContadorMongo = {
+  _id: string;
   total: number;
   atualizadoEm: string | null;
   ips: string[];
@@ -58,8 +66,55 @@ const salvarContador = async (contador: ContadorPersistido) => {
   await fs.writeFile(caminhoArmazenamento, JSON.stringify(contador, null, 2), 'utf8');
 };
 
+const lerContadorMongo = async () => {
+  if (!mongoDisponivel()) {
+    return null;
+  }
+
+  const resposta = await mongoFindOne<ContadorMongo>('metrics', { _id: 'visitors' });
+  if (!resposta) {
+    return null;
+  }
+
+  const doc = resposta.document ?? null;
+
+  if (!doc) {
+    return {
+      total: 0,
+      atualizadoEm: null,
+      ips: []
+    };
+  }
+
+  return {
+    total: doc.total ?? 0,
+    atualizadoEm: typeof doc.atualizadoEm === 'string' ? doc.atualizadoEm : null,
+    ips: Array.isArray(doc.ips) ? doc.ips : []
+  };
+};
+
+const salvarContadorMongo = async (contador: ContadorPersistido) => {
+  if (!mongoDisponivel()) {
+    return false;
+  }
+
+  const resultado = await mongoUpdateOne(
+    'metrics',
+    { _id: 'visitors' },
+    {
+      $set: {
+        total: contador.total,
+        atualizadoEm: contador.atualizadoEm,
+        ips: contador.ips
+      }
+    },
+    true
+  );
+  return Boolean(resultado);
+};
+
 export async function GET() {
-  const contador = await lerContador();
+  const contador = (await lerContadorMongo()) ?? (await lerContador());
 
   return Response.json({
     sucesso: true,
@@ -82,7 +137,7 @@ export async function POST(request: NextRequest) {
 
   const hashIp = sha256(ip);
   const agora = new Date().toISOString();
-  const contador = await lerContador();
+  const contador = (await lerContadorMongo()) ?? (await lerContador());
   const jaRegistrado = contador.ips.includes(hashIp);
   let registrado = !jaRegistrado;
 
@@ -92,7 +147,10 @@ export async function POST(request: NextRequest) {
     contador.atualizadoEm = agora;
   }
 
-  await salvarContador(contador);
+  const salvouMongo = await salvarContadorMongo(contador);
+  if (!salvouMongo) {
+    await salvarContador(contador);
+  }
 
   return Response.json({
     sucesso: true,
