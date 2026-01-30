@@ -8,6 +8,7 @@ Portfólio pessoal com foco em engenharia de software, projetos em produção e 
 - Interface responsiva construída com Tailwind CSS.
 - API Routes para contato via e-mail.
 - Integração pronta para envio de e-mails via Resend.
+- Conteúdo da seção de habilidades com foco técnico.
 
 ## Stack
 

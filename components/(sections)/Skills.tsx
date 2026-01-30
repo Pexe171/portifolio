@@ -72,7 +72,7 @@ export default function Skills() {
     <section id="habilidades" className="space-y-lg py-section">
       <header className="space-y-sm">
         <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Competências</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Habilidades técnicas e humanas</h2>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Habilidades técnicas</h2>
       </header>
 
       <motion.ul
