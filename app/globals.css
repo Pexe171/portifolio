@@ -81,3 +81,21 @@ main {
 .dark .prose :not(pre) > code::before {
   color: rgb(var(--color-accent-strong));
 }
+
+.aurora {
+  background:
+    radial-gradient(circle at 10% 30%, rgb(var(--color-accent) / 0.34), transparent 35%),
+    radial-gradient(circle at 70% 20%, rgb(168 85 247 / 0.28), transparent 35%),
+    radial-gradient(circle at 95% 40%, rgb(var(--color-accent-strong) / 0.25), transparent 40%);
+  filter: blur(18px);
+  animation: aurora-move 14s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-move {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(0, 16px, 0) scale(1.07);
+  }
+}

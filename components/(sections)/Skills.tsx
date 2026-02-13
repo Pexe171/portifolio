@@ -1,69 +1,25 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
-const habilidades = [
-  {
-    icone: 'FE',
-    titulo: 'Frontend moderno',
-    descricao: 'Next.js 14, React Server Components, TypeScript e Tailwind CSS em interfaces de alta performance.'
-  },
-  {
-    icone: 'BE',
-    titulo: 'Arquitetura Node.js',
-    descricao: 'APIs em Express, padrões BFF/Proxy e serviços desacoplados com autenticação JWT segura.'
-  },
-  {
-    icone: 'DT',
-    titulo: 'Aplicações desktop',
-    descricao: 'Apps em Electron integrados ao WhatsApp, automações com node-cron e bancos locais SQLite.'
-  },
-  {
-    icone: 'DB',
-    titulo: 'Persistência de dados',
-    descricao: 'Modelagem em MongoDB, seeds versionadas e orquestração com Docker para ambientes completos.'
-  },
-  {
-    icone: 'SEC',
-    titulo: 'Segurança e autenticação',
-    descricao: 'Fluxos com cookies httpOnly, RBAC, criptografia de senhas e observabilidade integrada.'
-  },
-  {
-    icone: 'IA',
-    titulo: 'IA & integrações',
-    descricao: 'Integração com OpenAI, webhooks do WhatsApp, CMS e pipelines automáticos orientados a negócio.'
-  },
-  {
-    icone: 'DS',
-    titulo: 'Design Systems vivos',
-    descricao: 'shadcn/ui customizado, documentação em MDX e guidelines que conectam produto, design e engenharia.'
-  },
-  {
-    icone: 'DX',
-    titulo: 'DevOps & DX',
-    descricao: 'Pipelines CI, docker-compose unificado, deploy na AWS Amplify e onboarding guiado por documentação viva.'
-  }
-];
+import { trilhasSkills } from '@/lib/homeContent';
 
 const variantesLista = {
-  oculto: {
-    opacity: 0
-  },
+  oculto: { opacity: 0 },
   visivel: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.15
+      staggerChildren: 0.14,
+      delayChildren: 0.12
     }
   }
 };
 
 const varianteItem = {
-  oculto: { opacity: 0, y: 16 },
+  oculto: { opacity: 0, y: 20 },
   visivel: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, ease: 'easeOut' }
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
   }
 };
 
@@ -72,32 +28,38 @@ export default function Skills() {
     <section id="habilidades" className="space-y-lg py-section">
       <header className="space-y-sm">
         <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Competências</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Habilidades técnicas</h2>
+        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Stack completo em três frentes</h2>
+        <p className="max-w-2xl text-midnight-muted">
+          Organização das competências por trilhas para facilitar leitura técnica e evidenciar capacidade de entrega ponta a ponta.
+        </p>
       </header>
 
       <motion.ul
-        className="grid gap-md md:grid-cols-2 xl:grid-cols-3"
+        className="grid gap-md lg:grid-cols-3"
         variants={variantesLista}
         initial="oculto"
         whileInView="visivel"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.25 }}
       >
-        {habilidades.map((habilidade) => (
+        {trilhasSkills.map((trilha) => (
           <motion.li
-            key={habilidade.titulo}
+            key={trilha.titulo}
             variants={varianteItem}
-            className="group relative overflow-hidden rounded-2xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface/80 via-midnight-surface/40 to-midnight-bg p-lg text-midnight-muted shadow-2xl shadow-black/30 transition hover:-translate-y-1.5 hover:border-midnight-accent hover:text-midnight-text"
+            className="group relative overflow-hidden rounded-3xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface/80 via-midnight-surface/45 to-midnight-bg p-lg shadow-2xl shadow-black/20"
           >
-            <span className="absolute -right-8 top-6 h-16 w-16 rounded-full bg-midnight-accent/20 blur-2xl opacity-0 transition group-hover:opacity-100" />
-            <span
-              aria-hidden
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-midnight-stroke/60 bg-midnight-surface/80 text-[0.65rem] font-semibold tracking-[0.3em] text-midnight-text"
-            >
-              {habilidade.icone}
-            </span>
-            <div className="space-y-xs text-left">
-              <h3 className="font-semibold text-midnight-text">{habilidade.titulo}</h3>
-              <p>{habilidade.descricao}</p>
+            <span className="pointer-events-none absolute -right-10 top-8 h-24 w-24 rounded-full bg-midnight-accent/20 blur-3xl opacity-0 transition duration-500 group-hover:opacity-100" />
+            <h3 className="text-xl font-semibold text-midnight-text">{trilha.titulo}</h3>
+            <p className="mt-sm text-sm text-midnight-muted">{trilha.resumo}</p>
+
+            <div className="mt-md flex flex-wrap gap-sm">
+              {trilha.stacks.map((stack) => (
+                <span
+                  key={stack}
+                  className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/55 px-md py-xs text-xs uppercase tracking-[0.2em] text-midnight-muted"
+                >
+                  {stack}
+                </span>
+              ))}
             </div>
           </motion.li>
         ))}
