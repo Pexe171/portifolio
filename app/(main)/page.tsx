@@ -3,6 +3,7 @@ import Hero from '@/components/(sections)/Hero';
 import FeaturedProjects from '@/components/(sections)/FeaturedProjects';
 import About from '@/components/(sections)/About';
 import Skills from '@/components/(sections)/Skills';
+import Process from '@/components/(sections)/Process';
 import Experience from '@/components/(sections)/Experience';
 import Contact from '@/components/(sections)/Contact';
 import { siteMetadata } from '@/lib/siteMetadata';
@@ -23,11 +24,11 @@ const homeTwitterImages = siteMetadata.ogImage ? [siteMetadata.ogImage] : undefi
 export const metadata: Metadata = {
   title: 'Início | David Henrique',
   description:
-    'Estudante de Engenharia de Software focado em desenvolvimento web e back-end. Conheça integrações com APIs, automações e projetos construídos com cuidado.',
+    'Portfólio full stack com nova linguagem visual, animações avançadas e estudos de caso orientados a resultado de negócio.',
   openGraph: {
     title: 'Início | David Henrique',
     description:
-      'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
+      'Portfólio premium com frontend animado, arquitetura escalável e projetos full stack em produção.',
     url: '/',
     ...(homeOpenGraphImages ? { images: homeOpenGraphImages } : {})
   },
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Início | David Henrique',
     description:
-      'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
+      'Portfólio premium com frontend animado, arquitetura escalável e projetos full stack em produção.',
     ...(homeTwitterImages ? { images: homeTwitterImages } : {})
   }
 };
@@ -46,6 +47,7 @@ export default function HomePage() {
       <Hero />
       <FeaturedProjects />
       <About />
+      <Process />
       <Skills />
       <Experience />
       <Contact />

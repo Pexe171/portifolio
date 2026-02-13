@@ -59,6 +59,7 @@ const config: Config = {
       },
       animation: {
         'float-slow': 'float 12s ease-in-out infinite',
+        'float-slower': 'float 18s ease-in-out infinite',
         glow: 'glow 7s ease-in-out infinite',
         shimmer: 'shimmer 10s ease infinite'
       }
