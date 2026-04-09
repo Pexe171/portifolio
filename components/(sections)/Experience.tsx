@@ -1,26 +1,25 @@
-import Timeline, { type EventoTimeline } from '@/components/(ui)/Timeline';
-
-const experiencias: EventoTimeline[] = [
-  {
-    ano: 'Junho de 2025',
-    titulo: 'Início da vida acadêmica',
-    descricao:
-      'Entrei na Universidade Federal do Amazonas (UFAM) em junho de 2025 para cursar Engenharia de Software, dando início à minha jornada universitária.'
-  }
-];
+import Timeline from '@/components/(ui)/Timeline';
+import { processSteps } from '@/lib/profile';
 
 export default function Experience() {
+  const eventos = processSteps.map((step) => ({
+    ano: step.year,
+    titulo: step.title,
+    descricao: step.description
+  }));
+
   return (
-    <section id="experiencias" className="space-y-lg py-section">
-      <header className="space-y-sm">
-        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Experiências</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Uma jornada guiada por colaboração</h2>
-        <p className="max-w-2xl text-midnight-muted">
-          Acompanhe os marcos que consolidaram minha trajetória acadêmica e minha visão sobre construir produtos de qualidade.
+    <section className="space-y-8 py-24">
+      <header className="space-y-4">
+        <p className="eyebrow">Modo de operação</p>
+        <h2 className="section-heading">Meu processo é guiado por fluxo, contratos e clareza operacional.</h2>
+        <p className="section-copy">
+          Mesmo quando o projeto é visualmente forte, a base continua sendo entender a operação, estruturar a arquitetura e
+          só então refinar a experiência.
         </p>
       </header>
 
-      <Timeline eventos={experiencias} />
+      <Timeline eventos={eventos} />
     </section>
   );
 }

@@ -1,0 +1,31 @@
+<svg width="1600" height="1140" viewBox="0 0 1600 1140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1140" rx="40" fill="#09101A"/>
+  <rect x="58" y="58" width="1484" height="1024" rx="30" fill="#0E1625" stroke="#36527A"/>
+  <circle cx="1320" cy="182" r="144" fill="#62E1FF" fill-opacity="0.15"/>
+  <circle cx="250" cy="928" r="188" fill="#EF4444" fill-opacity="0.14"/>
+  <rect x="118" y="118" width="286" height="50" rx="25" fill="#102233" stroke="#62E1FF" stroke-opacity="0.34"/>
+  <text x="261" y="150" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="19" font-weight="600" letter-spacing="0.26em" text-anchor="middle">AMIGO OCUTO</text>
+  <text x="118" y="298" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="110" font-weight="700" letter-spacing="-0.05em">
+    Event Flow
+  </text>
+  <text x="118" y="394" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="110" font-weight="700" letter-spacing="-0.05em">
+    Platform
+  </text>
+  <text x="118" y="486" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="34">
+    Sorteio, listas, administração e comunicação por e-mail
+  </text>
+  <rect x="118" y="618" width="418" height="136" rx="28" fill="#101A2B" stroke="#36527A"/>
+  <text x="154" y="668" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">STACK</text>
+  <text x="154" y="722" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">Node.js · React · SQLite</text>
+  <rect x="570" y="618" width="430" height="136" rx="28" fill="#101A2B" stroke="#36527A"/>
+  <text x="606" y="668" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">DECISAO</text>
+  <text x="606" y="722" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">Simplicidade orientada ao contexto</text>
+  <rect x="1040" y="288" width="394" height="242" rx="28" fill="#0F1828" stroke="#36527A"/>
+  <text x="1080" y="352" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">FOCO</text>
+  <text x="1080" y="420" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="54" font-weight="700">Fluxo</text>
+  <text x="1080" y="470" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="28">produto pequeno com jornada completa</text>
+  <rect x="1040" y="562" width="394" height="262" rx="28" fill="#0F1828" stroke="#36527A"/>
+  <text x="1080" y="628" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">LEITURA</text>
+  <text x="1080" y="694" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">Escolha técnica</text>
+  <text x="1080" y="746" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">proporcional ao problema</text>
+</svg>

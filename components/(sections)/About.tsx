@@ -1,56 +1,56 @@
-import Image from 'next/image';
 import ScrollReveal from '@/components/(ui)/ScrollReveal';
+import { operationPrinciples } from '@/lib/profile';
+
+const positionCards = [
+  {
+    title: 'Produto antes de ornamento',
+    description:
+      'Eu projeto a experiência a partir do fluxo operacional: quem usa, o que precisa ver primeiro e qual decisão precisa tomar.'
+  },
+  {
+    title: 'Arquitetura como parte do UX',
+    description:
+      'Fila, realtime, permissões, integrações e persistência não ficam escondidos. Eles moldam a qualidade do produto final.'
+  },
+  {
+    title: 'Entrega orientada a leitura técnica',
+    description:
+      'Documentação, nomes, contratos e organização do código precisam comunicar tão bem quanto a interface comunica para o usuário.'
+  }
+];
 
 export default function About() {
   return (
-    <section id="sobre" className="space-y-2xl py-section">
-      <ScrollReveal className="space-y-sm">
-        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Sobre mim</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Construindo soluções com propósito</h2>
+    <section className="space-y-8 py-24">
+      <ScrollReveal className="space-y-4">
+        <p className="eyebrow">Posicionamento</p>
+        <h2 className="section-heading">Eu penso como alguém que precisa sustentar produto, não só lançar tela.</h2>
+        <p className="section-copy">
+          Minha leitura de engenharia parte do negócio e chega na interface. Isso me leva naturalmente para produtos como CRM,
+          plataformas operacionais, atendimento omnichannel, automação e sistemas com regras densas.
+        </p>
       </ScrollReveal>
 
-      <div className="grid gap-2xl lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-lg text-lg text-midnight-muted">
-          <ScrollReveal delay={0.1}>
-            <p>
-              Estudante de Engenharia de Software com foco em Back-end. Possuo experiência prática na criação de aplicações a
-              partir de projetos acadêmicos e pessoais, incluindo o desenvolvimento de um sistema de cobrança automatizado com
-              Node.js e integração de API.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p>
-              Busco minha primeira oportunidade profissional para aplicar conhecimentos, desenvolver novas habilidades e
-              contribuir com soluções de software inovadoras. Tenho atenção especial à qualidade do código, testes e boas
-              práticas que mantêm as entregas sustentáveis.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.3}>
-            <ul className="grid gap-sm text-base">
-              <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/40 p-md backdrop-blur">
-                <span className="mt-2 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
-                <span>Experiência com Node.js, TypeScript e integrações REST para automatizar rotinas de negócio.</span>
-              </li>
-              <li className="flex items-start gap-sm rounded-2xl border border-midnight-stroke/60 bg-midnight-surface/40 p-md backdrop-blur">
-                <span className="mt-2 inline-flex h-2 w-2 rounded-full bg-midnight-accent" aria-hidden />
-                <span>Prática em organizar projetos com testes, documentação e foco na colaboração entre times.</span>
-              </li>
-            </ul>
-          </ScrollReveal>
-        </div>
+      <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
+        <ScrollReveal delay={0.08} className="section-shell p-6 md:p-8">
+          <div className="grid gap-4 md:grid-cols-3">
+            {positionCards.map((card) => (
+              <article key={card.title} className="glass-card p-5">
+                <h3 className="font-display text-xl font-semibold tracking-[-0.03em] text-midnight-text">{card.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-midnight-muted">{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </ScrollReveal>
 
-        <ScrollReveal delay={0.2} className="mx-auto w-full max-w-md">
-          <div className="relative overflow-hidden rounded-3xl border border-midnight-stroke/60 bg-midnight-surface/40 shadow-2xl shadow-black/30">
-            <div className="absolute inset-0 bg-gradient-to-tr from-midnight-accent/20 via-transparent to-midnight-accent/30" />
-            <div className="absolute -right-10 top-8 h-24 w-24 rounded-full bg-midnight-accent/30 blur-2xl" />
-            <Image
-              src="/images/foto-perfil.svg"
-              alt="Retrato ilustrado do desenvolvedor sorrindo"
-              width={600}
-              height={600}
-              className="relative block w-full"
-              priority
-            />
+        <ScrollReveal delay={0.14} className="section-shell p-6 md:p-8">
+          <p className="eyebrow">Princípios de trabalho</p>
+          <div className="mt-6 grid gap-4">
+            {operationPrinciples.map((principle) => (
+              <div key={principle} className="glass-card px-5 py-4 text-sm leading-7 text-midnight-muted">
+                {principle}
+              </div>
+            ))}
           </div>
         </ScrollReveal>
       </div>

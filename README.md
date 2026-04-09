@@ -1,52 +1,47 @@
-# Portfólio — David Henrique
+# Portfólio | David Henrique
 
-Portfólio pessoal com foco em engenharia de software, projetos em produção e experiências em back-end.
+Portfólio pessoal em `Next.js` com foco em posicionar David Henrique como engenheiro full-stack voltado a CRM, automação operacional, integrações e IA aplicada.
 
-## Destaques
+## O que este projeto entrega
 
-- Experiência moderna com Next.js 14 e React 18.
-- Interface responsiva construída com Tailwind CSS.
-- API Routes para contato via e-mail.
-- Integração pronta para envio de e-mails via Resend.
-- Conteúdo da seção de habilidades com foco técnico.
+- home com linguagem visual editorial técnica, dark-first
+- curadoria de 4 estudos de caso principais
+- páginas de projeto em `MDX`
+- metadata social, `robots.txt` e `sitemap.xml`
+- formulário de contato com `API Route`
 
 ## Stack
 
 - Next.js 14
 - React 18
 - Tailwind CSS
-- API Routes (Node.js runtime)
+- Framer Motion
+- MDX
+- API Routes com Resend
 
-## Como executar localmente
+## Projetos em destaque
+
+- `CRM Pexe`
+- `AgentCaixa`
+- `David Store`
+- `Amigo Oculto`
+
+## Execução local
 
 ```bash
 npm install
 npm run dev
 ```
 
-Acesse em `http://localhost:3000`.
+O projeto sobe em `http://localhost:3000`.
 
 ## Variáveis de ambiente
 
-Crie um arquivo `.env.local` com os valores abaixo:
+Crie `.env.local` com:
 
 ```bash
-# Contato
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 RESEND_API_KEY=
 RESEND_FROM_EMAIL=
 RESEND_TO_EMAIL=
 ```
-
-## Estrutura do projeto
-
-```text
-app/           # Rotas e páginas (Next.js App Router)
-components/    # Componentes reutilizáveis de UI
-content/       # Conteúdo estático e dados do portfólio
-lib/           # Serviços e utilitários (APIs, validações, etc.)
-public/        # Assets públicos
-```
-
-## Licença
-
-Uso pessoal.

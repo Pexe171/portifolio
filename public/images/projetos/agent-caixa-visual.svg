@@ -1,0 +1,31 @@
+<svg width="1600" height="1140" viewBox="0 0 1600 1140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1140" rx="40" fill="#081019"/>
+  <rect x="58" y="58" width="1484" height="1024" rx="30" fill="#0D1726" stroke="#334D74"/>
+  <circle cx="1334" cy="190" r="154" fill="#62E1FF" fill-opacity="0.18"/>
+  <circle cx="264" cy="920" r="214" fill="#2DD4BF" fill-opacity="0.14"/>
+  <rect x="118" y="118" width="260" height="50" rx="25" fill="#102233" stroke="#62E1FF" stroke-opacity="0.34"/>
+  <text x="248" y="150" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="19" font-weight="600" letter-spacing="0.26em" text-anchor="middle">AGENT CAIXA</text>
+  <text x="118" y="300" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="112" font-weight="700" letter-spacing="-0.05em">
+    Retrieval
+  </text>
+  <text x="118" y="396" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="112" font-weight="700" letter-spacing="-0.05em">
+    Oriented RAG
+  </text>
+  <text x="118" y="488" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="34">
+    Ingestão, busca híbrida, feedback humano e avaliação em lote
+  </text>
+  <rect x="118" y="616" width="438" height="136" rx="28" fill="#101A2A" stroke="#334D74"/>
+  <text x="154" y="666" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">PIPELINE</text>
+  <text x="154" y="720" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">DOCX · Chunking · Retrieval</text>
+  <rect x="588" y="616" width="410" height="136" rx="28" fill="#101A2A" stroke="#334D74"/>
+  <text x="624" y="666" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">MODELAGEM</text>
+  <text x="624" y="720" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">Ollama · OpenAI · Gemini</text>
+  <rect x="1044" y="292" width="390" height="240" rx="28" fill="#0F1828" stroke="#334D74"/>
+  <text x="1084" y="356" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">STACK</text>
+  <text x="1084" y="424" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="54" font-weight="700">Python</text>
+  <text x="1084" y="474" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="28">ChromaDB · BM25 · Streamlit</text>
+  <rect x="1044" y="566" width="390" height="258" rx="28" fill="#0F1828" stroke="#334D74"/>
+  <text x="1084" y="632" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">LEITURA</text>
+  <text x="1084" y="698" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">IA com foco</text>
+  <text x="1084" y="750" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">em confiabilidade</text>
+</svg>

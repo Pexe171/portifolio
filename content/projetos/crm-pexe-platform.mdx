@@ -1,0 +1,54 @@
+---
+title: "CRM Pexe"
+summary: "Plataforma CRM omnichannel em monorepo TypeScript com multi-tenant, atendimento em tempo real, automação, agentes por workspace e integração com serviços como Evolution, n8n e Chatwoot."
+highlight: "CRM SaaS multi-tenant para operação comercial e atendimento"
+tags: ["NestJS", "React", "Prisma", "PostgreSQL", "Redis", "Socket.IO", "n8n", "Docker"]
+cover: "/images/projetos/crm-pexe-canva.png"
+repoUrl: "https://github.com/Pexe171/CrmPexe"
+year: "2026"
+role: "Arquitetura, backend e produto full-stack"
+status: "Ativo"
+order: 1
+featured: true
+---
+
+## Contexto
+
+O CRM Pexe nasce para resolver um problema recorrente em operação comercial: o time trabalha com canais, fluxos e ferramentas fragmentadas.
+Em vez de deixar a regra de negócio espalhada entre integrações terceiras, a plataforma centraliza o estado do produto dentro do próprio CRM.
+
+## O que o produto precisava sustentar
+
+- isolamento por workspace com autenticação e RBAC
+- contatos, leads, deals, pipelines e estágios em uma fonte de verdade única
+- conversas internas e omnichannel sem perder histórico operacional
+- automações baseadas em evento e execução externa com n8n
+- integração com WhatsApp via Evolution e expansão para canais suportados pelo Chatwoot
+
+## Decisões de arquitetura
+
+### Monorepo como mecanismo de consistência
+
+Escolhi uma base `pnpm workspace + Turborepo` para manter frontend e backend evoluindo com tipagem coerente e uma fronteira clara entre apps.
+Essa decisão reduz atrito em DTOs, contratos e utilitários compartilhados.
+
+### Backend como orquestrador central
+
+O backend em `NestJS` é o centro da operação.
+As integrações entram como providers de canal e execução, mas o CRM continua sendo a referência de estado para conversas, leads, automações e permissões.
+
+### Estado assíncrono para cargas pesadas
+
+Filas com `BullMQ + Redis` absorvem tarefas críticas como disparos, processamento de eventos e integrações.
+Isso evita acoplar ações de alta latência ao request principal e preserva a experiência em contextos de uso intenso.
+
+## Pontos fortes do case
+
+- arquitetura orientada a produto, não apenas a CRUD
+- desenho multi-tenant com leitura de permissão por contexto
+- uso de realtime para atendimento e atualização operacional
+- integração entre CRM, automação e canais externos sem terceirizar a regra central
+
+## O que esse projeto comunica sobre mim
+
+Esse é o case que melhor demonstra meu recorte atual: sistemas densos, com múltiplos módulos, integrações, decisões de arquitetura e responsabilidade sobre a experiência operacional como um todo.

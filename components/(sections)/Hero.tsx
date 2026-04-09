@@ -1,100 +1,73 @@
 import Link from 'next/link';
 import FadeIn from '@/components/(ui)/FadeIn';
-import TypewriterText from '@/components/(ui)/TypewriterText';
-
-const FRASES_TYPEWRITER = [
-  'APIs estáveis que conectam negócios a pessoas.',
-  'Automação para times financeiros mais eficientes.',
-  'Back-end confiável com foco em resultados reais.'
-];
+import { credibilityStats, heroSignals, profileLinks } from '@/lib/profile';
 
 export default function Hero() {
   return (
     <FadeIn>
-      <section
-        id="inicio"
-        className="relative isolate overflow-hidden rounded-[32px] border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface/90 via-midnight-surface/60 to-midnight-bg px-xl py-3xl shadow-2xl shadow-black/30"
-      >
-        <div className="pointer-events-none absolute -top-32 right-0 h-80 w-80 rounded-full bg-midnight-accent/30 blur-3xl animate-glow" />
-        <div className="pointer-events-none absolute -bottom-40 left-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl animate-float-slow" />
+      <section id="inicio" className="section-shell px-6 py-10 md:px-10 md:py-12">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-midnight-accent/70 to-transparent" />
+        <div className="pointer-events-none absolute -left-16 top-8 h-48 w-48 rounded-full bg-midnight-accent/12 blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 bottom-0 h-64 w-64 rounded-full bg-violet-500/15 blur-3xl" />
 
-        <div className="relative grid gap-2xl lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div className="space-y-lg">
-            <div className="space-y-sm">
-              <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">
-                Olá! Eu sou o <span className="font-semibold text-midnight-text">David Henrique</span>
-              </p>
-              <h1 className="font-display text-4xl font-bold leading-tight text-midnight-text md:text-6xl">
-                Engenharia de software com foco em back-end de alta performance.
-              </h1>
-              <p className="text-xl font-medium text-midnight-accent md:text-2xl">
-                <TypewriterText frases={FRASES_TYPEWRITER} className="after:bg-midnight-accent" />
-              </p>
+        <div className="relative grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="space-y-8">
+            <div className="space-y-5">
+              <span className="pill">Portfólio editorial técnico</span>
+              <div className="space-y-4">
+                <p className="eyebrow">David Henrique</p>
+                <h1 className="max-w-4xl font-display text-4xl font-semibold leading-[0.96] tracking-[-0.05em] text-midnight-text md:text-6xl xl:text-7xl">
+                  Eu construo produtos que conectam CRM, automação operacional e IA aplicada.
+                </h1>
+                <p className="max-w-2xl text-lg leading-8 text-midnight-muted md:text-xl">
+                  Meu foco está em sistemas que precisam organizar operação real: atendimento, fluxo comercial, integrações,
+                  decisões em tempo real e arquitetura capaz de crescer sem colapsar a experiência.
+                </p>
+              </div>
             </div>
 
-            <p className="max-w-2xl text-lg text-midnight-muted">
-              Transformo ideias em experiências digitais enxutas e escaláveis. Integro APIs, automatizo operações e desenho
-              arquiteturas que aguentam o crescimento do produto.
-            </p>
-
-            <div className="flex flex-wrap gap-md">
-              <Link
-                href="/#projetos"
-                className="group relative inline-flex items-center gap-sm rounded-full bg-midnight-accent px-lg py-sm text-sm font-semibold text-midnight-bg shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:bg-midnight-accent-strong"
-              >
-                Ver projetos em destaque
-                <span className="text-lg transition group-hover:translate-x-1">&rarr;</span>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/#projetos" className="button-primary">
+                Ver cases selecionados
               </Link>
-              <Link
-                href="/#contato"
-                className="inline-flex items-center gap-sm rounded-full border border-midnight-stroke/80 bg-midnight-bg/40 px-lg py-sm text-sm font-semibold text-midnight-text transition hover:border-midnight-accent hover:text-midnight-accent"
-              >
-                Falar comigo
+              <Link href="/#contato" className="button-secondary">
+                Conversar sobre um projeto
               </Link>
             </div>
 
-            <div className="flex flex-wrap gap-sm text-xs uppercase tracking-[0.3em] text-midnight-muted">
-              <span className="rounded-full border border-midnight-stroke/70 bg-midnight-surface/60 px-md py-xs">Node.js</span>
-              <span className="rounded-full border border-midnight-stroke/70 bg-midnight-surface/60 px-md py-xs">APIs</span>
-              <span className="rounded-full border border-midnight-stroke/70 bg-midnight-surface/60 px-md py-xs">
-                Automação
-              </span>
-              <span className="rounded-full border border-midnight-stroke/70 bg-midnight-surface/60 px-md py-xs">UX Tech</span>
+            <div className="flex flex-wrap gap-3">
+              {heroSignals.map((signal) => (
+                <span key={signal} className="pill">
+                  {signal}
+                </span>
+              ))}
             </div>
           </div>
 
-          <div className="grid gap-md sm:grid-cols-2">
-            {[
-              {
-                titulo: 'Projetos reais',
-                descricao: 'Cases construídos com foco em impacto e clareza de resultados.',
-                destaque: '+6'
-              },
-              {
-                titulo: 'Experiência técnica',
-                descricao: 'APIs, automações e integrações para operações críticas.',
-                destaque: '24/7'
-              },
-              {
-                titulo: 'Foco em entrega',
-                descricao: 'Documentação viva e colaboração para times ágeis.',
-                destaque: 'Fast'
-              },
-              {
-                titulo: 'Disponibilidade',
-                descricao: 'Aberto para estágios, projetos e parcerias.',
-                destaque: 'ON'
-              }
-            ].map((item) => (
-              <div
-                key={item.titulo}
-                className="group rounded-3xl border border-midnight-stroke/60 bg-midnight-surface/40 p-lg backdrop-blur transition hover:border-midnight-accent/60 hover:bg-midnight-surface/70"
-              >
-                <p className="text-xs uppercase tracking-[0.3em] text-midnight-muted">{item.titulo}</p>
-                <p className="mt-sm text-2xl font-semibold text-midnight-text">{item.destaque}</p>
-                <p className="mt-xs text-sm text-midnight-muted">{item.descricao}</p>
-              </div>
+          <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+            {credibilityStats.map((item) => (
+              <article key={item.label} className="glass-card p-5">
+                <p className="font-display text-3xl font-semibold tracking-[-0.04em] text-midnight-text">{item.value}</p>
+                <p className="mt-2 text-sm leading-6 text-midnight-muted">{item.label}</p>
+              </article>
             ))}
+
+            <article className="glass-card p-5 sm:col-span-3 lg:col-span-1">
+              <p className="eyebrow">Presença</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {profileLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button-secondary !px-4 !py-2 !text-xs"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </article>
           </div>
         </div>
       </section>

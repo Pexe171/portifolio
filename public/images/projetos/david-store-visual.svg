@@ -1,0 +1,31 @@
+<svg width="1600" height="1140" viewBox="0 0 1600 1140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1140" rx="40" fill="#09101A"/>
+  <rect x="58" y="58" width="1484" height="1024" rx="30" fill="#0E1625" stroke="#36527A"/>
+  <circle cx="1312" cy="178" r="144" fill="#62E1FF" fill-opacity="0.14"/>
+  <circle cx="254" cy="934" r="194" fill="#F97316" fill-opacity="0.16"/>
+  <rect x="118" y="118" width="240" height="50" rx="25" fill="#102233" stroke="#62E1FF" stroke-opacity="0.32"/>
+  <text x="238" y="150" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="19" font-weight="600" letter-spacing="0.26em" text-anchor="middle">DAVID STORE</text>
+  <text x="118" y="296" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="112" font-weight="700" letter-spacing="-0.05em">
+    Commerce
+  </text>
+  <text x="118" y="392" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="112" font-weight="700" letter-spacing="-0.05em">
+    Full-stack
+  </text>
+  <text x="118" y="484" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="34">
+    Catálogo, carrinho, checkout, autenticação e operação
+  </text>
+  <rect x="118" y="618" width="430" height="136" rx="28" fill="#101A2B" stroke="#36527A"/>
+  <text x="154" y="668" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">FRONTEND</text>
+  <text x="154" y="722" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">Next.js · UX de produto</text>
+  <rect x="582" y="618" width="402" height="136" rx="28" fill="#101A2B" stroke="#36527A"/>
+  <text x="618" y="668" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">BACKEND</text>
+  <text x="618" y="722" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">Express · Prisma · APIs</text>
+  <rect x="1040" y="286" width="394" height="240" rx="28" fill="#0F1828" stroke="#36527A"/>
+  <text x="1080" y="350" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">CASO</text>
+  <text x="1080" y="418" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="54" font-weight="700">E-commerce</text>
+  <text x="1080" y="468" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="28">produto, fluxo e base técnica</text>
+  <rect x="1040" y="560" width="394" height="264" rx="28" fill="#0F1828" stroke="#36527A"/>
+  <text x="1080" y="626" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">LEITURA</text>
+  <text x="1080" y="692" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">Fluxo comercial</text>
+  <text x="1080" y="744" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">com base sólida</text>
+</svg>

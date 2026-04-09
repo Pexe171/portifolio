@@ -1,3 +1,5 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { carregarProjeto, listarSlugsDeProjetos } from '@/lib/projetos';
@@ -8,15 +10,14 @@ interface ProjetoPageProps {
 }
 
 export async function generateMetadata({ params }: ProjetoPageProps): Promise<Metadata> {
-  const { slug } = params;
-  const projeto = await carregarProjeto(slug);
+  const projeto = await carregarProjeto(params.slug);
 
   if (!projeto?.dados?.titulo) {
     return {
-      title: 'Projeto não encontrado | Meu Portfólio',
-      description: 'O estudo de caso solicitado não está disponível ou foi removido.',
+      title: 'Projeto não encontrado',
+      description: 'O estudo de caso solicitado não está disponível.',
       alternates: {
-        canonical: `${siteMetadata.url}/projetos/${slug}`
+        canonical: `${siteMetadata.url}/projetos/${params.slug}`
       },
       robots: {
         index: false,
@@ -25,15 +26,13 @@ export async function generateMetadata({ params }: ProjetoPageProps): Promise<Me
     };
   }
 
-  const descricao = projeto.dados.resumo ?? 'Estudo de caso detalhado com aprendizados e resultados.';
+  const descricao = projeto.dados.resumo;
   const imagemCompartilhamento = projeto.dados.imagem ?? siteMetadata.ogImage;
-  const urlAbsoluta = `${siteMetadata.url}/projetos/${slug}`;
+  const urlAbsoluta = `${siteMetadata.url}/projetos/${params.slug}`;
   const openGraphImages = imagemCompartilhamento
     ? [
         {
           url: imagemCompartilhamento,
-          width: 1200,
-          height: 630,
           alt: `Imagem de destaque do projeto ${projeto.dados.titulo}`
         }
       ]
@@ -41,7 +40,7 @@ export async function generateMetadata({ params }: ProjetoPageProps): Promise<Me
   const twitterImages = imagemCompartilhamento ? [imagemCompartilhamento] : undefined;
 
   return {
-    title: `${projeto.dados.titulo} | Meu Portfólio`,
+    title: projeto.dados.titulo,
     description: descricao,
     alternates: {
       canonical: urlAbsoluta
@@ -51,14 +50,14 @@ export async function generateMetadata({ params }: ProjetoPageProps): Promise<Me
       locale: siteMetadata.locale,
       url: urlAbsoluta,
       siteName: siteMetadata.name,
-      title: `${projeto.dados.titulo} | Meu Portfólio`,
+      title: `${projeto.dados.titulo} | ${siteMetadata.name}`,
       description: descricao,
       ...(openGraphImages ? { images: openGraphImages } : {}),
       authors: [siteMetadata.author]
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${projeto.dados.titulo} | Meu Portfólio`,
+      title: `${projeto.dados.titulo} | ${siteMetadata.name}`,
       description: descricao,
       ...(twitterImages ? { images: twitterImages } : {})
     }
@@ -72,23 +71,72 @@ export async function generateStaticParams() {
 }
 
 export default async function ProjetoPage({ params }: ProjetoPageProps) {
-  const { slug } = params;
-  const projeto = await carregarProjeto(slug);
+  const projeto = await carregarProjeto(params.slug);
 
   if (!projeto) {
     notFound();
   }
 
+  const links = [
+    projeto.dados.repoUrl ? { href: projeto.dados.repoUrl, label: 'Repositório' } : null,
+    projeto.dados.liveUrl ? { href: projeto.dados.liveUrl, label: 'Demo' } : null
+  ].filter((item): item is { href: string; label: string } => item !== null);
+
   return (
-    <article className="space-y-2xl">
-      <header className="rounded-3xl border border-midnight-stroke/60 bg-midnight-surface/40 p-2xl shadow-2xl shadow-black/30">
-        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Estudo de Caso</p>
-        <h1 className="mt-sm font-display text-4xl font-semibold text-midnight-text md:text-5xl">{projeto?.dados?.titulo}</h1>
-        {projeto?.dados?.resumo && <p className="mt-sm text-lg text-midnight-muted">{projeto.dados.resumo}</p>}
+    <article className="space-y-8 py-10 md:py-16">
+      <header className="section-shell overflow-hidden">
+        <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-6 p-6 md:p-8">
+            <p className="eyebrow">Estudo de caso</p>
+            <div className="space-y-4">
+              <h1 className="font-display text-4xl font-semibold tracking-[-0.05em] text-midnight-text md:text-5xl">
+                {projeto.dados.titulo}
+              </h1>
+              <p className="text-lg leading-8 text-midnight-muted">{projeto.dados.resumo}</p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {projeto.dados.year && <span className="pill">{projeto.dados.year}</span>}
+              {projeto.dados.role && <span className="pill">{projeto.dados.role}</span>}
+              {projeto.dados.status && <span className="pill">{projeto.dados.status}</span>}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {links.map((link) => (
+                <Link key={link.href} href={link.href} target="_blank" rel="noreferrer" className="button-secondary">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative min-h-[340px] overflow-hidden border-t border-white/10 bg-[radial-gradient(circle_at_top,_rgba(52,211,235,0.16),_transparent_48%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0))] lg:min-h-full lg:border-l lg:border-t-0">
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),transparent_38%,rgba(52,211,235,0.08))]" />
+            {projeto.dados.imagem ? (
+              <Image
+                src={projeto.dados.imagem}
+                alt={projeto.dados.titulo}
+                fill
+                className="object-contain object-center p-8 md:p-10"
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                priority
+              />
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-midnight-accent/20 via-transparent to-violet-500/20" />
+            )}
+          </div>
+        </div>
       </header>
-      <div className="prose prose-invert max-w-none text-midnight-text prose-headings:font-display prose-a:text-midnight-accent">
-        <div className="prose-p:text-justify">{projeto?.conteudo}</div>
+
+      <div className="flex flex-wrap gap-3">
+        {projeto.dados.tags.map((tag) => (
+          <span key={tag} className="pill !px-3 !py-2 !tracking-[0.22em]">
+            {tag}
+          </span>
+        ))}
       </div>
+
+      <div className="case-study">{projeto.conteudo}</div>
     </article>
   );
 }

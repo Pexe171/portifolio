@@ -1,66 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { capabilityGroups } from '@/lib/profile';
 
-const habilidades = [
-  {
-    icone: 'FE',
-    titulo: 'Frontend moderno',
-    descricao: 'Next.js 14, React Server Components, TypeScript e Tailwind CSS em interfaces de alta performance.'
-  },
-  {
-    icone: 'BE',
-    titulo: 'Arquitetura Node.js',
-    descricao: 'APIs em Express, padrões BFF/Proxy e serviços desacoplados com autenticação JWT segura.'
-  },
-  {
-    icone: 'DT',
-    titulo: 'Aplicações desktop',
-    descricao: 'Apps em Electron integrados ao WhatsApp, automações com node-cron e bancos locais SQLite.'
-  },
-  {
-    icone: 'DB',
-    titulo: 'Persistência de dados',
-    descricao: 'Modelagem em MongoDB, seeds versionadas e orquestração com Docker para ambientes completos.'
-  },
-  {
-    icone: 'SEC',
-    titulo: 'Segurança e autenticação',
-    descricao: 'Fluxos com cookies httpOnly, RBAC, criptografia de senhas e observabilidade integrada.'
-  },
-  {
-    icone: 'IA',
-    titulo: 'IA & integrações',
-    descricao: 'Integração com OpenAI, webhooks do WhatsApp, CMS e pipelines automáticos orientados a negócio.'
-  },
-  {
-    icone: 'DS',
-    titulo: 'Design Systems vivos',
-    descricao: 'shadcn/ui customizado, documentação em MDX e guidelines que conectam produto, design e engenharia.'
-  },
-  {
-    icone: 'DX',
-    titulo: 'DevOps & DX',
-    descricao: 'Pipelines CI, docker-compose unificado, deploy na AWS Amplify e onboarding guiado por documentação viva.'
-  }
-];
-
-const variantesLista = {
-  oculto: {
-    opacity: 0
-  },
-  visivel: {
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.15
+      staggerChildren: 0.08,
+      delayChildren: 0.1
     }
   }
 };
 
-const varianteItem = {
-  oculto: { opacity: 0, y: 16 },
-  visivel: {
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.45, ease: 'easeOut' }
@@ -69,36 +25,30 @@ const varianteItem = {
 
 export default function Skills() {
   return (
-    <section id="habilidades" className="space-y-lg py-section">
-      <header className="space-y-sm">
-        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Competências</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">Habilidades técnicas</h2>
+    <section className="space-y-8 py-24">
+      <header className="space-y-4">
+        <p className="eyebrow">Capacidades</p>
+        <h2 className="section-heading">As áreas em que eu agrego mais valor técnico hoje.</h2>
+        <p className="section-copy">
+          Meu recorte principal está em produto B2B, integração entre sistemas e software que precisa aguentar operação real sem
+          virar caos.
+        </p>
       </header>
 
       <motion.ul
-        className="grid gap-md md:grid-cols-2 xl:grid-cols-3"
-        variants={variantesLista}
-        initial="oculto"
-        whileInView="visivel"
-        viewport={{ once: true, amount: 0.3 }}
+        className="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+        variants={listVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.25 }}
       >
-        {habilidades.map((habilidade) => (
-          <motion.li
-            key={habilidade.titulo}
-            variants={varianteItem}
-            className="group relative overflow-hidden rounded-2xl border border-midnight-stroke/60 bg-gradient-to-br from-midnight-surface/80 via-midnight-surface/40 to-midnight-bg p-lg text-midnight-muted shadow-2xl shadow-black/30 transition hover:-translate-y-1.5 hover:border-midnight-accent hover:text-midnight-text"
-          >
-            <span className="absolute -right-8 top-6 h-16 w-16 rounded-full bg-midnight-accent/20 blur-2xl opacity-0 transition group-hover:opacity-100" />
-            <span
-              aria-hidden
-              className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-midnight-stroke/60 bg-midnight-surface/80 text-[0.65rem] font-semibold tracking-[0.3em] text-midnight-text"
-            >
-              {habilidade.icone}
-            </span>
-            <div className="space-y-xs text-left">
-              <h3 className="font-semibold text-midnight-text">{habilidade.titulo}</h3>
-              <p>{habilidade.descricao}</p>
-            </div>
+        {capabilityGroups.map((capability) => (
+          <motion.li key={capability.title} variants={itemVariants} className="section-shell p-6">
+            <span className="pill">{capability.code}</span>
+            <h3 className="mt-5 font-display text-2xl font-semibold tracking-[-0.03em] text-midnight-text">
+              {capability.title}
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-midnight-muted">{capability.description}</p>
           </motion.li>
         ))}
       </motion.ul>

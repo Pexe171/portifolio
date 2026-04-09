@@ -1,17 +1,31 @@
-<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="crm-bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0F172A" />
-      <stop offset="45%" stop-color="#065F46" />
-      <stop offset="100%" stop-color="#22C55E" />
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="675" rx="48" fill="url(#crm-bg)" />
-  <rect x="140" y="160" width="260" height="180" rx="20" fill="#34D399" opacity="0.2" />
-  <rect x="440" y="200" width="260" height="220" rx="20" fill="#10B981" opacity="0.2" />
-  <rect x="740" y="240" width="260" height="180" rx="20" fill="#BBF7D0" opacity="0.12" />
-  <path d="M200 470H520" stroke="#86EFAC" stroke-width="8" stroke-linecap="round" opacity="0.6" />
-  <path d="M240 510H560" stroke="#4ADE80" stroke-width="6" stroke-linecap="round" opacity="0.5" />
-  <text x="80" y="120" fill="#F8FAFC" font-size="40" font-family="'Inter', sans-serif" font-weight="600" opacity="0.9">CRM Pexe</text>
-  <text x="80" y="170" fill="#DCFCE7" font-size="22" font-family="'Inter', sans-serif" opacity="0.75">Gestão SaaS multi-tenant</text>
+<svg width="1600" height="1140" viewBox="0 0 1600 1140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1140" rx="40" fill="#09101A"/>
+  <rect x="58" y="58" width="1484" height="1024" rx="30" fill="#0E1625" stroke="#36527A"/>
+  <circle cx="1278" cy="164" r="140" fill="#62E1FF" fill-opacity="0.16"/>
+  <circle cx="248" cy="946" r="204" fill="#7C3AED" fill-opacity="0.18"/>
+  <rect x="118" y="118" width="214" height="50" rx="25" fill="#102233" stroke="#62E1FF" stroke-opacity="0.32"/>
+  <text x="225" y="150" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="19" font-weight="600" letter-spacing="0.26em" text-anchor="middle">CRM PEXE</text>
+  <text x="118" y="290" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="110" font-weight="700" letter-spacing="-0.05em">
+    Omnichannel
+  </text>
+  <text x="118" y="386" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="110" font-weight="700" letter-spacing="-0.05em">
+    CRM Platform
+  </text>
+  <text x="118" y="478" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="34">
+    Multi-tenant, realtime, automação, agentes e integrações
+  </text>
+  <rect x="118" y="618" width="402" height="132" rx="28" fill="#101A2B" stroke="#36527A"/>
+  <text x="154" y="666" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">BACKEND</text>
+  <text x="154" y="718" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">NestJS · Prisma · Redis</text>
+  <rect x="548" y="618" width="420" height="132" rx="28" fill="#101A2B" stroke="#36527A"/>
+  <text x="584" y="666" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">OPERACAO</text>
+  <text x="584" y="718" fill="#F3F6FF" font-family="'IBM Plex Sans', sans-serif" font-size="38" font-weight="600">Sockets · workflows · RBAC</text>
+  <rect x="1044" y="300" width="382" height="222" rx="28" fill="#101725" stroke="#36527A"/>
+  <text x="1084" y="360" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">STACK</text>
+  <text x="1084" y="426" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="54" font-weight="700">TypeScript</text>
+  <text x="1084" y="476" fill="#9DAECC" font-family="'IBM Plex Sans', sans-serif" font-size="28">React · PostgreSQL · n8n</text>
+  <rect x="1044" y="566" width="382" height="252" rx="28" fill="#101725" stroke="#36527A"/>
+  <text x="1084" y="632" fill="#62E1FF" font-family="'IBM Plex Sans', sans-serif" font-size="18" font-weight="600" letter-spacing="0.28em">FOCO</text>
+  <text x="1084" y="698" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">Produto e</text>
+  <text x="1084" y="750" fill="#F3F6FF" font-family="'Space Grotesk', sans-serif" font-size="48" font-weight="600">arquitetura</text>
 </svg>

@@ -13,28 +13,40 @@ export interface SiteMetadata {
   github: string;
 }
 
+const resolvedSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000');
+
 export const siteMetadata: SiteMetadata = {
   name: 'David Henrique',
   shortName: 'David Henrique',
-  title: 'David Henrique | Engenharia de Software e back-end',
+  title: 'David Henrique | Full-stack CRM, automação e IA aplicada',
   description:
-    'Portfólio de David Henrique, estudante de Engenharia de Software com foco em desenvolvimento web e back-end, integrações de APIs e automação de rotinas.',
-  url: 'https://meu-portfolio.dev',
+    'Portfólio de David Henrique com foco em sistemas CRM, automação operacional, integrações críticas e produtos com IA aplicada.',
+  url: resolvedSiteUrl,
   locale: 'pt_BR',
   author: 'David Henrique',
   keywords: [
     'portfólio',
+    'full-stack',
+    'crm',
+    'automação',
+    'inteligência artificial',
     'engenharia de software',
-    'desenvolvimento web',
     'back-end',
     'node.js',
     'typescript',
-    'apis',
-    'automação',
+    'python',
     'next.js',
-    'tailwind css'
+    'nestjs',
+    'apis'
   ],
-  twitterHandle: '@meu_portfolio',
+  ogImage: '/images/og-portfolio-canva.png',
+  twitterHandle: '@Pexe171',
   linkedIn: 'https://br.linkedin.com/in/david-henrique-miranda-da-silva-758666388',
-  github: 'https://github.com/pexe171'
+  github: 'https://github.com/Pexe171'
 };

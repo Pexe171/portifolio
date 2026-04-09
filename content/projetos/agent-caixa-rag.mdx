@@ -1,0 +1,58 @@
+---
+title: "AgentCaixa"
+summary: "Assistente RAG em Python para consulta de documentos `.docx`, com ingestão estruturada, busca híbrida, reescrita de pergunta, múltiplos provedores LLM e interface Streamlit com coleta de feedback."
+highlight: "RAG com feedback operacional e avaliação em lote"
+tags: ["Python", "RAG", "ChromaDB", "BM25", "Streamlit", "OpenAI", "Gemini", "Ollama"]
+cover: "/images/projetos/agent-caixa-canva.png"
+repoUrl: "https://github.com/Pexe171/AgentCaixa"
+year: "2026"
+role: "IA aplicada e engenharia de retrieval"
+status: "Ativo"
+order: 2
+featured: true
+---
+
+## Contexto
+
+O objetivo do AgentCaixa é responder perguntas sobre documentos técnicos de forma mais confiável do que um chat genérico.
+Para isso, o foco não ficou só na geração da resposta, mas na cadeia inteira: ingestão, chunking, recuperação, interface e avaliação.
+
+## Problema tratado
+
+- documentos longos e com estrutura irregular
+- necessidade de recuperar contexto relevante antes de responder
+- comparação entre diferentes modelos de linguagem
+- captura de feedback humano para refinar o comportamento do sistema
+
+## Arquitetura do pipeline
+
+### Ingestão estruturada
+
+Os arquivos `.docx` passam por extração de parágrafos e tabelas, seguidos por chunking pensado para documentação técnica.
+O resultado é persistido e reutilizado para indexação e auditoria.
+
+### Recuperação híbrida
+
+O retrieval combina vetorial e BM25.
+Essa escolha melhora a cobertura tanto para perguntas semânticas quanto para consultas que dependem de termos específicos.
+
+### Reescrita de pergunta
+
+Antes da busca, a pergunta pode ser reformulada para melhorar a recuperação.
+Essa etapa existe porque muitos erros em RAG não são de geração, mas de contexto mal recuperado.
+
+### Interface com aprendizagem operacional
+
+A interface em `Streamlit` permite conversar com o sistema e registrar feedback sobre a qualidade das respostas.
+Além disso, existe avaliação em lote para comparar comportamento com conjuntos maiores de perguntas.
+
+## Por que esse case importa
+
+- demonstra domínio além do uso raso de API de LLM
+- mostra preocupação com retrieval, não só com prompt
+- conecta engenharia de IA a um fluxo de validação real
+- reforça minha capacidade de trabalhar com sistemas híbridos entre software tradicional e modelos generativos
+
+## O que eu destacaria em uma entrevista
+
+Eu usaria esse projeto para falar sobre critérios de qualidade em IA aplicada, trade-offs de retrieval e a diferença entre demo de LLM e produto que precisa ser auditável.

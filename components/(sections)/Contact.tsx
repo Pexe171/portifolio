@@ -1,9 +1,16 @@
 'use client';
 
 import { contatoSchema, type ContatoSchema } from '@/lib/schemas/contact';
+import { profileLinks } from '@/lib/profile';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+const collaborationSignals = [
+  'Arquitetura de produto',
+  'Integrações e automação',
+  'Refino de interface operacional'
+];
 
 export default function Contact() {
   const [status, setStatus] = useState<'inicial' | 'sucesso' | 'erro'>('inicial');
@@ -50,34 +57,32 @@ export default function Contact() {
   });
 
   return (
-    <section id="contato" className="space-y-lg py-section">
-      <header className="space-y-sm">
-        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Contato</p>
-        <h2 className="font-display text-3xl font-semibold text-midnight-text md:text-4xl">
-          Vamos conversar sobre o próximo projeto?
-        </h2>
-        <p className="max-w-2xl text-midnight-muted">
-          Compartilhe um pouco sobre o desafio que você tem em mente. Respondo em até 24 horas, sempre com atenção humana e
-          direcionada às suas necessidades.
+    <section id="contato" className="space-y-8 py-24">
+      <header className="space-y-4">
+        <p className="eyebrow">Contato</p>
+        <h2 className="section-heading">Se você precisa de produto mais sólido, podemos conversar.</h2>
+        <p className="section-copy">
+          Estou interessado em projetos onde arquitetura, integração e experiência operacional realmente importam. Se esse é o
+          contexto, a conversa faz sentido.
         </p>
       </header>
 
-      <div className="grid gap-2xl lg:grid-cols-[1.1fr_0.9fr]">
-        <form onSubmit={enviarFormulario} className="space-y-lg" noValidate>
-          <div className="grid gap-lg md:grid-cols-2">
-            <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
-              Nome
+      <div className="grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
+        <form onSubmit={enviarFormulario} className="section-shell space-y-6 p-6 md:p-8" noValidate>
+          <div className="grid gap-5 md:grid-cols-2">
+            <label className="space-y-2 text-sm font-medium text-midnight-muted">
+              <span>Nome</span>
               <input
                 type="text"
                 {...register('nome')}
                 aria-invalid={errors.nome ? 'true' : 'false'}
                 aria-describedby={errors.nome ? 'erro-nome' : undefined}
-                className={`rounded-2xl border bg-midnight-surface/60 px-md py-sm text-base text-midnight-text shadow-lg shadow-black/20 focus:outline-none focus:ring-2 ${
+                className={`w-full rounded-2xl border px-4 py-3 text-base text-midnight-text transition ${
                   errors.nome
-                    ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30'
-                    : 'border-midnight-stroke focus:border-midnight-accent focus:ring-midnight-accent/30'
+                    ? 'border-rose-500 bg-rose-500/5'
+                    : 'border-white/10 bg-white/[0.03] focus:border-midnight-accent/40'
                 }`}
-                placeholder="Como posso te chamar?"
+                placeholder="Seu nome"
               />
               {errors.nome && (
                 <span id="erro-nome" className="text-xs font-normal text-rose-400">
@@ -85,19 +90,20 @@ export default function Contact() {
                 </span>
               )}
             </label>
-            <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
-              E-mail
+
+            <label className="space-y-2 text-sm font-medium text-midnight-muted">
+              <span>E-mail</span>
               <input
                 type="email"
                 {...register('email')}
                 aria-invalid={errors.email ? 'true' : 'false'}
                 aria-describedby={errors.email ? 'erro-email' : undefined}
-                className={`rounded-2xl border bg-midnight-surface/60 px-md py-sm text-base text-midnight-text shadow-lg shadow-black/20 focus:outline-none focus:ring-2 ${
+                className={`w-full rounded-2xl border px-4 py-3 text-base text-midnight-text transition ${
                   errors.email
-                    ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30'
-                    : 'border-midnight-stroke focus:border-midnight-accent focus:ring-midnight-accent/30'
+                    ? 'border-rose-500 bg-rose-500/5'
+                    : 'border-white/10 bg-white/[0.03] focus:border-midnight-accent/40'
                 }`}
-                placeholder="Qual o melhor e-mail?"
+                placeholder="voce@empresa.com"
               />
               {errors.email && (
                 <span id="erro-email" className="text-xs font-normal text-rose-400">
@@ -106,19 +112,20 @@ export default function Contact() {
               )}
             </label>
           </div>
-          <label className="flex flex-col gap-sm text-sm font-medium text-midnight-muted">
-            Mensagem
+
+          <label className="space-y-2 text-sm font-medium text-midnight-muted">
+            <span>Contexto</span>
             <textarea
               {...register('mensagem')}
               aria-invalid={errors.mensagem ? 'true' : 'false'}
               aria-describedby={errors.mensagem ? 'erro-mensagem' : undefined}
-              rows={5}
-              className={`rounded-2xl border bg-midnight-surface/60 px-md py-sm text-base text-midnight-text shadow-lg shadow-black/20 focus:outline-none focus:ring-2 ${
+              rows={6}
+              className={`w-full rounded-2xl border px-4 py-3 text-base text-midnight-text transition ${
                 errors.mensagem
-                  ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500/30'
-                  : 'border-midnight-stroke focus:border-midnight-accent focus:ring-midnight-accent/30'
+                  ? 'border-rose-500 bg-rose-500/5'
+                  : 'border-white/10 bg-white/[0.03] focus:border-midnight-accent/40'
               }`}
-              placeholder="Conte mais sobre o contexto, objetivos e prazos."
+              placeholder="Explique o produto, o fluxo crítico e o que você precisa resolver."
             />
             {errors.mensagem && (
               <span id="erro-mensagem" className="text-xs font-normal text-rose-400">
@@ -127,49 +134,56 @@ export default function Contact() {
             )}
           </label>
 
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="group inline-flex items-center gap-sm rounded-full bg-midnight-accent px-lg py-sm text-sm font-semibold text-midnight-bg shadow-lg shadow-cyan-500/30 transition hover:-translate-y-0.5 hover:bg-midnight-accent-strong disabled:cursor-not-allowed disabled:opacity-70"
-          >
-            {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
-            <span className="text-lg transition group-hover:translate-x-1">&rarr;</span>
-          </button>
+          <div className="flex flex-wrap items-center gap-3">
+            <button type="submit" disabled={isSubmitting} className="button-primary disabled:cursor-not-allowed disabled:opacity-70">
+              {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
+            </button>
+            <span className="text-sm text-midnight-muted">Resposta inicial em até 48h.</span>
+          </div>
+
+          {mensagem && (
+            <p className={`text-sm ${status === 'sucesso' ? 'text-emerald-400' : 'text-rose-400'}`} role="status" aria-live="polite">
+              {mensagem}
+            </p>
+          )}
         </form>
 
-        <aside className="space-y-md rounded-3xl border border-midnight-stroke/60 bg-midnight-surface/40 p-lg text-midnight-muted shadow-2xl shadow-black/30">
-          <p className="text-xs uppercase tracking-[0.35em] text-midnight-muted">Disponibilidade</p>
-          <h3 className="text-2xl font-semibold text-midnight-text">Aberto para oportunidades</h3>
-          <p>
-            Se você busca alguém focado em back-end, integrações e automação, estou pronto para conversar e entender o contexto
-            do seu produto.
-          </p>
-          <div className="space-y-sm text-sm">
-            <div className="flex items-center justify-between rounded-2xl border border-midnight-stroke/60 bg-midnight-bg/40 px-md py-sm">
-              <span>Resposta média</span>
-              <span className="font-semibold text-midnight-text">24h</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl border border-midnight-stroke/60 bg-midnight-bg/40 px-md py-sm">
-              <span>Formato</span>
-              <span className="font-semibold text-midnight-text">Remoto</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl border border-midnight-stroke/60 bg-midnight-bg/40 px-md py-sm">
-              <span>Status</span>
-              <span className="font-semibold text-emerald-400">Disponível</span>
-            </div>
+        <aside className="section-shell space-y-6 p-6 md:p-8">
+          <div className="space-y-4">
+            <p className="eyebrow">Fit ideal</p>
+            <h3 className="font-display text-3xl font-semibold tracking-[-0.04em] text-midnight-text">
+              Projetos onde a interface precisa conversar com a operação.
+            </h3>
+            <p className="text-base leading-8 text-midnight-muted">
+              Meu melhor contexto é quando produto, backend e integração precisam funcionar em conjunto: CRM, atendimento,
+              automação, ingestão de contexto, dashboards operacionais ou sistemas com múltiplos atores.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {collaborationSignals.map((signal) => (
+              <span key={signal} className="pill">
+                {signal}
+              </span>
+            ))}
+          </div>
+
+          <div className="grid gap-3">
+            {profileLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="glass-card flex items-center justify-between px-5 py-4 text-sm text-midnight-text hover:border-midnight-accent/30"
+              >
+                <span>{link.label}</span>
+                <span className="text-midnight-accent">abrir ↗</span>
+              </a>
+            ))}
           </div>
         </aside>
       </div>
-
-      {mensagem && (
-        <p
-          className={`text-sm ${status === 'sucesso' ? 'text-emerald-500' : 'text-rose-500'}`}
-          role="status"
-          aria-live="polite"
-        >
-          {mensagem}
-        </p>
-      )}
     </section>
   );
 }

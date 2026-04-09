@@ -7,9 +7,9 @@ const openGraphImages = siteMetadata.ogImage
   ? [
       {
         url: siteMetadata.ogImage,
-        width: 1200,
-        height: 630,
-        alt: 'Miniatura dos projetos desenvolvidos por David Henrique'
+        width: 617,
+        height: 324,
+        alt: 'Arquivo de projetos de David Henrique'
       }
     ]
   : undefined;
@@ -17,68 +17,48 @@ const openGraphImages = siteMetadata.ogImage
 const twitterImages = siteMetadata.ogImage ? [siteMetadata.ogImage] : undefined;
 
 export const metadata: Metadata = {
-  title: 'Arquivo de projetos | David Henrique',
+  title: 'Projetos',
   description:
-    'Coleção completa dos meus estudos de caso em desenvolvimento web e back-end, com detalhes sobre arquitetura, testes e resultados gerados.',
+    'Arquivo com os estudos de caso que melhor representam meu trabalho em CRM, e-commerce, automação e IA aplicada.',
   alternates: {
     canonical: `${siteMetadata.url}/projetos`
   },
   openGraph: {
-    title: 'Arquivo de projetos | David Henrique',
+    title: 'Projetos | David Henrique',
     description:
-      'Reúna-se com todos os estudos de caso que desenvolvi, com foco em arquitetura bem estruturada, integrações e segurança.',
+      'Arquivo com os estudos de caso que melhor representam meu trabalho em CRM, e-commerce, automação e IA aplicada.',
     url: `${siteMetadata.url}/projetos`,
     siteName: siteMetadata.name,
     ...(openGraphImages ? { images: openGraphImages } : {})
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arquivo de projetos | David Henrique',
+    title: 'Projetos | David Henrique',
     description:
-      'Veja cada projeto detalhado, as tecnologias usadas e como resolvi problemas reais com software.',
+      'Arquivo com os estudos de caso que melhor representam meu trabalho em CRM, e-commerce, automação e IA aplicada.',
     ...(twitterImages ? { images: twitterImages } : {})
   }
 };
 
 export default async function ProjetosPage() {
   const projetos = await listarTodosProjetos();
-  const total = projetos.length;
 
   return (
-    <section className="space-y-2xl py-section">
-      <header className="space-y-md">
-        <p className="text-xs uppercase tracking-[0.4em] text-midnight-muted">Arquivo</p>
-        <h1 className="font-display text-4xl font-semibold text-midnight-text md:text-5xl">
-          Todos os meus projetos em um só lugar
-        </h1>
-        <p className="max-w-2xl text-midnight-muted">
-          Aqui você encontra desde os cases em destaque até experimentos e estudos que consolidaram minhas habilidades em
-          arquitetura, automação e experiências web.
+    <section className="space-y-8 py-10 md:py-16">
+      <header className="space-y-4">
+        <p className="eyebrow">Arquivo</p>
+        <h1 className="section-heading">Os projetos aqui funcionam como portfólio, mas também como prova de raciocínio.</h1>
+        <p className="section-copy">
+          Cada case foi organizado para mostrar problema, decisão de arquitetura, leitura de produto e resultado esperado para o
+          contexto em que foi construído.
         </p>
-        <div className="flex flex-wrap items-center gap-md text-xs uppercase tracking-[0.35em] text-midnight-muted">
-          <span className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/40 px-md py-xs">
-            {total} projetos disponíveis
-          </span>
-          <span className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/40 px-md py-xs">
-            Atualizações frequentes
-          </span>
-          <span className="rounded-full border border-midnight-stroke/70 bg-midnight-bg/40 px-md py-xs">
-            Casos completos + experimentos
-          </span>
-        </div>
       </header>
 
-      {projetos.length > 0 ? (
-        <div className="grid gap-lg lg:grid-cols-2">
-          {projetos.map((projeto) => (
-            <ProjectCard key={projeto.slug} projeto={projeto} />
-          ))}
-        </div>
-      ) : (
-        <div className="rounded-3xl border border-midnight-stroke bg-midnight-surface/60 p-xl text-center text-midnight-muted">
-          Ainda estou organizando meus estudos de caso. Volte em breve para ver as histórias completas de cada solução.
-        </div>
-      )}
+      <div className="grid gap-5 lg:grid-cols-2">
+        {projetos.map((projeto) => (
+          <ProjectCard key={projeto.slug} projeto={projeto} />
+        ))}
+      </div>
     </section>
   );
 }

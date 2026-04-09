@@ -11,9 +11,9 @@ const homeOpenGraphImages = siteMetadata.ogImage
   ? [
       {
         url: siteMetadata.ogImage,
-        width: 1200,
-        height: 630,
-        alt: 'Capa do portfólio destacando experiências digitais com propósito'
+        width: 617,
+        height: 324,
+        alt: 'Capa do portfólio destacando sistemas operacionais, CRM e IA aplicada'
       }
     ]
   : undefined;
@@ -21,13 +21,13 @@ const homeOpenGraphImages = siteMetadata.ogImage
 const homeTwitterImages = siteMetadata.ogImage ? [siteMetadata.ogImage] : undefined;
 
 export const metadata: Metadata = {
-  title: 'Início | David Henrique',
+  title: 'Início',
   description:
-    'Estudante de Engenharia de Software focado em desenvolvimento web e back-end. Conheça integrações com APIs, automações e projetos construídos com cuidado.',
+    'Portfólio com foco em CRM, automação operacional, integrações e IA aplicada a produtos reais.',
   openGraph: {
     title: 'Início | David Henrique',
     description:
-      'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
+      'Casos de CRM, e-commerce, RAG e produtos operacionais construídos com arquitetura full-stack.',
     url: '/',
     ...(homeOpenGraphImages ? { images: homeOpenGraphImages } : {})
   },
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Início | David Henrique',
     description:
-      'Portfólio com estudos de caso sobre APIs, Node.js e automação de rotinas para gerar impacto em produtos digitais.',
+      'Casos de CRM, e-commerce, RAG e produtos operacionais construídos com arquitetura full-stack.',
     ...(homeTwitterImages ? { images: homeTwitterImages } : {})
   }
 };

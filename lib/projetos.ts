@@ -6,9 +6,15 @@ import type { ReactNode } from 'react';
 export interface ProjetoFrontmatter {
   title: string;
   summary?: string;
+  highlight?: string;
   tags?: string[];
   cover?: string;
-  video?: string;
+  gallery?: string[];
+  repoUrl?: string;
+  liveUrl?: string;
+  year?: string;
+  role?: string;
+  status?: string;
   order?: number;
   featured?: boolean;
 }
@@ -16,10 +22,15 @@ export interface ProjetoFrontmatter {
 export interface ProjetoParaCard {
   slug: string;
   titulo: string;
-  descricao: string;
+  resumo: string;
+  highlight: string;
   imagem: string;
-  video?: string;
   tags: string[];
+  role?: string;
+  year?: string;
+  status?: string;
+  repoUrl?: string;
+  liveUrl?: string;
   ordem?: number;
   destaque: boolean;
 }
@@ -29,10 +40,16 @@ export interface ProjetoCompleto {
   conteudo: ReactNode;
   dados: {
     titulo: string;
-    resumo?: string;
+    resumo: string;
+    highlight: string;
     tags: string[];
     imagem?: string;
-    video?: string;
+    galeria: string[];
+    repoUrl?: string;
+    liveUrl?: string;
+    year?: string;
+    role?: string;
+    status?: string;
   };
 }
 
@@ -76,10 +93,15 @@ async function montarProjetoParaCard(slug: string): Promise<ProjetoParaCard | nu
     return {
       slug,
       titulo: frontmatter.title,
-      descricao: frontmatter.summary ?? 'Estudo de caso completo disponível no detalhe.',
+      resumo: frontmatter.summary ?? 'Estudo de caso completo disponível no detalhe.',
+      highlight: frontmatter.highlight ?? frontmatter.summary ?? 'Case técnico disponível no detalhe.',
       imagem: frontmatter.cover ?? '/images/projeto-placeholder.svg',
-      video: frontmatter.video,
       tags: frontmatter.tags ?? [],
+      role: frontmatter.role,
+      year: frontmatter.year,
+      status: frontmatter.status,
+      repoUrl: frontmatter.repoUrl,
+      liveUrl: frontmatter.liveUrl,
       ordem: typeof frontmatter.order === 'number' ? frontmatter.order : undefined,
       destaque: Boolean(frontmatter.featured)
     } satisfies ProjetoParaCard;
@@ -109,7 +131,7 @@ export async function listarTodosProjetos(): Promise<ProjetoParaCard[]> {
 
 export async function listarProjetosParaHome(): Promise<ProjetoParaCard[]> {
   const projetos = await listarTodosProjetos();
-  return projetos.filter((projeto) => projeto.destaque).slice(0, 3);
+  return projetos.filter((projeto) => projeto.destaque);
 }
 
 export async function carregarProjeto(slug: string): Promise<ProjetoCompleto | null> {
@@ -129,10 +151,17 @@ export async function carregarProjeto(slug: string): Promise<ProjetoCompleto | n
       conteudo: content,
       dados: {
         titulo: frontmatter.title,
-        resumo: frontmatter.summary,
+        resumo: frontmatter.summary ?? 'Estudo de caso detalhado com arquitetura, decisões e resultado.',
+        highlight:
+          frontmatter.highlight ?? frontmatter.summary ?? 'Estudo de caso detalhado com arquitetura, decisões e resultado.',
         tags: frontmatter.tags ?? [],
         imagem: frontmatter.cover,
-        video: frontmatter.video
+        galeria: frontmatter.gallery ?? [],
+        repoUrl: frontmatter.repoUrl,
+        liveUrl: frontmatter.liveUrl,
+        year: frontmatter.year,
+        role: frontmatter.role,
+        status: frontmatter.status
       }
     } satisfies ProjetoCompleto;
   } catch (erro) {
